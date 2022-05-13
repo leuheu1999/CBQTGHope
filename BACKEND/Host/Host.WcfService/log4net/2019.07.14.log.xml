@@ -1,0 +1,29 @@
+﻿15:47:39,106 [15] ERROR Host.WcfService.MainModule - HS_ThongTinHoSo_GetEformID Error:    at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType)
+   at Dapper.SqlMapper.QuerySingleOrDefault[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Data.Core.Repositories.ThongTinKhuyenMaiRepository.HS_ThongTinHoSo_GetEformID(Int64 hosoid) in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\BACKEND\DataAccess\Data.Core\Repositories\ThongTinKhuyenMaiRepository.cs:line 119
+Extra Info: (null)
+15:47:49,888 [15] ERROR Host.WcfService.MainModule - HS_ThongTinHoSo_GetEformID Error:    at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType)
+   at Dapper.SqlMapper.QuerySingleOrDefault[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Data.Core.Repositories.ThongTinKhuyenMaiRepository.HS_ThongTinHoSo_GetEformID(Int64 hosoid) in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\BACKEND\DataAccess\Data.Core\Repositories\ThongTinKhuyenMaiRepository.cs:line 119
+Extra Info: (null)
+23:30:22,597 [43] ERROR Business.Services.LoggingService - DM_TinTucController/Update error: A potentially dangerous Request.Form value was detected from the client (modelThongTin="...NoiDung":"<p><strong>1.&nbsp;T...").:    at System.Web.HttpRequest.ValidateString(String value, String collectionKey, RequestValidationSource requestCollection)
+   at System.Web.HttpValueCollection.EnsureKeyValidated(String key)
+   at System.Web.HttpValueCollection.Get(String name)
+   at KhuyenMai.Admin.Controllers.DM_ThongBaoController.ColectionItem[T](String nameRequest) in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\KhuyenMai.Admin\Controllers\DM_ThongBaoController.cs:line 294
+   at KhuyenMai.Admin.Controllers.DM_ThongBaoController.UpdateAndContinue() in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\KhuyenMai.Admin\Controllers\DM_ThongBaoController.cs:line 193
+Extra Info: (null)
+23:30:22,822 [43] ERROR Host.WcfService.MainModule - InsertLog Error:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior)
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType)
+   at Dapper.SqlMapper.QueryFirstOrDefault[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Data.Core.Repositories.LogRepository.InsertLog(LogAdd model, ResponseModel& restStatus) in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\BACKEND\DataAccess\Data.Core\Repositories\LogRepository.cs:line 38
+Extra Info: (null)

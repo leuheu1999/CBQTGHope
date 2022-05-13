@@ -1,0 +1,22 @@
+﻿13:20:23,125 [6] ERROR Host.WcfService.MainModule - Cannot insert the value NULL into column 'MaHoSo', table 'MotCuaDungChung.dbo.TRANGTHAIHOSO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Extra Info: (null)
+13:20:58,372 [6] ERROR Host.WcfService.MainModule - Cannot insert the value NULL into column 'MaHoSo', table 'MotCuaDungChung.dbo.TRANGTHAIHOSO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Extra Info: (null)
+13:22:46,003 [17] ERROR Business.Services.LienThongHoSoService - Invalid operation. The connection is closed.
+Extra Info: (null)
+13:24:26,175 [11] ERROR Business.Services.LienThongHoSoService - Invalid operation. The connection is closed.
+Extra Info: (null)
+13:24:53,949 [21] ERROR Host.WcfService.MainModule - ExecuteScalar requires the command to have a transaction when the connection assigned to the command is in a pending local transaction.  The Transaction property of the command has not been initialized.
+Extra Info: (null)
+13:25:25,313 [11] ERROR Host.WcfService.MainModule - ExecuteScalar requires the command to have a transaction when the connection assigned to the command is in a pending local transaction.  The Transaction property of the command has not been initialized.
+Extra Info: (null)
+13:26:11,125 [11] ERROR Host.WcfService.MainModule - ExecuteScalar requires the command to have a transaction when the connection assigned to the command is in a pending local transaction.  The Transaction property of the command has not been initialized.
+Extra Info: (null)
+14:36:55,510 [15] ERROR Host.WcfService.MainModule - Procedure or function 'ThongKeTongHopV2_InsUpd' expects parameter '@TonKyTruoc', which was not supplied.
+Extra Info: (null)
+14:37:11,792 [15] ERROR Host.WcfService.MainModule - Procedure or function 'ThongKeTongHopV2_InsUpd' expects parameter '@TonKyTruoc', which was not supplied.
+Extra Info: (null)
+14:37:25,006 [5] ERROR Host.WcfService.MainModule - Procedure or function 'ThongKeTongHopV2_InsUpd' expects parameter '@TonKyTruoc', which was not supplied.
+Extra Info: (null)

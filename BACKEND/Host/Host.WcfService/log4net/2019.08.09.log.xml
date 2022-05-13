@@ -1,0 +1,19 @@
+﻿13:27:40,370 [35] ERROR Business.Services.LoggingService - CommonController/header_top error: Object reference not set to an instance of an object.:    at KhuyenMai.Web.Controllers.CommonController.header_top() in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\KhuyenMai.Web\Controllers\CommonController.cs:line 32
+Extra Info: (null)
+13:28:36,461 [35] ERROR Business.Services.LoggingService - CommonController/header_top error: Object reference not set to an instance of an object.:    at KhuyenMai.Web.Controllers.CommonController.header_top() in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\KhuyenMai.Web\Controllers\CommonController.cs:line 32
+Extra Info: (null)
+16:55:48,709 [41] ERROR Host.WcfService.MainModule - NhatKyNguoiDung_DelLstID Error:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior)
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType)
+   at Dapper.SqlMapper.QueryFirstOrDefault[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Data.Core.Repositories.NhatKyNguoiDungRepository.NhatKyNguoiDung_DelLstID(List`1 lstid, ResponseModel& restStatus) in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\BACKEND\DataAccess\Data.Core\Repositories\NhatKyNguoiDungRepository.cs:line 149
+Extra Info: (null)

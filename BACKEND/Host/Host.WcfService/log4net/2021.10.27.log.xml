@@ -1,0 +1,8 @@
+﻿11:11:44,050 [28] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 322
+Extra Info: (null)
+11:11:55,988 [28] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 322
+Extra Info: (null)
+11:57:54,340 [25] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 320
+Extra Info: (null)
+11:58:57,935 [32] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 320
+Extra Info: (null)

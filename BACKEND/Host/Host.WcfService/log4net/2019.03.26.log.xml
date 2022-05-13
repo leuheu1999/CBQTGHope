@@ -1,0 +1,2 @@
+﻿15:59:44,725 [58] ERROR Business.Services.SOLAODONG_CMSService - HuongDan_Save Error:   at Business.Services.SOLAODONG_CMSService.HuongDan_Save(HuongDan huongDan) in E:\FPT\FIS\SOXAYDUNG\Source\DVC\trunk\Wip\Program\Source\DesktopModules\MVC\SOLAODONG.BACKEND\Business\Business.Services\SOLAODONG_CMSService.cs:line 3361
+Extra Info: (null)

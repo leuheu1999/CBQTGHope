@@ -1,0 +1,6 @@
+﻿21:21:18,038 [7] ERROR Host.WcfService.MainModule - Procedure or function 'HoSoTiepNhan_InsUpd' expects parameter '@ChucVu', which was not supplied.
+Extra Info: (null)
+21:22:17,368 [7] ERROR Host.WcfService.MainModule - Procedure or function 'HoSoTiepNhan_InsUpd' expects parameter '@ChucVu', which was not supplied.
+Extra Info: (null)
+21:23:13,014 [7] ERROR Host.WcfService.MainModule - Procedure or function 'HoSoTiepNhan_InsUpd' expects parameter '@ChucVu', which was not supplied.
+Extra Info: (null)

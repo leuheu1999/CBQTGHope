@@ -1,0 +1,6 @@
+﻿08:56:09,402 [5] ERROR Host.WcfService.MainModule - DM_NganhNgheKinhDoanh_Del: Procedure or function 'DM_NganhNgheKinhDoanh_Del' expects parameter '@LastUpdUserID', which was not supplied.
+Extra Info: (null)
+08:56:09,546 [5] ERROR Host.WcfService.MainModule - DM_NganhNgheKinhDoanh_ListThe offset specified in a OFFSET clause may not be negative.
+Extra Info: (null)
+08:58:48,367 [22] ERROR Host.WcfService.MainModule - DM_NganhNgheKinhDoanh_Del: Procedure or function 'DM_NganhNgheKinhDoanh_Del' expects parameter '@LastUpdUserID', which was not supplied.
+Extra Info: (null)

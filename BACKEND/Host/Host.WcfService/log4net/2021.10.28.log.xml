@@ -1,0 +1,110 @@
+﻿10:30:15,464 [17] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+10:30:31,611 [17] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+10:32:25,717 [17] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+11:29:51,635 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+11:30:06,179 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+11:31:16,301 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+11:35:28,738 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+14:44:57,245 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+14:46:53,821 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+15:56:29,159 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:40:34,737 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:40:46,093 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:40:52,390 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+17:45:09,706 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+17:45:14,873 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+17:45:41,668 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+17:45:42,392 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+17:45:42,961 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+17:47:34,695 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+17:49:31,328 [10] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+18:19:30,739 [22] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+18:19:35,616 [22] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)

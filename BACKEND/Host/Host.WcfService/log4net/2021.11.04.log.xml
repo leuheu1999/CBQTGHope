@@ -1,0 +1,110 @@
+﻿15:21:31,382 [10] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/SaveTacGia error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoChuyenNganhController.Index(String hoSoID, String thuTucHanhChinhID, String key) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoChuyenNganhController.cs:line 37
+Extra Info: (null)
+15:21:46,688 [8] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/SaveTacGia error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoChuyenNganhController.Index(String hoSoID, String thuTucHanhChinhID, String key) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoChuyenNganhController.cs:line 37
+Extra Info: (null)
+15:22:42,306 [8] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/SaveTacGia error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoChuyenNganhController.Index(String hoSoID, String thuTucHanhChinhID, String key) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoChuyenNganhController.cs:line 37
+Extra Info: (null)
+16:18:44,245 [41] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:18:49,632 [41] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:21:01,846 [24] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:21:11,796 [23] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:21:23,187 [23] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+16:21:27,573 [23] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index:    at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 432
+Extra Info: (null)
+19:57:38,846 [12] ERROR Host.WcfService.MainModule - CauHinhHeThong_GetByKey Error:    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhHeThong_GetByKey(String Key, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 51
+Extra Info: (null)
+19:57:54,270 [12] ERROR Host.WcfService.MainModule - InsertLog Error:    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.LogRepository.InsertLog(LogAdd model, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\LogRepository.cs:line 29
+Extra Info: (null)
+19:57:55,269 [12] ERROR Host.WcfService.MainModule - CauHinhHeThong_GetByKey Error:    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhHeThong_GetByKey(String Key, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 51
+Extra Info: (null)
+19:57:55,272 [12] ERROR Host.WcfService.MainModule - InsertLog Error:    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.LogRepository.InsertLog(LogAdd model, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\LogRepository.cs:line 29
+Extra Info: (null)
+20:00:20,973 [64] ERROR Host.WcfService.MainModule - CauHinhHeThong_GetByKey Error:    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhHeThong_GetByKey(String Key, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 51
+Extra Info: (null)
+20:00:36,361 [64] ERROR Host.WcfService.MainModule - InsertLog Error:    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.LogRepository.InsertLog(LogAdd model, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\LogRepository.cs:line 29
+Extra Info: (null)

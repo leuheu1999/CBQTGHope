@@ -1,0 +1,4 @@
+﻿08:19:43,710 [16] ERROR Business.Services.LoggingService - CommonController/header_top error: Object reference not set to an instance of an object.:    at KhuyenMai.Web.Controllers.CommonController.header_top() in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\KhuyenMai.Web\Controllers\CommonController.cs:line 32
+Extra Info: (null)
+08:20:19,137 [16] ERROR Business.Services.LoggingService - CommonController/header_top error: Object reference not set to an instance of an object.:    at KhuyenMai.Web.Controllers.CommonController.header_top() in F:\Outsource\KM_SCT\SCT_Repo\KM_SCT\KhuyenMai.Web\Controllers\CommonController.cs:line 32
+Extra Info: (null)

@@ -1,0 +1,78 @@
+﻿13:32:59,660 [8] ERROR Host.WcfService.MainModule - CauHinhHeThong_GetByKey Error:    at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhHeThong_GetByKey(String Key, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 51
+Extra Info: (null)
+14:20:11,108 [10] ERROR Business.Services.LoggingService - WebsiteController/Index error:Value cannot be null.
+Parameter name: uriString:    at System.Uri..ctor(String uriString)
+   at Module.Framework.UltimateClient.BaseClient..ctor(String baseUrl) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\BaseClient.cs:line 23
+   at Module.Framework.WebsiteServiceClient..ctor() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\WebsiteServiceClient.cs:line 14
+   at CMS.Admin.Controllers.WebsiteController.Index() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\WebsiteController.cs:line 42
+Extra Info: (null)
+14:20:26,514 [10] ERROR Business.Services.LoggingService - WebsiteSettingController/Index error:Value cannot be null.
+Parameter name: uriString:    at System.Uri..ctor(String uriString)
+   at Module.Framework.UltimateClient.BaseClient..ctor(String baseUrl) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\BaseClient.cs:line 23
+   at Module.Framework.WebsiteServiceClient..ctor() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\WebsiteServiceClient.cs:line 14
+   at CMS.Admin.Controllers.WebsiteSettingController.Index() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\WebsiteSettingController.cs:line 42
+Extra Info: (null)
+14:32:09,845 [10] ERROR Business.Services.LoggingService - WebsiteController/Index error:Value cannot be null.
+Parameter name: uriString:    at System.Uri..ctor(String uriString)
+   at Module.Framework.UltimateClient.BaseClient..ctor(String baseUrl) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\BaseClient.cs:line 23
+   at Module.Framework.WebsiteServiceClient..ctor() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\WebsiteServiceClient.cs:line 14
+   at CMS.Admin.Controllers.WebsiteController.Index() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\WebsiteController.cs:line 42
+Extra Info: (null)
+14:32:28,482 [10] ERROR Business.Services.LoggingService - WebsiteController/Index error:Value cannot be null.
+Parameter name: uriString:    at System.Uri..ctor(String uriString)
+   at Module.Framework.UltimateClient.BaseClient..ctor(String baseUrl) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\BaseClient.cs:line 23
+   at Module.Framework.WebsiteServiceClient..ctor() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\WebsiteServiceClient.cs:line 14
+   at CMS.Admin.Controllers.WebsiteController.Index() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\WebsiteController.cs:line 42
+Extra Info: (null)
+14:33:05,355 [76] ERROR Business.Services.LoggingService - WebsiteSettingController/Index error:Value cannot be null.
+Parameter name: uriString:    at System.Uri..ctor(String uriString)
+   at Module.Framework.UltimateClient.BaseClient..ctor(String baseUrl) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\BaseClient.cs:line 23
+   at Module.Framework.WebsiteServiceClient..ctor() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\Core\Module.Framework\UltimateClient\WebsiteServiceClient.cs:line 14
+   at CMS.Admin.Controllers.WebsiteSettingController.Index() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\WebsiteSettingController.cs:line 42
+Extra Info: (null)
+17:35:16,670 [10] ERROR Host.WcfService.MainModule - CauHinhHeThong_GetByKey Error:    at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhHeThong_GetByKey(String Key, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 51
+Extra Info: (null)
+17:35:22,558 [10] ERROR Host.WcfService.MainModule - CauHinhHeThong_GetByKey Error:    at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhHeThong_GetByKey(String Key, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 51
+Extra Info: (null)
+17:51:47,319 [37] ERROR Host.WcfService.MainModule - CauHinhHeThong_Get Error:    at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhHeThong_Get(ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 30
+Extra Info: (null)
+17:51:47,353 [37] ERROR Host.WcfService.MainModule - CauHinhMail_Get Error:    at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhMail_Get(ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 127
+Extra Info: (null)
+17:51:47,389 [37] ERROR Host.WcfService.MainModule - CauHinhDonVi_Get Error:    at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.CauHinhHeThongRepository.CauHinhDonVi_Get(ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\CauHinhHeThongRepository.cs:line 175
+Extra Info: (null)

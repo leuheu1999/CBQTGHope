@@ -1,0 +1,8 @@
+﻿11:13:20,863 [18] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a Guid to a String.
+Extra Info: (null)
+11:14:48,238 [18] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a Guid to a String.
+Extra Info: (null)
+11:15:22,187 [18] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a Guid to a String.
+Extra Info: (null)
+11:16:08,360 [5] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a Guid to a String.
+Extra Info: (null)

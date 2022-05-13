@@ -1,0 +1,10 @@
+﻿16:33:57,377 [6] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a String to a Int32.
+Extra Info: (null)
+16:36:45,769 [6] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a String to a Int32.
+Extra Info: (null)
+16:39:29,437 [20] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a String to a Int32.
+Extra Info: (null)
+16:42:30,015 [23] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a String to a Int32.
+Extra Info: (null)
+16:45:20,229 [23] ERROR Host.WcfService.MainModule - Failed to convert parameter value from a String to a Int32.
+Extra Info: (null)

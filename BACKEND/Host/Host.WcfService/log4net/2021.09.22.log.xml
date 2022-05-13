@@ -1,0 +1,404 @@
+﻿10:02:41,938 [67] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+10:04:55,966 [68] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+10:07:40,156 [72] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+10:12:29,540 [70] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 95
+Extra Info: (null)
+10:12:39,866 [70] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 95
+Extra Info: (null)
+10:22:41,767 [76] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:22:59,431 [76] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:23:34,743 [80] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:37,066 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:50,162 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:51,306 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:51,486 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:51,660 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:51,831 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:51,998 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:52,154 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:52,312 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:52,477 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:52,634 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:52,784 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:52,950 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:53,113 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:53,271 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:53,422 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:53,585 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:53,759 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:53,925 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:43:54,096 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+10:44:22,836 [14] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String was not recognized as a valid DateTime.:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:20,979 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:23,967 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:24,498 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:24,678 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:25,009 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:34,096 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:35,224 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:35,394 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:35,554 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:35,726 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:35,884 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:36,043 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:36,207 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:36,357 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:36,527 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:36,694 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:36,874 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:37,061 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:37,407 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:37,579 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:40,940 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:41,442 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:41,590 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:41,761 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:41,943 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:42,115 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:42,295 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:42,821 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:43,397 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:43,998 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:46,123 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:46,677 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:46,857 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:49,729 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:49,946 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:50,127 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:50,298 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:50,471 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:50,636 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:23:50,839 [12] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:12,710 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:14,224 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:14,392 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:14,546 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:14,720 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:14,892 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:15,054 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:15,215 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:15,388 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:15,557 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:15,733 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:16,054 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:16,362 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:16,526 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:16,690 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:16,864 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:17,014 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:17,178 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:17,342 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:17,532 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:27:17,725 [40] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:33:34,616 [28] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:33:35,764 [42] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:33:36,001 [42] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:33:36,165 [42] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:33:36,322 [42] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:34:22,895 [26] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:String reference not set to an instance of a String.
+Parameter name: s:    at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 94
+Extra Info: (null)
+11:38:58,703 [9] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+11:41:02,179 [10] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+11:43:13,621 [53] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+11:44:57,504 [62] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+11:46:46,718 [62] ERROR Business.Services.LoggingService - HoSoController/ListHoSo error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.ListHoSo(HoSoParam model) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 141
+Extra Info: (null)
+13:17:15,923 [62] ERROR Host.WcfService.MainModule - InsertLog Error:    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Data.Core.Repositories.LogRepository.InsertLog(LogAdd model, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\LogRepository.cs:line 29
+Extra Info: (null)
+14:03:01,333 [17] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 388
+Extra Info: (null)
+14:07:10,550 [35] ERROR Business.Services.LoggingService - HoSoController/HoSoChuaTiepNhan error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.HoSoChuaTiepNhan() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 388
+Extra Info: (null)
+15:10:58,936 [29] ERROR Host.WcfService.MainModule - BC_ThongKeGiayChungNhan_List Error:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at System.Data.SqlClient.SqlDataReader.Read()
+   at Dapper.SqlMapper.<QueryImpl>d__125`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Data.Core.Repositories.BC_ThongKeRepository.BC_ThongKeGiayChungNhan_List(BC_ThongKeGiayChungNhanParam model, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\BC_ThongKeRepository.cs:line 43
+Extra Info: (null)
+15:11:10,709 [29] ERROR Host.WcfService.MainModule - BC_ThongKeGiayChungNhan_List Error:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at System.Data.SqlClient.SqlDataReader.Read()
+   at Dapper.SqlMapper.<QueryImpl>d__125`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Data.Core.Repositories.BC_ThongKeRepository.BC_ThongKeGiayChungNhan_List(BC_ThongKeGiayChungNhanParam model, ResponseModel& restStatus) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\BACKEND\DataAccess\Data.Core\Repositories\BC_ThongKeRepository.cs:line 43
+Extra Info: (null)

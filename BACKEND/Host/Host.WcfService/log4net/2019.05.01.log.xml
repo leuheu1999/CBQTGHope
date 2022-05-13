@@ -1,0 +1,4 @@
+﻿00:08:17,547 [39] ERROR Host.WcfService.MainModule - Could not find stored procedure 'DM_NhanHieu_List'.
+Extra Info: (null)
+00:08:51,658 [40] ERROR Host.WcfService.MainModule - Could not find stored procedure 'DM_NhanHieu_List'.
+Extra Info: (null)

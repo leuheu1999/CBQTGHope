@@ -1,0 +1,24 @@
+﻿09:28:50,671 [51] ERROR Business.Services.LoggingService - QLQ_QuyenLienQuanController/CapLai error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QLQ_QuyenLienQuanController.CapLai(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QLQ_QuyenLienQuanController.cs:line 1253
+Extra Info: (null)
+09:39:05,545 [75] ERROR Business.Services.LoggingService - QLQ_QuyenLienQuanController/CapLai error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QLQ_QuyenLienQuanController.CapLai(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QLQ_QuyenLienQuanController.cs:line 1253
+Extra Info: (null)
+10:36:58,990 [55] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 224
+Extra Info: (null)
+10:49:03,261 [55] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 224
+Extra Info: (null)
+10:49:08,945 [55] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 224
+Extra Info: (null)
+10:49:09,369 [55] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 224
+Extra Info: (null)
+10:50:12,562 [92] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 224
+Extra Info: (null)
+13:52:46,065 [17] ERROR Business.Services.LoggingService - QTG_QuyenTacGiaController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QTG_QuyenTacGiaController.CapMoi(String id, String hoSoId, String keyId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QTG_QuyenTacGiaController.cs:line 320
+Extra Info: (null)
+15:25:16,703 [28] ERROR Business.Services.LoggingService - QLQ_QuyenLienQuanController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QLQ_QuyenLienQuanController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QLQ_QuyenLienQuanController.cs:line 320
+Extra Info: (null)
+15:31:01,369 [28] ERROR Business.Services.LoggingService - QLQ_QuyenLienQuanController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QLQ_QuyenLienQuanController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QLQ_QuyenLienQuanController.cs:line 320
+Extra Info: (null)
+15:31:02,021 [28] ERROR Business.Services.LoggingService - QLQ_QuyenLienQuanController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QLQ_QuyenLienQuanController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QLQ_QuyenLienQuanController.cs:line 320
+Extra Info: (null)
+15:31:02,639 [28] ERROR Business.Services.LoggingService - QLQ_QuyenLienQuanController/CapMoi error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.QLQ_QuyenLienQuanController.CapMoi(String id, String hoSoId, Nullable`1 isMap) in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\QLQ_QuyenLienQuanController.cs:line 320
+Extra Info: (null)

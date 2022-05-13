@@ -1,0 +1,2 @@
+﻿11:08:02,169 [26] ERROR Business.Services.LoggingService - HoSoController/Index error:Object reference not set to an instance of an object.:    at CMS.Admin.Controllers.HoSoController.Index() in G:\Developer\Resource\FIS\CucBanQuyen\WIP\Program\CoreV1\CMS.Admin\Controllers\HoSoController.cs:line 70
+Extra Info: (null)
