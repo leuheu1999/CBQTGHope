@@ -1,0 +1,43 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.NguoiDungHeThongMapParam
+@using (Ajax.BeginForm("ListNguoiDung", "nguoiDungHeThong", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.NguoiDungHeThong.BeforeSend",
+    OnSuccess = "Common.NguoiDungHeThong.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+<div class="hidden">
+    @Html.HiddenFor(m => m.PageIndex)
+    @Html.HiddenFor(model => model.PageSize)
+</div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Họ và tên</label>
+            @Html.TextBoxFor(m => m.HoVaTen, new { @class = "form-control form-control-sm", @placeholder = "Nhập họ và tên" })
+        </div>
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Email</label>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-sm", @placeholder = "Nhập email", @type = "email" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Số điện thoại</label>
+            @Html.TextBoxFor(m => m.DienThoai, new { @class = "form-control form-control-sm", @placeholder = "Nhập số điện thoại" })
+
+        </div>
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Nhóm quyền</label>
+            @Html.DropDownListFor(m => m.NhomQuyen, CBODungChung.GetCBONhomQuyen(), "tất cả", new { @class = "form-control form-control-sm select-share" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 text-right">
+            <button type="button" class="btn btn-primary text-white btn-sm btn-block-sm" id="btnFormSearch"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
+            <button type="button" class="btn btn-secondary btn-block-sm btn-sm mt-md-0 mt-sm-2 text-white" id="btnLamMoi"><i class="fas fa-sync-alt"></i> Làm mới</button>
+        </div>
+    </div>
+}

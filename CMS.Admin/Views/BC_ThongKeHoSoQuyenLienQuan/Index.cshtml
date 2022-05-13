@@ -1,0 +1,54 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "BIỂU ĐỒ THỐNG KÊ HỒ SƠ QUYỀN LIÊN QUAN";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.BC_ThongKeHoSoQuyenLienQuan.BC_ThongKeHoSoQuyenLienQuanViewModel
+
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">BIỂU ĐỒ THỐNG KÊ HỒ SƠ QUYỀN LIÊN QUAN</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mt-md-0 mt-sm-3">
+                    @Html.Partial("_PartialSearch", Model.Search)
+                </div>
+            </div>
+            <canvas class="table-responsive mt-3" id="result-searchlist">
+
+            </canvas>
+        </div>
+    </div>
+</div>
+<!-- end Dialog update--->
+@{
+    <script type="text/javascript" src="@Url.Content("~/Library/charjs/charjs.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/BC_ThongKe/BC_ThongKeHoSoQuyenLienQuan.js")"></script>
+}
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.BC_ThongKeHoSoQuyenLienQuan)) {
+            Common.BC_ThongKeHoSoQuyenLienQuan = new BC_ThongKeHoSoQuyenLienQuan({
+                Url: {
+                    ListBC_ThongKeHoSoQuyenLienQuan: '@Url.Action("ListBC_ThongKeHoSoQuyenLienQuan", "BC_ThongKeHoSoQuyenLienQuan")',
+                },
+            });
+        }
+        else {
+            Common.BC_ThongKeHoSoQuyenLienQuan.RegisterEvent();
+        }
+    });
+</script>
+

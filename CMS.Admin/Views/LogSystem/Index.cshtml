@@ -1,0 +1,82 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Nhật ký hệ thống";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.LogViewModel
+<script src="~/Scripts/LogSystem.js"></script>
+@section Breadcrumb
+{
+    <section class="content-header mb-3">
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="active">Nhật ký hệ thống</li>
+        </ol>
+    </section>
+}
+@Html.Partial("_PartialSearch", Model.Search)
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">DANH SÁCH NHẬT KÝ HỆ THỐNG</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    @if (admin == true || user.Right.Contains(CookieRight.LogSystemController_Delete))
+                    {
+                        <button type="button" class="btn btn-danger btn-block-sm btn-sm btnDeleteAll">
+                            <i class="far fa-trash-alt mr-1"></i> Xóa đã chọn
+                        </button>
+                        <button type="button" class="btn btn-danger btn-block-sm btn-sm btnDeleteNhatKy mt-md-0 mt-sm-2" hidden>
+                            <i class="far fa-trash-alt mr-1"></i> Xóa nhật ký
+                        </button>
+                    }
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="result-searchlist">
+                @if (Model != null && Model.List != null && Model.List.Any())
+                {
+                    @Html.Partial("_PartialList", Model.List)
+                }
+                else
+                {
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@{Html.RenderPartial("Dialog/Index");}
+<!-- end Dialog update--->
+
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.LogSystem)) {
+            Common.LogSystem = new LogSystem({
+                Url: {
+                    Delete: '@Url.Action("Delete", "LogSystem")',
+                    DeleteLst: '@Url.Action("DeleteLst", "LogSystem")',
+                    ChiTietLog: '@Url.Action("ChiTietLog", "LogSystem")',
+                    Trancate: '@Url.Action("Trancate", "LogSystem")'
+
+                },
+            });
+        }
+        else {
+            Common.LogSystem.RegisterEvent();
+        }
+    });
+</script>

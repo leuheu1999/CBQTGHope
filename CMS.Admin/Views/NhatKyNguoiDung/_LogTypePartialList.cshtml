@@ -1,0 +1,52 @@
+﻿@using Core.Common.Common;
+@using PagedList;
+@model IPagedList<Business.Entities.Domain.DSLogTypeNDmap >
+<table id="tbLogTypeND" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            <th>Tên nhóm nhật ký</th>
+            <th class="text-center cursor"><input type="checkbox" class="cursor" id="selectAll"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td data-label="Tên nhóm nhật ký">@item.LogTypeName</td>
+                    <td class="text-center"><input type="checkbox" data-id="@item.LogTypeID" class="cursor" name="Used" @Html.Raw(item.Used ==true ? "checked='checked'" : "") onclick="Common.LogTypeND.f_ChonNhomNhatKy(this)"></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.LogTypeND.Paging({0})",
+                    OnChangePageSize = "Common.LogTypeND.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}

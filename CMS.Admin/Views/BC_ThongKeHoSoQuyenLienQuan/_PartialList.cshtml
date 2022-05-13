@@ -1,0 +1,76 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model List<Business.Entities.Domain.BC_BaoCaoTacPhamMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var json = "";
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            <th width="50" class="text-center">STT</th>
+
+            <th>Số giấy CN</th>
+            <th>Ngày cấp</th>
+            <th>Quyền đăng ký</th>
+            <th>Tác phẩm</th>
+            <th>Tác giả</th>
+            <th>Chủ sở hữu</th>
+            <th>Loại thủ tục</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr data-id="@item.STT" class="@(string.IsNullOrEmpty(item.STT)?"font-weight-bold":"")">
+                    <td data-label="STT">@Html.Raw(item.STT ?? "&nbsp;")</td>
+                    <td data-label="Số giấy CN">@Html.Raw(item.SoGCN ?? "&nbsp;")</td>
+                    <td data-label="Ngày cấp">@Html.Raw(item.NgayCap.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Quyền đăng ký">@Html.Raw(item.TenQuyen.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Tác phẩm">@Html.Raw(item.TacPham.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Tác giả">@Html.Raw(item.TacGia.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Chủ sở hữu">@Html.Raw(item.ChuSoHuu.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Loại thủ tục">@Html.Raw(item.TenLoaiThuTuc.ToString() ?? "&nbsp;")</td>
+                </tr>
+                i++;
+            }
+        }
+        else
+        {
+
+            <tr>
+                <td colspan="8">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model != null  && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model[0].PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.BC_BaoCaoTacPham.Paging({0})",
+                    OnChangePageSize = "Common.BC_BaoCaoTacPham.ChangePageSize(this)",
+
+                }))
+    </div>
+    <!--- End Pagination -->
+}

@@ -1,0 +1,83 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Danh sách quyền tác giả";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.QTG_QuyenTacGiaViewModel
+<script src="~/Scripts/QTG_QuyenTacGia/QTG_QuyenTacGia.js"></script>
+@section Breadcrumb
+{
+    <section class="content-header mb-3">
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fas fa-tachometer-alt"></i> Danh sách quyền tác giả</a></li>
+        </ol>
+    </section>
+}
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Thông tin tìm kiếm</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @Html.Partial("_PartialSearch", Model.Search)
+        </div>
+    </div>
+</div>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách quyền tác giả</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    @if (admin == true || user.Right.Contains(CookieRight.QTG_QuyenTacGia_InsUpd))
+                    {
+                        <button type="button" class="btn btn-success btn-block-sm btn-sm" onclick="window.location.href='@Url.Action("Insert", "QTG_QuyenTacGia")'">
+                            <i class="fas fa-plus"></i> Thêm mới
+                        </button>
+                    }
+                    <div class="btn-group hidden-xs">
+                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-download mr-1"></i> Xuất file
+                        </button>
+                        <div class="dropdown-menu">
+                            <ul class="list-unstyled clkActionCusRoom cursor">
+                                <li class="dropdown-item" href="#" data-action="1" id="btn-exportWord"><i class="far fa-file-word text-primary"></i> Word</li>
+                                <li class="dropdown-item" href="#" data-action="2" id="btn-exportExcel"><i class="far fa-file-excel text-success"></i> Excel</li>
+                                <li class="dropdown-item" href="#" data-action="3" id="btn-exportPdf"><i class="far fa-file-pdf text-danger"></i> Pdf</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="searchlist">
+                @{ Html.RenderPartial("_IndexPartialView", Model); }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.QTG_QuyenTacGia)) {
+            Common.QTG_QuyenTacGia = new QTG_QuyenTacGia({
+                Url: {
+                    Index: '@Url.Action("Index", "QTG_QuyenTacGia")',
+                    Update: '@Url.Action("Update", "QTG_QuyenTacGia")',
+                    DeleteQuyenTacGia: '@Url.Action("DeleteQuyenTacGia", "QTG_QuyenTacGia")',
+                    ExportExcel: '@Url.Action("ExportFileExcel", "Print")',
+                    ExportWordPdf: '@Url.Action("ExportFileWord", "Print")',
+                }
+            });
+        }
+        else {
+            Common.QTG_QuyenTacGia.RegisterEvent();
+        }
+    });
+</script>
+
+

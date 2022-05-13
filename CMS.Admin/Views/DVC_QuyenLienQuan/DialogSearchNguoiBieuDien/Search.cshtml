@@ -1,0 +1,60 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model Business.Entities.Domain.TT_NguoiBieuDienParam
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@using (Ajax.BeginForm("SearchNguoiBieuDien", "DVC_QuyenLienQuan", null, new AjaxOptions
+{
+    HttpMethod = "Post",
+    OnBegin = "Common.DVC_QuyenLienQuan_SearchNguoiBieuDien.BeforeSend",
+    OnSuccess = "Common.DVC_QuyenLienQuan_SearchNguoiBieuDien.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "idFormSearchNguoiBieuDien" }))
+{
+    <div class="hidden">
+        @Html.HiddenFor(m => m.PageIndex)
+        @Html.HiddenFor(m => m.PageSize)
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Họ và tên</label>
+            @Html.TextBoxFor(m => m.HoVaTen, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên người biểu diễn" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Số CMNN/Hộ chiếu</label>
+            @Html.TextBoxFor(m => m.SoCMND, new { @class = "form-control form-control-sm", @placeholder = "Nhập số CMNN/hộ chiếu" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Ngày cấp</label>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NgayCap, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Ngày cấp" })
+                <div class="input-group-prepend">
+                    <label for="" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Địa chỉ</label>
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control form-control-sm", @placeholder = "Nhập địa chỉ" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Bút danh/Nghệ danh</label>
+            @Html.TextBoxFor(m => m.ButDanh, new { @class = "form-control form-control-sm", @placeholder = "Nhập bút danh/nghệ danh" })
+        </div>
+    </div>
+
+    <div class="text-right mt-2">
+        <button class="btn btn-info btn-sm text-white" type="button" id="btnSearchNguoiBieuDien"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+        @if (admin == true || user.Right.Contains(CookieRight.TT_NguoiBieuDien_InsUpd))
+        {
+            <button type="button" class="btn btn-success btn-block-sm btn-sm" id="btnInsertNguoiBieuDien">
+                <i class="fas fa-plus"></i> Thêm mới
+            </button>
+        }
+    </div>
+}

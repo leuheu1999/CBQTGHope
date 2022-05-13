@@ -1,0 +1,56 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.DM_LoaiHinhTacPham.DM_LoaiHinhTacPhamViewModel
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Quản lý danh mục loại hình tác phẩm</h4>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-right mt-md-0 mt-sm-3">
+                    @Html.Partial("_PartialSearch", Model.Search)
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="dm-loaihinhtacpham-result-searchlist">
+
+                @if (Model != null && Model.Items != null && Model.Items.Any())
+                {
+                    @Html.Partial("_PartialList", Model.Items)
+                }
+                else
+                {
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@{Html.RenderPartial("DialogUpdate/Index");}
+<!-- end Dialog update--->
+@{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/DM_LoaiHinhTacPham.js")"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DM_LoaiHinhTacPham)) {
+            Common.DM_LoaiHinhTacPham = new DM_LoaiHinhTacPham({
+                Url: {
+                    Delete: '@Url.Action("Xoa", "DM_LoaiHinhTacPham")',
+                    Create: '@Url.Action("ThemMoi", "DM_LoaiHinhTacPham")',
+                    Update: '@Url.Action("CapNhat", "DM_LoaiHinhTacPham")'
+                },
+            });
+        }
+        else {
+            Common.DM_LoaiHinhTacPham.RegisterEvent();
+        }
+    });
+</script>

@@ -1,0 +1,6 @@
+﻿10:13:34,729 [36] ERROR Host.WcfService.MainModule - Invalid cast from 'System.Int32' to 'System.Collections.Generic.List`1[[Business.Entities.ViewModels.ThongKeViewModel, Business.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+Extra Info: (null)
+10:13:46,776 [36] ERROR Host.WcfService.MainModule - Invalid cast from 'System.Int32' to 'System.Collections.Generic.List`1[[Business.Entities.ViewModels.ThongKeViewModel, Business.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+Extra Info: (null)
+10:14:09,608 [36] ERROR Host.WcfService.MainModule - Invalid cast from 'System.Int32' to 'System.Collections.Generic.List`1[[Business.Entities.ViewModels.ThongKeViewModel, Business.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+Extra Info: (null)

@@ -1,0 +1,79 @@
+﻿@using Module.Framework.Common;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var modelParam = new Business.Entities.Domain.TT_CongDanParam();
+    var modelList = new List<Business.Entities.Domain.TT_CongDanMap>();
+    var modelAdd = new Business.Entities.Domain.TT_CongDanAdd();
+}
+<script src="~/Scripts/DVC_QuyenTacGia/DVC_QuyenTacGia_SearchCongDan.js"></script>
+<div class="modal fade custom-margin-form-group" id="dialogSearchCongDan" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header h-25">
+                <h5 class="modal-title">Thông tin công dân </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group sh-search-congdan">
+                    @Html.Partial("DialogSearchCongDan/Search", modelParam)
+                </div>
+                <div class="form-group sh-info-congdan hidden">
+                    <form role="form" id="form-update-congdan" class="form-horizontal label-right">
+                        @Html.Partial("DialogSearchCongDan/Update", modelAdd)
+                    </form>
+                </div>
+                <div class="table-responsive mt-3" id="result-searchcongdan">
+                    @Html.Partial("DialogSearchCongDan/List", modelList)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-sm" id="btnAddCongDan"><i class="far fa-save mr-1"></i> Chọn</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i> Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DVC_QuyenTacGia_SearchCongDan)) {
+            Common.DVC_QuyenTacGia_SearchCongDan = new DVC_QuyenTacGia_SearchCongDan({
+                Url: {
+                    SearchCongDan: '@Url.Action("SearchCongDan", "DVC_QuyenTacGia")',
+                    SaveCongDan: '@Url.Action("SaveCongDan", "DVC_QuyenTacGia")',
+                    UpdateCongDan: '@Url.Action("UpdateCongDan", "DVC_QuyenTacGia")',
+                },
+                ListChuSoHuu: [],
+                ListTacGia: [],
+            });
+            $("#tableChuSoHuu tbody tr").each(function () {
+                if ($(this).closest("tr").data("id") > 0) {
+                    Common.DVC_QuyenTacGia_SearchCongDan.ListChuSoHuu.push({
+                        ChuSoHuuID: $(this).closest("tr").data("id"),
+                        HoVaTen: $(this).closest("tr").data("name"),
+                        QuocTich: $(this).closest("tr").data("country"),
+                        SoCMND: $(this).closest("tr").data("cccd"),
+                        SoDKKD: $(this).closest("tr").data("dkkd"),
+                        DiaChi: $(this).closest("tr").data("address")
+                    });
+                }
+            });
+            $("#tableTacGia tbody tr").each(function () {
+                if ($(this).closest("tr").data("id") > 0) {
+                    Common.DVC_QuyenTacGia_SearchCongDan.ListTacGia.push({
+                        TacGiaID: $(this).closest("tr").data("id"),
+                        HoVaTen: $(this).closest("tr").data("name"),
+                        QuocTich: $(this).closest("tr").data("country"),
+                        SoCMND: $(this).closest("tr").data("cccd"),
+                        DiaChi: $(this).closest("tr").data("address")
+                    });
+                }
+            });
+        }
+        else {
+            Common.DVC_QuyenTacGia_SearchCongDan.RegisterEvent();
+        }
+    });
+</script>

@@ -1,0 +1,71 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "BÁO CÁO TÁC PHẨM";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.BC_BaoCaoTacPham.BC_BaoCaoTacPhamViewModel
+
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">BÁO CÁO TÁC PHẨM</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mt-md-0 mt-sm-3">
+                    @Html.Partial("_PartialSearch", Model.Search)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mt-md-0 mt-sm-3 text-right" style="font-size:28px">
+                    <a href="#" data-action="1" id="btn-word"><i class="far fa-file-word text-primary"></i></a>
+                    <a href="#" data-action="2" id="btn-excel"><i class="far fa-file-excel text-success"></i></a>
+                    <a href="#" data-action="3" id="btn-pdf"><i class="far fa-file-pdf text-danger"></i></a>
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="result-searchlist">
+                @if (Model != null && Model.Items != null)
+                {
+                    @Html.Partial("_PartialList", Model.Items)
+                }
+                else
+                {
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Dialog update--->
+@{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/BC_ThongKe/BC_BaoCaoTacPham.js")"></script>
+}
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.BC_BaoCaoTacPham)) {
+            Common.BC_BaoCaoTacPham = new BC_BaoCaoTacPham({
+                Url: {
+                    CBOLoaiHinhById: '@Url.Action("GetCBOLoaiHinhTacPham", "BC_BaoCaoTacPham")',
+                    ExportExcel: '@Url.Action("ExportFileExcel", "Print")',
+                    ExportWordPdf: '@Url.Action("ExportFileWord", "Print")'
+                },
+            });
+        }
+        else {
+            Common.BC_BaoCaoTacPham.RegisterEvent();
+        }
+    });
+</script>
+

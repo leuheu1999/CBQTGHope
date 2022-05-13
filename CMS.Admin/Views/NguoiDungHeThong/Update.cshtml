@@ -1,0 +1,237 @@
+﻿@model Business.Entities.Domain.NguoiDungHeThongMapAdd
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+<link href="~/Content/admin.css" rel="stylesheet" />
+@{
+    string filename = !string.IsNullOrEmpty(Model.Avatar) ? System.IO.Path.GetFileName(Model.Avatar) : "";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<script>
+    var chk = '@(Model.ID > 0 ? "True" : "False")';
+    var UrlInsert = '@Url.Action("Index", "DM_ThongBao")';
+</script>
+<style>
+    .dn {
+        display: none;
+    }
+</style>
+<script src="~/Scripts/Them_NguoiDungHeThong.js"></script>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">@ViewBag.Title</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            @*<ul class="list-inline mb-0">
+                    <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                    <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                    <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+                </ul>*@
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @using (Html.BeginForm("ThemMoiNguoiDung", "NguoiDungHeThong", FormMethod.Post, new { id = "form-update-NguoiDung" }))
+            {
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Tên tài khoản <span class="text-danger">(*)</span></label>
+                        @Html.TextBoxFor(model => model.TenTaiKhoan, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên tài khoản" })
+                        <div class="field-validation-error thongbaotentaikhoan invalid-feedback"></div>
+                    </div>
+                    @if (Model == null || Model.TaiKhoanGuid == Guid.Empty)
+                    {
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Mật khẩu <span class="text-danger">(*)</span></label>
+                            <input type="password" autocomplete="off" class="form-control form-control-sm" name="MatKhau" id="MatKhau" oninput="Common.ThemNguoiDungHeThong.OnInputCheckPassword(this);" value="" placeholder="Nhập mật khẩu">
+                            <div class="field-validation-error thongbaomatkhau invalid-feedback"></div>
+                            <div class="field-validation-error thongbaomatkhaukytu invalid-feedback">Mật khẩu phải có ít nhất 6 ký tự!</div>
+                            <div class="field-validation-error thongbaomatkhauhoa invalid-feedback">Mật khẩu phải có ít nhất 1 ký tự viết hoa!</div>
+                            <div class="field-validation-error thongbaomatkhauthuong invalid-feedback">Mật khẩu phải có ít nhất 1 ký tự viết thường!</div>
+                            <div class="field-validation-error thongbaomatkhauso invalid-feedback">Mật khẩu phải có ít nhất 1 ký tự số!</div>
+                        </div>
+                    }
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Họ và tên lót <span class="text-danger">(*)</span> </label>
+                        @Html.TextBoxFor(model => model.HoVaTen, new { @class = "form-control form-control-sm", @placeholder = "Nhập họ và tên" })
+                        <div class="field-validation-error thongbaohovaten invalid-feedback"></div>
+                        <div class="field-validation-error ThongBaoTenHoVaTen" invalid-feedback"></div>
+                    </div>
+                    @if (Model == null || Model.TaiKhoanGuid == Guid.Empty)
+                    {
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Nhập lại mật khẩu <span class="text-danger">(*)</span></label>
+                            <input type="password" autocomplete="off" class="form-control form-control-sm" name="NhapLaimatKhau" id="NhapLaimatKhau" value="" oninput="Common.ThemNguoiDungHeThong.OnInputCheckRePassword(this);" placeholder="Nhập lại mật khẩu">
+                            <div class="field-validation-error thongbaomatkhauxacnhan invalid-feedback">Mật khẩu xác nhận chưa khớp!</div>
+                            <div class="field-validation-error thongbaonhaplai invalid-feedback">Mật khẩu xác nhận chưa khớp!</div>
+                        </div>
+                    }
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Tên <span class="text-danger">(*)</span></label>
+                        @Html.TextBoxFor(model => model.TenHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên hiển thị" })
+                        <div class="field-validation-error thongbaotenhienthi invalid-feedback"></div>
+                        <div class="field-validation-error ThongBaoTenTenHienThi" invalid-feedback"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Email <span class="text-danger">(*)</span></label>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-sm", @placeholder = "Nhập email", @autocomplete = "off" })
+                        <div class="field-validation-error thongbaoemail invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Điện thoại <span class="text-danger">(*)</span></label>
+                        @Html.TextBoxFor(model => model.DienThoai, new { @class = "form-control form-control-sm", @placeholder = "Nhập số điện thoại", @onkeypress = "Common.ValidateDecimal(event, this);" })
+                        <div class="field-validation-error thongbaodienthoai invalid-feedback"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Ngày sinh</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.NgaySinh, new { @class = "form-control form-control-sm w-50 datepicker-share-ngaysinh", @placeholder = "Nhập ngày sinh" })
+                            <div class="input-group-prepend">
+                                <label for="NgaySinh" class="input-group-text cursor"><i class="far fa-calendar-alt"></i></label>
+                            </div>
+                        </div>
+                        @*<div class="field-validation-error thongbaongaysinh invalid-feedback"></div>*@
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">CMND </label>
+                        @Html.TextBoxFor(model => model.CMND, new { @class = "form-control form-control-sm", @placeholder = "Nhập số CMND", @onkeypress = "Common.ValidateDecimal(event, this);" })
+                        <div class="field-validation-error thongbaocmnd invalid-feedback"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Ngày cấp CMND</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.NgayCapCMND, new { @class = "form-control form-control-sm w-50 datepicker-share-ttcn", @placeholder = "Nhập ngày cấp CMND" })
+                            <div class="input-group-prepend">
+                                <label for="NgayCapCMND" class="input-group-text cursor "><i class="far fa-calendar-alt"></i></label>
+                            </div>
+                        </div>
+                        <div class="field-validation-error thongbaongaycapnmnd invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Nơi cấp CMND</label>
+                        @Html.TextBoxFor(model => model.NoiCapCMND, new { @class = "form-control form-control-sm", @placeholder = "Nhập nơi cấp CMND" })
+                        <div class="field-validation-error thongbaonoicapcmnd invalid-feedback"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Giới tính</label>
+                        <select class="form-control form-control-sm" id="GioiTinh" name="GioiTinh">
+                            <option value="1" selected="selected">Nam</option>
+                            <option value="2">Nữ</option>
+                            <option value="3">Không xác định</option>
+                        </select>
+                        <div class="field-validation-error thongbaoGioiTinh invalid-feedback "></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="font-weight-bold">Địa chỉ</label>
+                    @Html.TextAreaFor(model => model.DiaChi, new { @class = "form-control form-control-sm", @placeholder = "Nhập địa chỉ" })
+                    <div class="field-validation-error thongbaodiachi invalid-feedback"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Hình đại diện</label>
+                        <div class="input-gr input-group">
+                            @Html.TextBoxFor(model => model.Avatar, new { @class = "form-control form-control-sm dn", @maxlength = "524288" })
+                            <input type="text" autocomplete="off" class="form-control form-control-sm" name="AvatarShow" id="AvatarShow" value="@filename">
+                            <button type="button" class="input-group-addon cursor" onclick="Common.ThemNguoiDungHeThong.BrowseImage();" for="">
+                                <i class="far fa-image mr-1"></i> Chọn hình
+                            </button>
+                        </div>
+                        <input name="BrowseImage" accept="image/gif, image/jpeg, image/png" type="file" maxlength="524288" style="visibility: hidden; position: fixed; left: 0px; width: 1px;" />
+                        <div data="image-box" style="margin-top:10px;">
+                            @{string urlimg = !string.IsNullOrEmpty(Model.Avatar) ? Model.Avatar.Replace("admin\\", "") : "..\\Content\\images\\default-image_100.png";}
+                            <img src="@urlimg" style="width: 20%; height: 20%;" />
+                        </div>
+
+                    </div>
+
+                    @*<div class="form-group col-md-6">
+                        <label class="font-weight-bold">&nbsp;</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Khoa" name="Khoa" value="@(Model.ID != 0 ? Model.Khoa == false ? "True" : "False" : "True")" @(Model.ID != 0 ? Model.Khoa == false ? "checked='checked'" : "" : "checked='checked'")>
+                            <label class="form-check-label font-weight-bold" for="Khoa">Hoạt động</label>
+                        </div>
+                    </div>*@
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12 text-right">
+                        @{ string dis = Model.TaiKhoanGuid == Guid.Empty ? "disabled='disabled'" : "";}
+                        @*@if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_DoiMatKhau))
+                        {
+                            <button data-id="@Model.TaiKhoanGuid" type="button" class="btn btn-warning text-white btn-sm btn-block-sm changepass" @dis data-toggle="modal"><i class="fa fa-lock mr-1"></i>Thay đổi mật khẩu</button>
+                        }*@
+                        @if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_PhanQuyen))
+                        {
+                            <button data-id="@Model.TaiKhoanGuid" type="button" class="btn btn-info text-white btn-sm btn-block-sm mt-md-0 mt-sm-2 phanquyen" @dis data-toggle="modal"><i class="fa fa-briefcase mr-1"></i>Thay đổi phân quyền</button>
+                        }
+                        @if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_ThemMoiNguoiDung))
+                        {
+                            <button type="button" class="btn btn-success btn-sm btn-block-sm mt-md-0 mt-sm-2" id="btnLuu"><i class="far fa-save mr-1"></i> Lưu</button>
+                        }
+                        <button type="button" class="btn btn-secondary btn-sm btn-block-sm mt-md-0 mt-sm-2 btnClose"><i class="far fa-times-circle mr-1"></i> Đóng</button>
+                    </div>
+                </div>
+                <div class="hidden">
+                    @Html.HiddenFor(model => model.TaiKhoanGuid, new { @class = "clssupdate" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="show-content-dialogAdd">
+
+</div>
+<div class="show-content-phanquyen">
+
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.ThemNguoiDungHeThong)) {
+            Common.ThemNguoiDungHeThong = new ThemNguoiDungHeThong({
+                Url: {
+                    Delete: '@Url.Action("Delete", "NguoiDungHeThong")',
+                    Index: '@Url.Action("Index", "NguoiDungHeThong")',
+                    ThemMoi: '@Url.Action("ThemMoiNguoiDung", "NguoiDungHeThong")',
+                    CapNhatNguoiDungHeThong: '@Url.Action("CapNhatNguoiDung", "NguoiDungHeThong")',
+                    Update: '@Url.Action("ThemMoiNguoiDung", "NguoiDungHeThong")',
+                    DoiMatKhau: '@Url.Action("DoiMatKhau", "NguoiDungHeThong")',
+                    PhanQuyen: '@Url.Action("PhanQuyen", "NguoiDungHeThong")',
+                    UploadFile:'@Url.Action("UploadFile", "NguoiDungHeThong")'
+                },
+                Message: {
+                    Nhap: 'Nhập thông tin',
+                    MaHtml: 'không được chứa mã HTML!!!',
+                    MaJavaCript: 'không có đoạn Javascript không hợp lệ !!!',
+                    Length: 'Nhập',
+                    GioiTinh: 'Chọn giới tính!!!',
+                    CheckTen: 'Tên không được nhập số hoặc ký tự đặc biệt!!!',
+                    CheckTenDB: ' không được nhập số hoặc ký tự đặc biệt!!!',
+                    CheckEmail:'Email không đúng định dạng!!!'
+                },
+            });
+        }
+        else {
+            Common.ThemNguoiDungHeThong.RegisterEvent();
+        };
+    });
+
+</script>
+
+
+
+
+
+
+

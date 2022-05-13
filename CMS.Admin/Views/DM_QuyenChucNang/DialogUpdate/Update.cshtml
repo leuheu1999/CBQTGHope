@@ -1,0 +1,54 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.DM_QuyenChucNangAdd
+<div class="hidden">
+    @Html.HiddenFor(model => model.Id)
+</div>
+<div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mã <span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.TextBoxFor(model => model.Ma, new { @class = "form-control form-control-sm", @placeholder = "Nhập Mã" })
+        <div class="field-validation-error thongbaoma invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Quyền <span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.DropDownListFor(model => model.QuyenID, CBODungChung.GetCBOQuyen(), "--Chọn quyền--", new { @class = "form-control form-control-sm" })
+        <div class="field-validation-error thongbaoQuyen invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Tên hiển thị <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.TenHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên" })
+        <div class="field-validation-error thongbaoTenHT invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mô tả</label>
+        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control form-control-sm", @placeholder = "Nhập mô tả" })
+        <div class="field-validation-error thongbaoMoTa invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Thứ tự hiển thị</label>
+        @Html.TextBoxFor(model => model.ThuTuHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập thứ tự hiển thị", @onkeypress = "Common.ValidateDecimal(event, this);" })
+    </div>
+    <div class="form-group hidden-custom">
+        <label class="font-weight-bold">Controller <span class="text-danger">(*)</span></label>
+        @Html.DropDownListFor(model => model.Controller, CBODungChung.GetAllController(), "--Chọn controller--", new { @class = "form-control form-control-sm" })
+        <div class="field-validation-error thongbaoController invalid-feedback"></div>
+    </div>
+    <div class="form-group hidden-custom divActionFormResult">
+        <label class="font-weight-bold">Action <span class="text-danger">(*)</span></label>
+        @Html.DropDownListFor(model => model.Action, CBODungChung.GetAllAction(Model.Controller), "--Chọn action--", new { @class = "form-control form-control-sm" })
+        <div class="field-validation-error thongbaoAction invalid-feedback"></div>
+    </div>
+    <div class="form-group hidden-custom">
+        <label class="font-weight-bold">Tên <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.Ten, new { @class = "form-control form-control-sm", @placeholder = "Ví dụ Controller_Action" })
+        <div class="field-validation-error thongbaoTen invalid-feedback"></div>
+    </div>
+    <div class="form-group form-check mt-3">
+        <input type="checkbox" class="form-check-input" id="CongKhai" name="CongKhai" value="@(Model.CongKhai == true ? "True" : "False")" @(Model.CongKhai == true ? "checked='checked'" : "")>
+        <label class="form-check-label font-weight-bold" for="CongKhai">Công khai</label>
+    </div>
+    <div class="form-group form-check mt-3 hidden-custom">
+        <input type="checkbox" class="form-check-input" id="IsDefault" name="IsDefault" value="@(Model.IsDefault == true ? "True" : "False")" @(Model.IsDefault == true ? "checked='checked'" : "")>
+        <label class="form-check-label font-weight-bold" for="IsDefault">User đăng nhập mặc định sẽ vào trang nào</label>
+    </div>
+</div>

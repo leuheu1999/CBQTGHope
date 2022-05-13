@@ -1,0 +1,107 @@
+﻿@using Core.Common.Common;
+@using PagedList;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model IPagedList<Business.Entities.Domain.NguoiDungHeThongMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            <th>Họ và tên</th>
+            <th width="200">Nhóm quyền</th>
+            <th width="150">Ngày sinh</th>
+            <th width="200">Email</th>
+            <th width="150">Số điện thoại</th>
+            @*<th class="text-center" width="100">Hoạt động</th>*@
+            <th class="text-center" width="300">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td data-label="Họ và tên">
+                        <span style="color:red">@Html.Raw(item.TenHienThi ?? " ") </span> <br />
+                        <span style="font-style: italic;">Username: @Html.Raw(item.TenTaiKhoan ?? "&nbsp;") </span>
+                    </td>
+                    <td data-label="Nhóm quyền">@Html.Raw(item.DSNhomQuyen ?? "&nbsp;")</td>
+                    <td data-label="Ngày sinh">@Html.Raw(item.NgaySinh ?? "&nbsp;")</td>
+                    <td data-label="Email">@Html.Raw(item.Email ?? "&nbsp;")</td>
+                    <td data-label="Số điện thoại">@Html.Raw(item.DienThoai ?? "&nbsp;") </td>
+                    @*<td data-label="Trạng thái" class="text-center text-success font-weight-bold">
+                        @if (item.Khoa == false)
+                        {
+                            <i class="far fa-check-square fa-lg"></i>
+                        }
+                        else
+                        {
+                            <span> &nbsp;</span>
+                        }
+                    </td>*@
+
+                    <td class="text-center" data-label="Thao tác" data-id="@item.ID">
+                        @*ho ng k có quyền lưu vẫn xem dc chi tiết nhung k đc luu*@
+                        <button data-id="@item.TaiKhoanGuid" data-url="@Url.Action("Update", "NguoiDungHeThong")" title="Sửa thông tin" class="btn btn-primary btn-sm update"><i class="far fa-edit"></i></button>
+                        @*@if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_Khoa) || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_MoKhoa))
+                        {
+                            if (item.Khoa == false)
+                            {
+                                <button data-id="@item.TaiKhoanGuid" title="Khóa tài khoản" data-toggle="modal" class="btn btn-danger btn-sm btnkhoataikhoan" data-khoa="true"><i class="fas fa-key"></i></button>
+                            }
+                            else
+                            {
+                                <button data-id="@item.TaiKhoanGuid" title="Mở Khóa tài khoản" data-toggle="modal" class="btn btn-warning btn-sm btnkhoataikhoan text-white" data-khoa="false"><i class="fas fa-key"></i></button>
+                            }
+                        }
+                        @if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_DoiMatKhau))
+                        {
+                            <button data-id="@item.TaiKhoanGuid" title="Thay đổi mật khẩu" data-toggle="modal" class="btn btn-success btn-sm changepass" href=""><i class="fa fa-lock"></i></button>
+                        }*@
+                        @if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_PhanQuyen))
+                        {
+                            <button data-id="@item.TaiKhoanGuid" title="Phân quyền" class="btn btn-warning text-white btn-sm phanquyen" data-toggle="modal" href=""><i class="fa fa-briefcase"></i></button>
+                        }
+                        @if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_Delete))
+                        {
+                            <button data-id="@item.TaiKhoanGuid" title="Xóa" class="btn btn-danger btn-sm btnDelRow" href=""><i class="far fa-trash-alt"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.NguoiDungHeThong.Paging({0})",
+                    OnChangePageSize = "Common.NguoiDungHeThong.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}

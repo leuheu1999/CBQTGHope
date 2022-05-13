@@ -1,0 +1,62 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+
+}
+@model List<Business.Entities.Domain.TT_HinhAnhMap>
+
+<div class="list-hinhanh">
+    @if (Model != null && Model.Count() > 0)
+    {
+        <div class="form-group">
+            <div class="row mr-0 ml-0">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <img src="@item.DuongDan"
+                                 class="card-img-top"
+                                 alt="@item.TenGoc"
+                                 title="@item.Ten"/>
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Ten - @item.Tag</h5>
+                                <p class="card-text">
+                                    @item.GhiChu
+                                </p>
+                                @*<button type="button" data-id="@item.HinhAnhID" data-src="@item.DuongDan" class="btn btn-primary btn-chon-hinhanh">Chọn</button>*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+
+    }
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model[0].PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.DVC_QuyenTacGia_SearchHinhAnh.Paging({0})",
+                    OnChangePageSize = "Common.DVC_QuyenTacGia_SearchHinhAnh.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}

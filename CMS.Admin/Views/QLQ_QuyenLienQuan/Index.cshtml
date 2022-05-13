@@ -1,0 +1,83 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Danh sách quyền liên quan";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.QLQ_QuyenLienQuanViewModel
+<script src="~/Scripts/QLQ_QuyenLienQuan/QLQ_QuyenLienQuan.js"></script>
+@section Breadcrumb
+{
+    <section class="content-header mb-3">
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fas fa-tachometer-alt"></i> Danh sách quyền liên quan</a></li>
+        </ol>
+    </section>
+}
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Thông tin tìm kiếm</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @Html.Partial("_PartialSearch", Model.Search)
+        </div>
+    </div>
+</div>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách quyền liên quan</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    @if (admin == true || user.Right.Contains(CookieRight.QLQ_QuyenLienQuan_InsUpd))
+                    {
+                        <button type="button" class="btn btn-success btn-block-sm btn-sm" onclick="window.location.href='@Url.Action("Insert", "QLQ_QuyenLienQuan")'">
+                            <i class="fas fa-plus"></i> Thêm mới
+                        </button>
+                    }
+                    <div class="btn-group hidden-xs">
+                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-download mr-1"></i> Xuất file
+                        </button>
+                        <div class="dropdown-menu">
+                            <ul class="list-unstyled clkActionCusRoom cursor">
+                                <li class="dropdown-item" href="#" data-action="1" id="btn-exportWord"><i class="far fa-file-word text-primary"></i> Word</li>
+                                <li class="dropdown-item" href="#" data-action="2" id="btn-exportExcel"><i class="far fa-file-excel text-success"></i> Excel</li>
+                                <li class="dropdown-item" href="#" data-action="3" id="btn-exportPdf"><i class="far fa-file-pdf text-danger"></i> Pdf</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="searchlist">
+                @{ Html.RenderPartial("_IndexPartialView", Model); }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.QLQ_QuyenLienQuan)) {
+            Common.QLQ_QuyenLienQuan = new QLQ_QuyenLienQuan({
+                Url: {
+                    Index: '@Url.Action("Index", "QLQ_QuyenLienQuan")',
+                    Update: '@Url.Action("Update", "QLQ_QuyenLienQuan")',
+                    DeleteQuyenLienQuan: '@Url.Action("DeleteQuyenLienQuan", "QLQ_QuyenLienQuan")',
+                    ExportExcel: '@Url.Action("ExportFileExcel", "Print")',
+                    ExportWordPdf: '@Url.Action("ExportFileWord", "Print")',
+                }
+            });
+        }
+        else {
+            Common.QLQ_QuyenLienQuan.RegisterEvent();
+        }
+    });
+</script>
+
+

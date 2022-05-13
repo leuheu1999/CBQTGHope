@@ -1,0 +1,76 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Danh mục quận huyện";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+
+@model CMS.Admin.Models.DM_QuanHuyen.DM_QuanHuyenViewModel
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách quận huyện</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    @if (admin == true || user.Right.Contains(CookieRight.Dm_QuanHuyenController_ThemMoi))
+                    {
+                        <button type="button" class="btn btn-success btn-block-sm btn-sm mt-md-0 mt-sm-2 text-white" id="btnAddForm">
+                            <i class="fas fa-plus mr-1"></i> Thêm mới
+                        </button>
+                    }
+                    @*<button type="button" class="btn btn-primary btnExportQuanHuyen btn-block-sm btn-sm mt-md-0 mt-sm-2">
+                            <i class="fas fa-download mr-1"></i> Xuất excel
+                        </button>*@
+                </div>
+                <div class="col-md-6 col-sm-12 text-right mt-md-0 mt-sm-3">
+                    @Html.Partial("_PartialSearch", Model.Search)
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="result-searchlist">
+                @if (Model != null && Model.Items != null && Model.Items.Any())
+                {
+                    @Html.Partial("_PartialList", Model.Items)
+                }
+                else
+                {
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@{Html.RenderPartial("DialogUpdate/Index");}
+<!-- end Dialog update--->
+@{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/DM_QuanHuyen.js")"></script>
+}
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DMQuanHuyen)) {
+            Common.DMQuanHuyen = new DMQuanHuyen({
+                  Url: {
+                    Delete: '@Url.Action("Xoa", "DM_QuanHuyen")',
+                    Create: '@Url.Action("ThemMoi", "DM_QuanHuyen")',
+                    Update: '@Url.Action("CapNhat", "DM_QuanHuyen")',
+                    ExportExcel:'@Url.Action("ExportFileExcel", "Print")',
+                },
+            });
+        }
+        else {
+            Common.DMQuanHuyen.RegisterEvent();
+        }
+    });
+</script>

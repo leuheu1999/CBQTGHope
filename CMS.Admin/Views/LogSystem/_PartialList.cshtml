@@ -1,0 +1,84 @@
+﻿@using Core.Common.Common;
+@using PagedList;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model IPagedList<Business.Entities.Domain.LogMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            @if (admin == true || user.Right.Contains(CookieRight.LogSystemController_Delete))
+            {
+                <th class="text-center cursor"><input type="checkbox" class="cursor" id="selectAll"></th>
+            }
+            <th width="120">Nhóm</th>
+            <th>Nội dung ngắn gọn</th>
+            <th width="150">Ngày tạo</th>
+            <th class="text-center" width="100">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    @if (admin == true || user.Right.Contains(CookieRight.LogSystemController_Delete))
+                    {
+                        <td class="text-center"><input type="checkbox" data-id="@item.Id" class="cursor" name="chkCustbl[]" onchange="Common.LogSystem.f_CheckedItemNhatKy(this)"></td>
+                    }
+                    <td data-label="Nhóm">@Html.Raw(item.LogLevelName ?? "&nbsp;")</td>
+                    <td data-label="Nội dung ngắn">@Html.Raw(item.ShortMessage ?? "&nbsp;")</td>
+                    <td data-label="Ngày tạo">@Html.Raw(item.CreatedDate ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Thao tác" data-id="@item.Id">
+                        <button title="Xem thông tin" data-id="@item.Id" class="btn btn-warning btn-sm detail text-white" type="button"><i class="fas fa-info-circle"></i></button>
+                        @if (admin == true || user.Right.Contains(CookieRight.LogSystemController_Delete))
+                        {
+                            <button title="xóa" data-id="@item.Id" class="btn btn-danger btn-sm btnDelRow" type="button" href=""><i class="far fa-trash-alt"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.LogSystem.Paging({0})",
+                    OnChangePageSize = "Common.LogSystem.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (lstid.length > 0) {
+            Common.LogSystem.f_CheckedItemInArray();
+        }
+    });
+</script>

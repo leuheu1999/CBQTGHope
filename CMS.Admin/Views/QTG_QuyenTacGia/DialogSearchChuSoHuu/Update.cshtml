@@ -1,0 +1,135 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@using CMS.Admin.Common;
+@model Business.Entities.Domain.TT_ChuSoHuuAdd
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<div class="hidden">
+    @Html.HiddenFor(m => m.ChuSoHuuID)
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Họ và tên <span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.TextBoxFor(model => model.HoVaTen, new
+        {
+            @class = "form-control form-control-sm",
+            @placeholder = "Nhập họ và tên tác giả",
+            @data_rule_required = "true",
+            @data_msg_required = "Vui lòng nhập họ và tên tác giả!!!",
+            @data_rule_javascript = true,
+            @data_msg_javascript = "Họ và tên tác giả không có đoạn Javascript không hợp lệ !!!",
+            @data_rule_maHtml = true,
+            @data_msg_maHtml = "Họ và tên tác giả không được chứa mã HTML!!!",
+            @data_rule_maxlength = true,
+            @data_value_maxlength = 100,
+            @data_msg_maxlength = "Họ và tên tác giả không quá 100 ký tự!!!",
+        })
+    </div>
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Quốc tịch <span class="text-danger">(*)</span></label>
+        @Html.DropDownListFor(model => model.QuocTichID, CBODungChung.GetAllMasterCBOTableDM("DM_QUOCGIA"), "---Chọn---", new { @class = "form-control form-control-sm select2-single" })
+    </div>
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">CCCD/Hộ chiếu <span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.TextBoxFor(model => model.SoCMND, new
+        {
+            @class = "form-control form-control-sm",
+            @placeholder = "Nhập số CCCD/hộ chiếu",
+            @data_rule_required = "true",
+            @data_msg_required = "Vui lòng nhập số CCCD/hộ chiếu!!!",
+            @data_rule_javascript = true,
+            @data_msg_javascript = "Số CCCD/hộ chiếu không có đoạn Javascript không hợp lệ !!!",
+            @data_rule_maHtml = true,
+            @data_msg_maHtml = "Số CCCD/hộ chiếu không được chứa mã HTML!!!",
+            @data_rule_maxlength = true,
+            @data_value_maxlength = 30,
+            @data_msg_maxlength = "Số CCCD/hộ chiếu không quá 30 ký tự!!!",
+        })
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Ngày cấp<span class="text-danger font-weight-bold">(*)</span></label>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.NgayCapCMND, new
+            {
+                @class = "form-control form-control-sm w-50 datepicker-share",
+                @placeholder = "Nhập ngày cấp",
+                @data_rule_required = "true",
+                @data_msg_required = "Vui lòng nhập ngày cấp!!!"
+            })
+            <div class="input-group-prepend">
+                <label for="" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Nơi cấp<span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.DropDownListFor(model => model.NoiCapID, CBODungChung.GetAllMasterCBOTableDM("DM_TINHTHANH"), "---Chọn---", new { @class = "form-control form-control-sm select2-single" })
+    </div>
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Số ĐKKD <span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.TextBoxFor(model => model.SoDKKD, new
+        {
+            @class = "form-control form-control-sm",
+            @placeholder = "Nhập số ĐKKD",
+            @data_rule_required = "true",
+            @data_msg_required = "Vui lòng nhập số ĐKKD!!!",
+            @data_rule_javascript = true,
+            @data_msg_javascript = "Số ĐKKD không có đoạn Javascript không hợp lệ !!!",
+            @data_rule_maHtml = true,
+            @data_msg_maHtml = "Số ĐKKD không được chứa mã HTML!!!",
+            @data_rule_maxlength = true,
+            @data_value_maxlength = 50,
+            @data_msg_maxlength = "Địa chỉ không quá 0 ký tự!!!",
+        })
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Ngày cấp ĐKKD<span class="text-danger font-weight-bold">(*)</span></label>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.NgayCapDKKD, new
+            {
+                @class = "form-control form-control-sm w-50 datepicker-share",
+                @placeholder = "Nhập ngày cấp số ĐKKD",
+                @data_rule_required = "true",
+                @data_msg_required = "Vui lòng nhập ngày cấp số ĐKKD!!!"
+            })
+            <div class="input-group-prepend">
+                <label for="" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Nơi cấp<span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.DropDownListFor(model => model.NoiCapDKKDID, CBODungChung.GetAllMasterCBOTableDM("DM_TINHTHANH"), "---Chọn---", new { @class = "form-control form-control-sm select2-single" })
+    </div>
+    <div class="form-group col-md-4">
+        <label class="font-weight-bold">Địa chỉ </label>
+        @Html.TextBoxFor(model => model.DiaChi, new
+        {
+            @class = "form-control form-control-sm",
+            @placeholder = "Nhập địa chỉ",
+            @data_rule_javascript = true,
+            @data_msg_javascript = "Địa chỉ không có đoạn Javascript không hợp lệ !!!",
+            @data_rule_maHtml = true,
+            @data_msg_maHtml = "Địa chỉ không được chứa mã HTML!!!",
+            @data_rule_maxlength = true,
+            @data_value_maxlength = 200,
+            @data_msg_maxlength = "Địa chỉ không quá 200 ký tự!!!",
+        })
+    </div>
+</div>
+<div class="text-right mt-2">
+    <button class="btn btn-danger btn-sm text-white" type="button" id="btnCancelChuSoHuu"><i class="fas fa-times mr-1"></i>Hủy </button>
+    @if (admin == true || user.Right.Contains(CookieRight.TT_ChuSoHuu_InsUpd))
+    {
+        <button type="button" class="btn btn-success btn-block-sm btn-sm" id="btnSaveChuSoHuu">
+            <i class="far fa-save mr-1"></i> Lưu
+        </button>
+    }
+</div>
+

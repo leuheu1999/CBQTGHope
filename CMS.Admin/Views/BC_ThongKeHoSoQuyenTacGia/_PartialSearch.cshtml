@@ -1,0 +1,24 @@
+﻿@model Business.Entities.Domain.BC_ThongKeHoSoQuyenTacGiaParam
+@using CMS.Admin.Common
+@using (Ajax.BeginForm("ListBC_ThongKeHoSoQuyenTacGia", "BC_ThongKeHoSoQuyenTacGia", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.BC_ThongKeHoSoQuyenTacGia.BeforeSend",
+    OnSuccess = "Common.BC_ThongKeHoSoQuyenTacGia.Success",
+    OnFailure = "Common.BC_ThongKeHoSoQuyenTacGia.Error"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="Nam" class="font-weight-bold">Năm thống kê</label>
+            @Html.DropDownListFor(m => m.Nam, CBODungChung.GetCBONam(), new { @class = "form-control form-control-sm  select2-share" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="btnTimKiem" class="font-weight-bold w-100">&nbsp;</label>
+            <button type="button" id="btnTimKiem" class="btn btn-primary btn-sm btn-block-sm cursor mr-2 cursor"><i class="fas fa-search mr-1"></i>Tổng hợp</button>
+        </div>
+      
+    </div>
+}

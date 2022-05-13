@@ -1,0 +1,81 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.LogParam
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Thông tin tìm kiếm</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @using (Ajax.BeginForm("ListLog", "LogSystem", null, new AjaxOptions
+            {
+                UpdateTargetId = "result-searchlist",
+                HttpMethod = "Post",
+                OnBegin = "Common.LogSystem.BeforeSend",
+                OnSuccess = "Common.LogSystem.Success",
+                OnFailure = "Common.ErrorMessage"
+            }, new { @class = "", @role = "form", @id = "IdformSearch" }))
+            {
+            <div class="hidden">
+                @Html.HiddenFor(m => m.PageIndex)
+                @Html.HiddenFor(m => m.PageSize)
+            </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Từ ngày</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.CreatedFrom, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Nhập từ ngày" })
+                            <div class="input-group-prepend">
+                                <label for="CreatedFrom" class="input-group-text cursor"><i class="far fa-calendar-alt iconTuNgay"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Đến ngày</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.CreatedTo, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Nhập đến ngày" })
+                            <div class="input-group-prepend">
+                                <label for="CreatedTo" class="input-group-text cursor"><i class="far fa-calendar-alt iconDenNgay"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Nội dung</label>
+                        @Html.TextBoxFor(m => m.Message, new { @class = "form-control form-control-sm", @placeholder = "Nhập nội dung" })
+
+                    </div>
+                    @*<div class="form-group col-md-6">
+            <label class="font-weight-bold">Nhóm</label>
+            @Html.DropDownListFor(m => m.LoglevelID, CBODungChung.GetCBOLogLevel(), "--Chọn nhóm--", new { @class = "form-control form-control-sm select-share" })
+
+        </div>*@
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Sắp xếp</label>
+                        @Html.DropDownListFor(m => m.TypeSort, CBODungChung.GetCBOLogSort(), new { @class = "form-control form-control-sm select-share" })
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12 text-right">
+                        <button class="btn btn-info btn-block-sm btn-sm text-white" type="button" id="btnFormSearch"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
+                        <button type="button" class="btn btn-secondary btn-block-sm btn-sm mt-md-0 mt-sm-2" id="btnResetForm">
+                            <i class="fas fa-sync-alt"></i> Làm mới
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+﻿@model Business.Entities.Domain.HoSoParam
+@using CMS.Admin.Common
+@using (Ajax.BeginForm("ListHoSo", "HoSo", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.HoSo.BeforeSend",
+    OnSuccess = "Common.HoSo.Success",
+    OnFailure = "Common.HoSo.Error"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+
+    <div class="hidden">
+        @Html.HiddenFor(m => m.PageIndex)
+        @Html.HiddenFor(m => m.PageSize)
+        @Html.HiddenFor(m => m.DuongDiNguoiNhan)
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="TinhThanhID" class="font-weight-bold">Tỉnh thành</label>
+            @Html.DropDownListFor(m => m.TinhThanhID, CBODungChung.GetCBOTinhThanh_1Cua(), "--Chọn tỉnh thành--", new { @class = "form-control form-control-sm select2-share" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="LinhVucID" class="font-weight-bold">Lĩnh vực</label>
+            @Html.DropDownListFor(m => m.LinhVucID, CBODungChung.GetCBOLinhVuc_1Cua(), "--Chọn lĩnh vực--", new { @class = "form-control form-control-sm  select2-share" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="SoBienNhan" class="font-weight-bold">Số biên nhận</label>
+            @Html.TextBoxFor(m => m.SoBienNhan, new { @class = "form-control form-control-sm", @placeholder = "Nhập số biên nhận" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="MaBoHoSo" class="font-weight-bold">Mã bộ hồ sơ</label>
+            @Html.TextBoxFor(m => m.MaBoHoSo, new { @class = "form-control form-control-sm", @placeholder = "Nhập mã bộ hồ sơ" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="QuanHuyenID" class="font-weight-bold">Quận huyện</label>
+            @Html.DropDownListFor(m => m.QuanHuyenID, CBODungChung.GetCBOQuanHuyen_1Cua(Model.TinhThanhID.HasValue ? Model.TinhThanhID.Value.ToString() : "-1"), "--Chọn quận huyện--", new { @class = "form-control form-control-sm  select2-share" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="ThuTucID" class="font-weight-bold">Thủ tục</label>
+            @Html.DropDownListFor(m => m.ThuTucID, CBODungChung.GetCBOThuTuc_1Cua(Model.LinhVucID.HasValue ? Model.LinhVucID.Value.ToString() : "-1"), "--Chọn thủ tục--", new { @class = "form-control form-control-sm select2" })
+        </div>
+        @*<div class="form-group col-md-3">
+            <label for="TinhTrangPhieuTrinhID" class="font-weight-bold">Tình trạng phiếu trình</label>
+            @Html.DropDownListFor(m => m.TinhTrangPhieuTrinhID, CBODungChung.GetCBOTinhTrangPhieuTrinh_1Cua(), "--Chọn tình trạng phiếu trình--", new { @class = "form-control form-control-sm  select2-share" })
+        </div>*@
+        <div class="form-group col-md-3">
+            <label for="CongDanToChuc" class="font-weight-bold">Tác phẩm</label>
+            @Html.TextBoxFor(m => m.TenTacPham, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên tác phẩm" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="TuNgay" class="font-weight-bold">Từ ngày</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.TuNgay, new { @class = "form-control form-control-sm datepicker-share", @placeholder = "Nhập từ ngày" })
+                <div class="input-group-prepend">
+                    <label for="TuNgay" class="input-group-text cursor"><i class="far fa-calendar-alt"></i></label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="PhuongXaID" class="font-weight-bold">Phường xã</label>
+            @Html.DropDownListFor(m => m.PhuongXaID, CBODungChung.GetCBOPhuongXa_1Cua(Model.QuanHuyenID.HasValue ? Model.QuanHuyenID.Value.ToString() : "-1"), "--Chọn phường xã--", new { @class = "form-control form-control-sm  select2-share" })
+        </div>
+        <div class="form-group col-md-6">
+            <label for="CongDanToChuc" class="font-weight-bold">Công dân tổ chức</label>
+            @Html.TextBoxFor(m => m.CongDanToChuc, new { @class = "form-control form-control-sm", @placeholder = "Nhập công dân tổ chức" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="DenNgay" class="font-weight-bold">Đến ngày</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.DenNgay, new { @class = "form-control form-control-sm datepicker-share", @placeholder = "Nhập đến ngày" })
+                <div class="input-group-prepend">
+                    <label for="DenNgay" class="input-group-text cursor"><i class="far fa-calendar-alt"></i></label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="TenBuocKeTiep" class="font-weight-bold">Tên bước kế tiếp</label>
+            @Html.DropDownListFor(m => m.TenBuocKeTiep, CBODungChung.GetCBOTenBuocKeTiep_1Cua(Model.LinhVucID.HasValue ? Model.LinhVucID.Value.ToString() : "", Model.ThuTucID.HasValue ? Model.ThuTucID.Value.ToString() : "", "THAMDINHHOSO", "1"), "--Chọn tên bước kế tiếp--", new { @class = "form-control form-control-sm  select2-share" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="NguoiNhanIDs" class="font-weight-bold">Người nhận</label>
+            @Html.TextBoxFor(m => m.NguoiNhanIDs, new { @class = "form-control form-control-sm NguoiNhanIDs", @placeholder = "--Chọn người nhận--" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="TinhTrangID" class="font-weight-bold">Tình trạng </label>
+            @Html.DropDownListFor(m => m.TinhTrangID, CBODungChung.GetCBOTinhTrang_1Cua(), "--Chọn tình trạng --", new { @class = "form-control form-control-sm  select2-share" })
+        </div>
+        <div class="form-group col-md-3 mt-2">
+            
+            @*<div class="form-check-inline">
+                <input type="checkbox" class="form-check-input" id="HoSoDangTheoDoi" name="HoSoDangTheoDoi" @(Model.HoSoDangTheoDoi ? "checked" : "") value="True">
+                <label class="form-check-label" for="HoSoDangTheoDoi">Hồ sơ đang theo dõi</label>
+            </div>*@
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="HoSoSapDenHan" name="HoSoSapDenHan" @(Model.HoSoSapDenHan ? "checked" : "") value="True">
+                <label class="form-check-label" for="HoSoSapDenHan">Hồ sơ sắp đến hạn</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="HoSoQuaHan" name="HoSoQuaHan" @(Model.HoSoQuaHan ? "checked" : "") value="True">
+                <label class="form-check-label" for="HoSoQuaHan">Hồ sơ quá hạn</label>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 text-center mt-2">
+        <button type="button" id="btnTimKiem" class="btn btn-primary btn-sm btn-block-sm cursor mr-2 cursor"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
+        <button type="button" id="btnNhan" class="btn btn-info btn-sm btn-block-sm cursor mr-2 cursor"><i class="fa fa-reply mr-1"></i>Nhận hồ sơ</button>
+        <button type="button" id="btnChuyen" class="btn btn-success btn-sm btn-block-sm cursor mr-2 cursor"><i class="fa fa-share mr-1"></i>Chuyển hồ sơ</button>
+    </div>
+}

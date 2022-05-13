@@ -1,0 +1,67 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Vào sổ cấp số";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.TT_CapQuyen.TT_CapQuyenViewModel
+
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách hồ sơ cấp số</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mt-md-0 mt-sm-3">
+                    @Html.Partial("_PartialSearch", Model.Search)
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="result-searchlist">
+                @if (Model != null && Model.Items != null)
+                {
+                    @Html.Partial("_PartialList", Model.Items)
+                }
+                else
+                {
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Dialog update--->
+@{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/HS_CapSo.js")"></script>
+}
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.HS_CapSo)) {
+            Common.HS_CapSo = new HS_CapSo({
+                Url: {
+                    ListDMQuanHuyen: '@Url.Action("ListDMQuanHuyen", "HS_CapSo")',
+                    ListDMPhuongXa: '@Url.Action("ListDMPhuongXa", "HS_CapSo")',
+                    ListDMThuTuc: '@Url.Action("ListDMThuTuc", "HS_CapSo")',
+                    KhongDuyetHoSo: '@Url.Action("KhongDuyet", "HS_CapSo")',
+                    DuyetHoSo: '@Url.Action("Duyet", "HS_CapSo")',
+                    HoSoChuyenNganh: '@Url.Action("Index", "HoSoChuyenNganh")'
+                },
+            });
+        }
+        else {
+            Common.HS_CapSo.RegisterEvent();
+        }
+    });
+</script>
+

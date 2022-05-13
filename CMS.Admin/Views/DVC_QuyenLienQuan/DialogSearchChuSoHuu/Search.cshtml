@@ -1,0 +1,70 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model Business.Entities.Domain.TT_ChuSoHuuParam
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@using (Ajax.BeginForm("SearchChuSoHuu", "DVC_QuyenLienQuan", null, new AjaxOptions
+{
+    HttpMethod = "Post",
+    OnBegin = "Common.DVC_QuyenLienQuan_SearchChuSoHuu.BeforeSend",
+    OnSuccess = "Common.DVC_QuyenLienQuan_SearchChuSoHuu.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "idFormSearchChuSoHuu" }))
+{
+    <div class="hidden">
+        @Html.HiddenFor(m => m.PageIndex)
+        @Html.HiddenFor(m => m.PageSize)
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Họ và tên</label>
+            @Html.TextBoxFor(m => m.HoVaTen, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên tác giả" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Số CMNN/Hộ chiếu</label>
+            @Html.TextBoxFor(m => m.SoCMND, new { @class = "form-control form-control-sm", @placeholder = "Nhập số CMNN/hộ chiếu" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Ngày cấp</label>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NgayCap, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Ngày cấp" })
+                <div class="input-group-prepend">
+                    <label for="" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">ĐKKD</label>
+            @Html.TextBoxFor(m => m.SoDKKD, new { @class = "form-control form-control-sm", @placeholder = "Nhập số ĐKKD" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Ngày cấp ĐKKD</label>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NgayCapDKKD, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Ngày cấp ĐKKD" })
+                <div class="input-group-prepend">
+                    <label for="" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Địa chỉ</label>
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control form-control-sm", @placeholder = "Nhập địa chỉ" })
+        </div>
+
+    </div>
+
+    <div class="text-right mt-2">
+        <button class="btn btn-info btn-sm text-white" type="button" id="btnSearchChuSoHuu"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+        @if (admin == true || user.Right.Contains(CookieRight.TT_ChuSoHuu_InsUpd))
+        {
+            <button type="button" class="btn btn-success btn-block-sm btn-sm" id="btnInsertChuSoHuu">
+                <i class="fas fa-plus"></i> Thêm mới
+            </button>
+        }
+    </div>
+}

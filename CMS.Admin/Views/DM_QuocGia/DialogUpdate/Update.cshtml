@@ -1,0 +1,29 @@
+﻿@model Business.Entities.Domain.DM_QuocGiaMapAdd
+<div class="hidden">
+    @Html.HiddenFor(model => model.QuocGiaID)
+</div>
+<div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mã quốc gia <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.MaQuocGia, new { @class = "form-control form-control-sm", @placeholder = "Nhập mã quốc gia" })
+        <div class="field-validation-error thongbaoma invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Tên quốc gia <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.TenQuocGia, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên quốc gia" })
+        <div class="field-validation-error thongbaoTen invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mô tả</label>
+        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control form-control-sm", @placeholder = "Nhập mô tả" })
+        <div class="field-validation-error thongbaoMoTa invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Thứ tự hiển thị</label>
+        @Html.TextBoxFor(model => model.ThuTuHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập thứ tự hiển thị"})
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="Used" name="Used" value="@(Model.Used == true ? "True" : "False")" @(Model.Used == true ? "checked='checked'" : "")>
+        <label class="form-check-label font-weight-bold" for="Used">Công khai</label>
+    </div>
+</div>

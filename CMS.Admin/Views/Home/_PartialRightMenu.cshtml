@@ -1,0 +1,406 @@
+﻿@using CMS.Admin.Common
+<section class="sub-menu-right-properties">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 position-relative fixed-top-custom-title p-1 fixed-top" style="background-color: #FFF29D">
+                <span class="font-weight-bold">Properties</span>
+                <div class="close-sub-menu-left">
+                    <i class="fas fa-thumbtack mr-1 fixed-sub-right-container"></i>
+                    <i class="fas fa-times colse-sub-right-container"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 pro-div-container scroll-css" id="pro-div-container">
+                <div class="form-group label-property checkcollapse-property">
+                    <label>Kiểu chữ</label>
+                    <select id="cell-property-options-style-label" class="form-control form-control-sm property-field">
+                        <option value="normal">normal</option>
+                        <option value="italic">italic</option>
+                        <option value="bold">bold</option>
+                    </select>
+                </div>
+                <div class="form-group label-property checkcollapse-property">
+                    <label>Font color</label>
+                    <input type="color" id="cell-property-options-color-label" class="form-control form-control-sm property-field" value="#1874C1">
+                </div>
+                <div class="form-group label-property checkcollapse-property">
+                    <label>Label <span class="font-weight-bold text-danger">(*)</span></label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-label" value="">
+                </div>
+                <div class="form-group sectionbreak-property">
+                    <label>Label <span class="font-weight-bold text-danger">(*)</span></label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-label-section-break" value="">
+                </div>
+                <div class="form-group common-property">
+                    <label>ID <span class="font-weight-bold text-danger">(*)</span></label>
+                    <input type="text" class="form-control form-control-sm property-field required" id="cell-property-id" value="" onkeyup="Common.EForm.FuncvoidSpace(this.value,event)">
+                    <small class="text-danger font-weight-bold font-italic">Không nhập khoảng trắng và ký tự đặc biệt</small>
+                </div>
+                <div class="form-group input-property textarea-property password-property select-property multipleselect-property
+                            selectAddress-property inputAddress-property datetime-property website-property email-property
+                            number-property name-property phone-property fax-property sendfile-property radio-property
+                            multipleadress-property tableprizestructue-property tabledetailpromotion-property">
+                    <label>Name <span class="font-weight-bold text-danger">(*)</span></label>
+                    <input type="text" class="form-control form-control-sm property-field required" id="cell-property-name" value="" onkeyup="Common.EForm.FuncvoidSpace(this.value,event)">
+                    <small class="text-danger font-weight-bold font-italic">Không nhập khoảng trắng và ký tự đặc biệt</small>
+                </div>
+                <div class="form-group input-property textarea-property password-property selectAddress-property inputAddress-property
+                            select-property multipleselect-property datetime-property website-property checkbox-property email-property
+                            number-property name-property phone-property fax-property inputLocality-property
+                            inputtable-property selectLocality-property numbertable-property">
+                    <label>Mapping user info</label>
+                    <select id="cell-property-options-map-user" class="form-control form-control-sm property-field">
+                        <option value=""></option>
+                        <option value="Email">Email</option>
+                        <option value="SoDienThoai">Số điện thoại</option>
+                        <option value="MaSoThue">Mã số thuế</option>
+                        <option value="MaChiNhanh">Mã chi nhánh</option>
+                        <option value="TenDoanhNghiep">Tên doanh nghiệp</option>
+                        <option value="NgayThanhLap">Ngày thành lập</option>
+                        <option value="EmailCongTy">Email công ty</option>
+                        <option value="Website">Website</option>
+                        <option value="NganhNgheKinhDoanhID">Ngành nghề kinh doanh</option>
+                        <option value="LoaiHinhDoanhNghiepID">Loại hình doanh nghiệp</option>
+                        <option value="TinhThanhID">Tỉnh thành</option>
+                        <option value="QuanHuyenID">Quận huyện</option>
+                        <option value="PhuongXaID">Phường xã</option>
+                        <option value="SoNha">Số nhà</option>
+                        <option value="KhuPho">Khu phố</option>
+                        <option value="TenDuong">Tên đường</option>
+                        <option value="DiaChiCongTy">Địa chỉ công ty</option>
+                        <option value="NguoiDaiDienPhapLuat">Người đại diện pháp luật</option>
+                        <option value="DanhXungNguoiDaiDienID">Danh xưng người đại diện</option>
+                        <option value="NguoiLienHe">Người liên hệ</option>
+                        <option value="DanhXungNguoiLienHeID">Danh xưng người liên hệ</option>
+                    </select>
+                </div>
+                <div class="form-group input-property textarea-property password-property selectAddress-property inputAddress-property
+                            select-property multipleselect-property datetime-property website-property checkbox-property radio-property email-property
+                            number-property name-property phone-property fax-property inputLocality-property
+                            inputtable-property selectLocality-property numbertable-property">
+                    <label>Data type <span class="font-weight-bold text-danger">(*)</span></label>
+                    <select id="cell-property-data-type-control" class="form-control form-control-sm property-field required">
+                        <option value="7">bit</option>
+                        <option value="8">nvarchar</option>
+                        <option value="9">bigint</option>
+                        <option value="10">datetime</option>
+                        <option value="11">int</option>
+                        <option value="12">decimal</option>
+                    </select>
+                </div>
+                <div class="form-group input-property textarea-property password-property inputLocality-property inputtable-property
+                            datetime-property website-property email-property number-property
+                            name-property phone-property fax-property numbertable-property">
+                    <label>Placeholder</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-placeholder" value="">
+                </div>
+                <div class="form-group input-property textarea-property password-property selectAddress-property inputAddress-property
+                            select-property multipleselect-property datetime-property website-property email-property number-property
+                            name-property phone-property fax-property sendfile-property">
+                    <label>Help text (instructions)</label>
+                    <textarea class="form-control property-field" id="cell-property-instructions" rows="2"></textarea>
+                </div>
+                <div class="form-group input-property textarea-property password-property selectAddress-property inputAddress-property
+                            select-property multipleselect-property datetime-property website-property email-property number-property
+                            name-property phone-property fax-property sendfile-property">
+                    <label>Note text</label>
+                    <textarea class="form-control property-field" id="cell-property-note" rows="2"></textarea>
+                </div>
+
+                <div class="form-group checkbox-property radio-property radioimplementationtype-property">
+                    <label>Option layout</label>
+                    <select id="cell-property-options-style-columns" class="form-control form-control-sm property-field">
+                        <option value="cus-col-1">One Column</option>
+                        <option value="cus-col-2">Two Columns</option>
+                        <option value="cus-col-3">Three Columns</option>
+                        <option value="cus-inline">Side by Side</option>
+                    </select>
+                </div>
+                <!-- set option cho select,  Multiple select--->
+                <div class="form-group select-property multipleselect-property checkbox-property radio-property">
+                    <label>Use a preset list select, multipleselect</label>
+                    <select id="cell-property-select-option" class="form-control form-control-sm property-field">
+                        <option value="Defined">Defined</option>
+                        <option value="DM_CauHinh">DM_CauHinh</option>
+                        <option value="DM_DonVi">DM_DonVi</option>
+                        <option value="DM_HinhThucKhuyenMai">DM_HinhThucKhuyenMai</option>
+                        <option value="DM_LinhVuc">DM_LinhVuc</option>
+                        <option value="DM_LoaiHinhDoanhNghiep">DM_LoaiHinhDoanhNghiep</option>
+                        <option value="DM_LoaiSanPham">DM_LoaiSanPham</option>
+                        <option value="DM_NganhNgheKinhDoanh">DM_NganhNgheKinhDoanh</option>
+                        <option value="DM_NgayLe">DM_NgayLe</option>
+                        <option value="DM_NgayTet">DM_NgayTet</option>
+                        <option value="DM_NhanHieu">DM_NhanHieu</option>
+                        <option value="DM_PhuongXa">DM_PhuongXa</option>
+                        <option value="DM_QuanHuyen">DM_QuanHuyen</option>
+                        <option value="DM_QuocGia">DM_QuocGia</option>
+                        <option value="DM_SanPham">DM_SanPham</option>
+                        <option value="DM_ThuTuc">DM_ThuTuc</option>
+                        <option value="DM_TinhThanh">DM_TinhThanh</option>
+                        <option value="E_DanhXung">E_DanhXung</option>
+                        <option value="E_HinhThucGiayTo">E_HinhThucGiayTo</option>
+                        <option value="E_LoaiGiayTo">E_LoaiGiayTo</option>
+                        <option value="E_LoaiTaiKhoan">E_LoaiTaiKhoan</option>
+                        <option value="E_ParameterSendEmail">E_ParameterSendEmail</option>
+                        <option value="E_TableConfigColumn">E_TableConfigColumn</option>
+                        <option value="E_TableKey">E_TableKey</option>
+                        <option value="E_TrangThaiBoSung">E_TrangThaiBoSung</option>
+                        <option value="E_TrangThaiHoSo">E_TrangThaiHoSo</option>
+                        <option value="E_TrangThaiTaiKhoan">E_TrangThaiTaiKhoan</option>
+                        <option value="E_XuatTrinhGiaoNop">E_XuatTrinhGiaoNop</option>
+                        <option value="EmailManager">EmailManager</option>
+                    </select>
+                    <button class="btn btn-sm btn-info editOptions mt-2">Edit Options</button>
+                </div>
+                <!-- end set option cho  select,  Multiple select--->
+                <div class="form-group select-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-select-allowMultiple">
+                        <label class="form-check-label" for="cell-property-select-allowMultiple">
+                            Allow multiple
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group datetime-property">
+                    <label>Start date</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-start-date" value="" placeholder="0d">
+                    <div class="hints font-italic small">
+                        The earliest date that may be selected; All earlier dates will be disabled. The date can be <b>dynamic</b>. For example: <b>+0d</b> is for current date, <b>+7d</b> means 7 days from current date, etc...
+                    </div>
+                </div>
+                <div class="form-group datetime-property">
+                    <label>End date</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-end-date" value="" placeholder="0d">
+                    <div class="hints font-italic small">
+                        The latest date that may be selected; All later dates will be disabled. The date can be <b>dynamic</b>. For example: <b>+0d</b> is for current date, <b>+7d</b> means 7 days from current date, etc...
+                    </div>
+                </div>
+                <div class="form-group datetime-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-day-off">
+                        <label class="form-check-label" for="cell-property-day-off">
+                            Day off
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group datetime-property">
+                    <label>Format</label>
+                    <select id="cell-property-form-date" class="form-control form-control-sm property-field">
+                        <option value="dd/mm/yyyy" selected>dd/mm/yyyy</option>
+                        <option value="mm/dd/yyyy">mm/dd/yyyy</option>
+                        <option value="yyyy/mm/dd">yyyy/mm/dd</option>
+                    </select>
+                </div>
+                <div class="form-group datetime-property">
+                    <label>Min date</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm property-field datepicker-share" id="cell-property-min-date" readonly  value="">
+                        <div class="input-group-append">
+                            <label class="input-group-text" for="cell-property-min-date"><i class="far fa-calendar-alt"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group datetime-property">
+                    <label>Min message date</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-min-message-date" value="" placeholder="Date cannot be less than {0}.">
+                </div>
+                <div class="form-group datetime-property">
+                    <label>Max date</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm property-field datepicker-share" id="cell-property-max-date" readonly value="">
+                        <div class="input-group-append">
+                            <label class="input-group-text" for="cell-property-max-date"><i class="far fa-calendar-alt"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group datetime-property">
+                    <label>Max message date</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-max-message-date" value="" placeholder="Date cannot be greater than {0}.">
+                </div>
+                <div class="form-group website-property">
+                    <label>Target </label>
+                    <select name="class_target" class="form-control form-control-sm property-field" id="cell-property-target">
+                        <option value="_blank">_blank</option>
+                        <option value="_self">_self</option>
+                        <option value="_parent">_parent</option>
+                        <option value="_top	">_top	</option>
+                    </select>
+                </div>
+                <div class="form-group input-property textarea-property password-property select-property multipleselect-property
+                            website-property email-property number-property">
+                    <label>Left icon name</label>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control property-field" data-input-group="input_group.addon.leftIcon" id="cell-property-left-icon" disabled>
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary btnOpenDialogIcon" data-iconname="input_group.addon.leftIcon">Chọn</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group input-property textarea-property password-property select-property multipleselect-property website-property
+                            email-property number-property">
+                    <label>Left text</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-left-text" value="">
+                </div>
+                <div class="form-group input-property textarea-property password-property select-property multipleselect-property website-property
+                            email-property number-property">
+                    <label>Right icon name</label>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control property-field" data-input-group="input_group.addon.rightIcon" id="cell-property-right-icon" disabled>
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary btnOpenDialogIcon" data-iconname="input_group.addon.rightIcon">Chọn</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group input-property textarea-property password-property select-property multipleselect-property website-property
+                            email-property number-property">
+                    <label>Right text</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-right-text" value="">
+                </div>
+                <div class="form-group email-property phone-property fax-property input-property">
+                    <label>Regex validate </label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-regex-validate" value="">
+                </div>
+                <!--File-->
+                <div class="form-group sendfile-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-multiple-upload">
+                        <label class="form-check-label" for="cell-property-multiple-upload">
+                            Allow Multiple Upload
+                        </label>
+                    </div>
+                    <div class="validator-option mt-2" id="validator-option-number-files-value" style="display: none">
+                        <label>Number of files allowed </label>
+                        <input type="number" class="form-control form-control-sm property-field" id="cell-property-number-files-allowed" min="1" placeholder="Enter the number of files allowed">
+                        <input type="text" class="form-control form-control-sm property-field mt-2" id="cell-property-number-files-message" placeholder="Enter the message">
+                    </div>
+                </div>
+                <div class="form-group sendfile-property">
+                    <label>
+                        Select allowed type extensions
+                        <a href="https://www.sitepoint.com/mime-types-complete-list/" target="_blank" title="View file format"><i class="fas fa-link"></i></a>
+                    </label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-allowed-type-file" value="" placeholder="image/*,application/msword (.doc),application/vnd.ms-excel (.xls),application/pdf (.pdf),...">
+                </div>
+                <div class="form-group sendfile-property">
+                    <label>Maximum file size</label>
+                    <input type="text" class="form-control form-control-sm property-field" id="cell-property-max-file-size" placeholder="MB">
+                </div>
+                <!--End:file-->
+                <!--compare-->
+                <div class="form-group datetime-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-compare">
+                        <label class="form-check-label" for="cell-property-compare">
+                            Compare
+                        </label>
+                    </div>
+                    <div class="validator-option mt-2" id="validator-option-compare" style="display: none">
+                        <label>Select compare method</label>
+                        <select name="class_target" class="form-control form-control-sm property-field" id="cell-property-compare-method">
+                            <option value=">">></option>
+                            <option value=">=">>=</option>
+                            <option value="<"><</option>
+                            <option value="<="><=</option>
+                            <option value="==">==</option>
+                            <option value="!=">!=</option>
+                        </select>
+                        <label class="mt-2">Control compare</label>
+                        <input type="text" class="form-control form-control-sm property-field" id="cell-property-compare-control" placeholder="This field is control compare.">
+                        <label class="mt-2">Compare messages</label>
+                        <input type="text" class="form-control form-control-sm property-field" id="cell-property-compare-message" placeholder="This field is compare messages.">
+                    </div>
+                </div>
+                <div class="form-group input-property textarea-property password-property inputLocality-property inputtable-property
+                            selectLocality-property selectAddress-property inputAddress-property select-property multipleselect-property
+                            datetime-property website-property email-property number-property name-property phone-property fax-property sendfile-property numbertable-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-required">
+                        <label class="form-check-label" for="cell-property-required">
+                            Required
+                        </label>
+                    </div>
+                    <div class="validator-option mt-2" id="validator-option-required" style="display: none">
+                        <input type="text" class="form-control form-control-sm property-field" id="cell-property-required-message" placeholder="This field is required.">
+                    </div>
+                </div>
+                <div class="form-group number-property numbertable-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-min-number">
+                        <label class="form-check-label" for="cell-property-min-number">
+                            Min
+                        </label>
+                    </div>
+                    <div class="validator-option mt-2" id="validator-option-min-number-value" style="display: none">
+                        <input type="text" class="form-control form-control-sm property-field" id="cell-property-min-number-value" placeholder="Please enter a value.">
+                        <input type="text" class="form-control form-control-sm property-field mt-2" id="cell-property-min-number-message" placeholder="Please enter a value greater than or equal to {0}">
+                    </div>
+                </div>
+                <div class="form-group number-property numbertable-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-max-number">
+                        <label class="form-check-label" for="cell-property-max-number">
+                            Max
+                        </label>
+                    </div>
+                    <div class="validator-option mt-2" id="validator-option-max-number-value" style="display: none">
+                        <input type="text" class="form-control form-control-sm property-field" id="cell-property-max-number-value" placeholder="Please enter a value.">
+                        <input type="text" class="form-control form-control-sm property-field mt-2" id="cell-property-max-number-message" placeholder="Please enter a value less than or equal to {0}.">
+                    </div>
+                </div>
+                <div class="form-group input-property textarea-property password-property inputLocality-property inputtable-property
+                            selectLocality-property selectAddress-property website-property email-property name-property phone-property fax-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-minlength">
+                        <label class="form-check-label" for="cell-property-minlength">
+                            Minlength
+                        </label>
+                    </div>
+                    <div class="validator-option mt-2" id="validator-option-minlength" style="display: none">
+                        <input type="text" class="form-control form-control-sm property-field" id="cell-property-minlength-value" placeholder="Please enter a value.">
+                        <input type="text" class="form-control form-control-sm property-field mt-2" id="cell-property-minlength-message" placeholder="Please enter at least {0} characters.">
+                    </div>
+                </div>
+                <div class="form-group input-property textarea-property password-property inputLocality-property inputtable-property
+                            selectLocality-property selectAddress-property inputAddress-property website-property email-property name-property phone-property fax-property">
+                    <div class="form-check">
+                        <input class="form-check-input property-field" type="checkbox" value="" id="cell-property-maxlength">
+                        <label class="form-check-label" for="cell-property-maxlength">
+                            Maxlength
+                        </label>
+                    </div>
+                    <div class="validator-option mt-2" id="validator-option-maxlength" style="display: none">
+                        <input type="text" class="form-control form-control-sm property-field" id="cell-property-maxlength-value" placeholder="Please enter a value">
+                        <input type="text" class="form-control form-control-sm property-field mt-2" id="cell-property-maxlength-message" placeholder="Please enter no more than {0} characters.">
+                    </div>
+                </div>
+                <div class="form-group column-property formgroup-property button-property">
+                    <label>Grid</label>
+                    <select name="class_grid" class="form-control form-control-sm property-field" id="cell-property-grid">
+                        <option value="col-md-1">1 Grid</option>
+                        <option value="col-md-2">2 Grids</option>
+                        <option value="col-md-3">3 Grids</option>
+                        <option value="col-md-4">4 Grids</option>
+                        <option value="col-md-5">5 Grids</option>
+                        <option value="col-md-6">6 Grids</option>
+                        <option value="col-md-7">7 Grids</option>
+                        <option value="col-md-8">8 Grids</option>
+                        <option value="col-md-9">9 Grids</option>
+                        <option value="col-md-10">10 Grids</option>
+                        <option value="col-md-11">11 Grids</option>
+                        <option value="col-md-12">12 Grids</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center button-properties fixed-top-custom-button">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-success btn-sm" id="btnApplyProperties">Apply</button>
+                    <button type="button" class="btn btn-danger btn-sm colse-sub-right-container" id="btnCancelProperties">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

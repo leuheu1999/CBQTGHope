@@ -1,0 +1,134 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Phân quyền chức năng";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model Business.Entities.Domain.SYS_PhanQuyenMap
+<script src="~/Scripts/PhanQuyenChucNang.js"></script>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách phân quyền</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-7 col-sm-6 mb-2">
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_NhomQuyenController_Index))
+                    {
+                        <button type="button" class="btn btn-info btnnhomquyen btn-block-sm btn-sm mt-md-0 mt-sm-2" data-url="@Url.Action("Index", "DM_NhomQuyen")"><i class="fas fa-table mr-1 "></i> Danh sách nhóm quyền</button>
+                    }
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_QuyenController_Index))
+                    {
+                        <button type="button" class="btn btn-warning text-white btnquyen btn-block-sm btn-sm mt-md-0 mt-sm-2" data-url="@Url.Action("Index", "DM_Quyen")"><i class="fas fa-table mr-1"></i> Danh sách quyền</button>
+                    }
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_Index))
+                    {
+                        <button type="button" class="btn btn-primary text-white btnnguoidung btn-block-sm btn-sm mt-md-0 mt-sm-2" data-url="@Url.Action("Index", "NguoiDungHeThong")"><i class="fas fa-table mr-1"></i> Danh sách người dùng</button>
+                    }
+                </div>
+
+                <div class="col-md-5 col-sm-6 mb-2 text-right">
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_PhanQuyenChucNangController_CapNhat))
+                    {
+                        <button type="button" class="btn btn-success btnLuu btn-block-sm btn-sm mt-md-0 mt-sm-2"><i class="far fa-save mr-1"></i> Lưu</button>
+                    }
+                </div>
+
+            </div>
+            <div class="table-responsive" id="right-list-container">
+                <table id="tbphanquyenchucnang" class="table table-hover table-striped table-mobile table-bordered">
+                    <thead>
+                        <tr class="bg-info text-white cursor">
+                            <th>Tính năng</th>
+                            @if (Model != null && Model.DanhSachNhomQuyen != null && Model.DanhSachNhomQuyen.Any())
+                            {
+                                foreach (var item in Model.DanhSachNhomQuyen)
+                                {
+                                    <th data-id="@item.IdNhomQuyen" class="text-center" data-name="@item.TenNhomQuyen">
+                                        @item.TenNhomQuyen <br />
+                                    </th>
+                                }
+                            }
+                        </tr>
+                    </thead>
+                    @{
+                        var lengthColumn = Model != null && Model.DanhSachNhomQuyen != null ? Model.DanhSachNhomQuyen.Count() : 0;
+                    }
+                    <tbody>
+                        @if (Model != null && Model.DanhSachQuyenChucNang != null)
+                        {
+                            long idTemp = 0;
+                            var listTemp = Model.DanhSachQuyenChucNang.GroupBy(m => m.QuyenID).ToList();
+                            for (int i = 0; i < listTemp.Count; i++)
+                            {
+                                idTemp = listTemp[i].Key;
+                                <tr class="table-warning" data-type="Category" data-status="minus" data-id="@listTemp[i].FirstOrDefault().Id">
+                                    <td colspan="@Html.Raw(lengthColumn + 1)" class="font-weight-bold text-secondary">
+                                        <div class="icon" style="cursor: pointer; color: #F39C12;float:left;margin-right:10px;"><i class="fa fa-minus-square" aria-hidden="true"></i></div>
+                                        @listTemp[i].FirstOrDefault().TenQuyen
+                                    </td>
+                                </tr>
+                                int j = 1;
+                                foreach (var item in Model.DanhSachQuyenChucNang.Where(m => m.QuyenID == idTemp))
+                                {
+                                    if (item.QuyenID == idTemp)
+                                    {
+                                        <tr data-quyenchucnangid="@item.Id" data-type="Right" data-category="@listTemp[i].FirstOrDefault().Id">
+                                            <td data-label="@item.TenHienThi">@item.TenHienThi</td>
+                                            @foreach (var r in Model.DanhSachNhomQuyen)
+                                            {
+                                                <td data-id="@r.IdNhomQuyen" class="text-center" data-name="@r.TenNhomQuyen">
+                                                    <input type="checkbox" data-idnhomquyen="@r.IdNhomQuyen" data-quyenchucnangid="@item.Id" name="@r.IdNhomQuyen" @Html.Raw(item.Id != null && r.DanhSachQuyenChucNangID.Contains("," + item.Id.ToString() + ",") ? "checked='checked'" : "") />
+                                                </td>
+                                            }
+                                        </tr>
+                                        j++;
+                                    }
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="@Html.Raw(lengthColumn + 1)">
+                                    <div class="alert alert-info mt-3" role="alert">
+                                        Không có dữ liệu
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.PhanQuyenChucNang)) {
+            Common.PhanQuyenChucNang = new PhanQuyenChucNang({
+                Url: {
+                    CapNhat: '@Url.Action("CapNhat", "PhanQuyenChucNang")'
+                },
+            });
+        }
+        else {
+            Common.PhanQuyenChucNang.RegisterEvent();
+        }
+    });
+</script>
+
+

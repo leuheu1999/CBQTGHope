@@ -1,0 +1,476 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@using CMS.Admin.Common;
+@{
+    /**/
+
+    var ControllerName = @ViewContext.RouteData.Values["Controller"];
+    var ActionName = @ViewContext.RouteData.Values["Action"];
+    var url = Request.RawUrl.ToString();
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@(ViewBag.Title ?? ViewBag.PageTitle)</title>
+    <meta name="description" content="@(ViewBag.MetaDescription??"")" />
+    <meta name="keywords" content="@(ViewBag.MetaKeywords ??"")">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+    @Styles.Render("~/Library/bootstrap/css/styles")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Library/bootstrap/js/javascripts")
+    @Scripts.Render("~/Library/bootstrap/js/phone")
+    @RenderSection("scripts", required: false)
+</head>
+<body class="sidebar-mini" style="height: auto; min-height: 100%;">
+    <div class="wrapper" style="height: auto; min-height: 100%;">
+        <header class="main-header">
+            <a href="/" class="logo sidebar-header">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini text-center"><strong>CBQ</strong></span>
+                <!-- logo for regular state and mobile devices -->
+                <h2><span class="logo-lg"></span></h2>
+            </a>
+            <div class="top_header">
+                <nav class="header-navbar navbar navbar-dark navbar-light bg-gradient-top-menu navbar-dark navbar-expand-md main-menu-bg ">
+                    <div class="navbar-wrapper w-100">
+                        <div class="d-none d-md-block d-sm-none logo-navbar">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item">
+                                    <a class="navbar-brand" href="@Url.Action("Index", "CauHinhHeThong")">
+                                        <h2 class="brand-text text-uppercase"><strong>CỤC BẢN QUYỀN TÁC GIẢ</strong></h2>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar-header mobile">
+                            <div class="navbar-container-right">
+                                <ul class="list-inline mb-0 float-md-left d-none d-md-block d-sm-none">
+                                    <li class="list-inline-item d-none d-md-inline-block sidebar-toggle">
+                                        <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
+                                            <i class="fas fa-bars ft-menu"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline mb-0 float-md-right d-flex justify-content-between">
+                                    <li class="list-inline-item mobile-menu d-md-none">
+                                        <a class="nav-link menu-toggle" href="#" id="trigger-mobile"><i class="fas fa-bars ft-menu" style="font-size: 22px;"></i></a>
+                                    </li>
+                                    <li style="position:relative">
+                                        <span class="badge badge-danger number-notifi-count"></span>
+                                        <div class="notifi">
+                                            <svg viewBox="0 0 28 28" alt="" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 fzdkajry" height="20" width="20"><path fill="#050505" d="M7.847 23.488C9.207 23.488 11.443 23.363 14.467 22.806 13.944 24.228 12.581 25.247 10.98 25.247 9.649 25.247 8.483 24.542 7.825 23.488L7.847 23.488ZM24.923 15.73C25.17 17.002 24.278 18.127 22.27 19.076 21.17 19.595 18.724 20.583 14.684 21.369 11.568 21.974 9.285 22.113 7.848 22.113 7.421 22.113 7.068 22.101 6.79 22.085 4.574 21.958 3.324 21.248 3.077 19.976 2.702 18.049 3.295 17.305 4.278 16.073L4.537 15.748C5.2 14.907 5.459 14.081 5.035 11.902 4.086 7.022 6.284 3.687 11.064 2.753 15.846 1.83 19.134 4.096 20.083 8.977 20.506 11.156 21.056 11.824 21.986 12.355L21.986 12.356 22.348 12.561C23.72 13.335 24.548 13.802 24.923 15.73Z"></path></svg>
+                                        </div>
+                                        <div class="dsnotifile hidden">
+                                            <div class="titleThongBao">
+                                                Thông báo hồ sơ chưa nhận
+                                            </div>
+                                            <div class="box-dsnotifi">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @if (User != null && User.Identity.IsAuthenticated)
+                                    {
+                                        var us = LoginManager.GetCurrentUser();
+                                        <li class="dropdown dropdown-user list-inline-item">
+                                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                                <i class="fas fa-users d-md-none"></i>
+                                                <span class="user-name d-none d-md-inline-block">@us.UserFullName</span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="@Url.Action("IndexSuaThongTin", "NguoiDungHeThong")" class="dropdown-item custom-item" title="Sửa thông tin"><i class="fas fa-user text-primary mr-1"></i>Sửa thông tin</a>
+                                                @*<a href="@Url.Action("IndexSuaThongTin", "NguoiDungHeThong",new { doipass="1"})" class="dropdown-item custom-item" title="Đổi mật khẩu"><i class="fas fa-mail-bulk text-warning mr-1"></i>Đổi mật khẩu</a>*@
+                                                <div class="dropdown-divider"></div>
+                                                <a href="@Url.Action("LogOff", "NguoiDungHeThong")" class="dropdown-item custom-item"><i class="fas fa-power-off text-danger mr-1" title="Đăng xuất"></i>Đăng xuất</a>
+                                            </div>
+                                        </li>
+                                    }
+                                    <li class="list-inline-item">
+                                        <a class="nav-link remove-cache" href="#" title="Xóa cache">
+                                            <i class="fas fa-cogs"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- Horizontal menu content-->
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <!-- Horizontal menu content-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-black navbar-shadow menu-fixed" id="mobileMainMenu">
+                    <ul class="list-unstyled components sidebar-menu tree">
+                        @if (admin == true || user.Right.Contains("," + CookieRight.HoSoController_Index + ",")
+                            || user.Right.Contains("," + CookieRight.HS_CapSoController_Index + ","))
+                        {
+                            <li class="@(ControllerName.Equals("HoSo")
+                                || ControllerName.Equals("HS_CapSo") ? "active" : "")">
+                                <a href="#hoso" data-toggle="collapse" aria-expanded="true"
+                                   class="dropdown-toggle" title="Hồ sơ">
+                                    <i class="fa fa-folder-open mr-1"></i> <span>Hồ sơ</span>
+                                </a>
+                                <ul class="list-unstyled treeview-menu collapse @(ControllerName.Equals("HoSo")
+                                || ControllerName.Equals("HS_CapSo") ? "show" : "")" id="hoso">
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.HoSoController_Index + ",")
+                                        || user.Right.Contains("," + CookieRight.HS_CapSoController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("HoSo")? "active" : "")">
+                                            <a href="@Url.Action("Index","HoSo")" title="Hồ sơ của tôi"><i class="far fa-dot-circle mr-2"></i>Hồ sơ của tôi</a>
+                                        </li>
+                                        <li class="@(ControllerName.Equals("HS_CapSo")? "active" : "")">
+                                            <a href="@Url.Action("Index","HS_CapSo")" title="Cấp sổ vào sổ"><i class="far fa-dot-circle mr-2"></i>Cấp sổ vào sổ</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (admin == true || user.Right.Contains("," + CookieRight.QTG_QuyenTacGia_Index + ",") || user.Right.Contains("," + CookieRight.DVC_QuyenTacGia_Index + ","))
+                        {
+                            <li class="@(ControllerName.Equals("QTG_QuyenTacGia") || ControllerName.Equals("DVC_QuyenTacGia")? "active" : "")">
+                                <a href="#quyentacgia" data-toggle="collapse" aria-expanded="true"
+                                   class="dropdown-toggle" title="Quyền tác giả">
+                                    <i class="fa fa-clipboard mr-1"></i> <span>Quyền tác giả</span>
+                                </a>
+                                <ul class="list-unstyled treeview-menu collapse @(ControllerName.Equals("QTG_QuyenTacGia") || ControllerName.Equals("DVC_QuyenTacGia")? "show" : "")" id="quyentacgia">
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.QTG_QuyenTacGia_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("QTG_QuyenTacGia")? "active" : "")">
+                                            <a href="@Url.Action("Index","QTG_QuyenTacGia")" title="Danh sách quyền tác giả"><i class="far fa-dot-circle mr-2"></i>Danh sách quyền tác giả</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DVC_QuyenTacGia_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DVC_QuyenTacGia")? "active" : "")">
+                                            <a href="@Url.Action("Index","DVC_QuyenTacGia")" title="Danh sách quyền tác giả"><i class="far fa-dot-circle mr-2"></i>Danh sách QTG Vùng miền</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (admin == true || user.Right.Contains("," + CookieRight.QLQ_QuyenLienQuan_Index + ",") || user.Right.Contains("," + CookieRight.DVC_QuyenLienQuan_Index + ","))
+                        {
+                            <li class="@(ControllerName.Equals("QLQ_QuyenLienQuan") || ControllerName.Equals("DVC_QuyenLienQuan")? "active" : "")">
+                                <a href="#quyenlienquan" data-toggle="collapse" aria-expanded="true"
+                                   class="dropdown-toggle" title="Quyền liên quan">
+                                    <i class="fa fa-book mr-1"></i> <span>Quyền liên quan</span>
+                                </a>
+                                <ul class="list-unstyled treeview-menu collapse @(ControllerName.Equals("QLQ_QuyenLienQuan") || ControllerName.Equals("DVC_QuyenLienQuan")? "show" : "")" id="quyenlienquan">
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.QLQ_QuyenLienQuan_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("QLQ_QuyenLienQuan")? "active" : "")">
+                                            <a href="@Url.Action("Index","QLQ_QuyenLienQuan")" title="Danh sách quyền liên quan"><i class="far fa-dot-circle mr-2"></i>Danh sách quyền liên quan</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DVC_QuyenLienQuan_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DVC_QuyenLienQuan")? "active" : "")">
+                                            <a href="@Url.Action("Index","DVC_QuyenLienQuan")" title="Danh sách quyền liên quan"><i class="far fa-dot-circle mr-2"></i>Danh sách QLQ Vùng miền</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (admin == true || user.Right.Contains("," + CookieRight.BC_ThongKeGiayChungNhanController_Index + ",")
+                            || user.Right.Contains("," + CookieRight.BC_CongBaoController_Index + ",")
+                            || user.Right.Contains("," + CookieRight.BC_BaoCaoTacPhamController_Index + ",")
+                            || user.Right.Contains("," + CookieRight.BC_SoGiayChungNhanBanQuyenController_Index + ",")
+                            || user.Right.Contains("," + CookieRight.BC_ThongKeHoSoQuyenTacGiaController_Index + ",")
+                            || user.Right.Contains("," + CookieRight.BC_ThongKeHoSoQuyenLienQuanController_Index + ",")
+                            || user.Right.Contains("," + CookieRight.BC_BaoCaoTongHopHoatDong_Index + ",")
+                            || user.Right.Contains("," + CookieRight.BC_BaoCaoTongHopSoLieu_Index + ","))
+                        {
+                            <li class="@(ControllerName.Equals("BC_ThongKeGiayChungNhan")
+                                                        ||ControllerName.Equals("BC_CongBao")
+                                                        ||ControllerName.Equals("BC_BaoCaoTacPham")
+                                                        ||ControllerName.Equals("BC_SoGiayChungNhanBanQuyen")
+                                                        ||ControllerName.Equals("BC_ThongKeHoSoQuyenTacGia")
+                                                        ||ControllerName.Equals("BC_ThongKeHoSoQuyenLienQuan")
+                                                        ||ControllerName.Equals("BC_BaoCaoTongHopSoLieu")
+                                                        ||ControllerName.Equals("BC_BaoCaoTongHopHoatDong") ? "active" : "")">
+                                <a href="#baocao" data-toggle="collapse" aria-expanded="true"
+                                   class="dropdown-toggle" title="Báo cáo, Thống kê">
+                                    <i class="fa fa-folder-open mr-1"></i> <span>Báo cáo, Thống kê</span>
+                                </a>
+                                <ul class="list-unstyled treeview-menu collapse @(ControllerName.Equals("BC_ThongKeGiayChungNhan")
+                                                        ||ControllerName.Equals("BC_CongBao")
+                                                        ||ControllerName.Equals("BC_BaoCaoTacPham")
+                                                        ||ControllerName.Equals("BC_SoGiayChungNhanBanQuyen")
+                                                        ||ControllerName.Equals("BC_ThongKeHoSoQuyenTacGia")
+                                                        ||ControllerName.Equals("BC_ThongKeHoSoQuyenLienQuan")
+                                                        ||ControllerName.Equals("BC_BaoCaoTongHopSoLieu")
+                                                        ||ControllerName.Equals("BC_BaoCaoTongHopHoatDong") ? "show" : "")" id="baocao">
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_ThongKeGiayChungNhanController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_ThongKeGiayChungNhan")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_ThongKeGiayChungNhan")" title="Thống kê Giấy chứng nhận quyền"><i class="far fa-dot-circle mr-2"></i>Thống kê Giấy chứng nhận quyền</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_CongBaoController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_CongBao")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_CongBao")" title="Công bố"><i class="far fa-dot-circle mr-2"></i>Công bố</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_BaoCaoTacPhamController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_BaoCaoTacPham")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_BaoCaoTacPham")" title="Báo cáo tác phẩm"><i class="far fa-dot-circle mr-2"></i>Báo cáo tác phẩm</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_SoGiayChungNhanBanQuyenController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_SoGiayChungNhanBanQuyen")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_SoGiayChungNhanBanQuyen")" title="Báo cáo chứng nhận quyền"><i class="far fa-dot-circle mr-2"></i>Báo cáo chứng nhận quyền</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_ThongKeHoSoQuyenTacGiaController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_ThongKeHoSoQuyenTacGia")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_ThongKeHoSoQuyenTacGia")" title="Thống kê quyền tác giả"><i class="far fa-dot-circle mr-2"></i>Thống kê quyền tác giả</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_ThongKeHoSoQuyenLienQuanController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_ThongKeHoSoQuyenLienQuan")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_ThongKeHoSoQuyenLienQuan")" title="Thống kê quyền liên quan"><i class="far fa-dot-circle mr-2"></i>Thống kê quyền liên quan</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_BaoCaoTongHopSoLieu_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_BaoCaoTongHopSoLieu")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_BaoCaoTongHopSoLieu")" title="Báo cáo tổng hợp số liệu"><i class="far fa-dot-circle mr-2"></i>Báo cáo tổng hợp số liệu</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.BC_BaoCaoTongHopHoatDong_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("BC_BaoCaoTongHopHoatDong")? "active" : "")">
+                                            <a href="@Url.Action("Index","BC_BaoCaoTongHopHoatDong")" title="Báo cáo tổng hợp hoạt động"><i class="far fa-dot-circle mr-2"></i>Báo cáo tổng hợp hoạt động</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (admin == true || user.Right.Contains("," + CookieRight.CauHinhHeThongController_Index + ",") || user.Right.Contains("," + CookieRight.LogSystemController_Index + ","))
+                        {
+                            <li class="@(ControllerName.Equals("LogSystem")||ControllerName.Equals("CauHinhHeThong")   || ControllerName.Equals("DM_QuyTrinhXuLy") || ControllerName.Equals("WebsiteSetting") || ControllerName.Equals("DM_NgonNguResource")|| ControllerName.Equals("DM_NgonNgu") || ControllerName.Equals("Website")? "active" : "")">
+                                <a href="#quanlyhethong" data-toggle="collapse" aria-expanded="true"
+                                   class="dropdown-toggle" title="Hệ thống">
+                                    <i class="fa fa-cog mr-1"></i> <span>Hệ thống</span>
+                                </a>
+                                <ul class="list-unstyled treeview-menu collapse @(ControllerName.Equals("LogSystem")  || ControllerName.Equals("DM_QuyTrinhXuLy") || ControllerName.Equals("WebsiteSetting") || ControllerName.Equals("DM_NgonNguResource")|| ControllerName.Equals("DM_NgonNgu")||ControllerName.Equals("Website")||ControllerName.Equals("CauHinhHeThong")? "show" : "")" id="quanlyhethong">
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.CauHinhHeThongController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("CauHinhHeThong")? "active" : "")">
+                                            <a href="@Url.Action("Index","CauHinhHeThong")" title="Cấu hình hệ thống"><i class="far fa-dot-circle mr-2"></i>Cấu hình hệ thống</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.LogSystemController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("LogSystem")? "active" : "")">
+                                            <a href="@Url.Action("Index","LogSystem")" title="Nhật ký hệ thống">
+                                                <i class="far fa-dot-circle mr-2"></i>Nhật ký hệ thống
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                        @if (admin == true || user.Right.Contains("," + CookieRight.DM_VungMienController_Index + ",") || user.Right.Contains("," + CookieRight.DM_LoaiHinhDangKyController_Index + ",") || user.Right.Contains("," + CookieRight.DM_LoaiHinhTacPhamController_Index + ",") || user.Right.Contains("," + CookieRight.DM_CoQuanCapController_Index + ",") || user.Right.Contains("," + CookieRight.DM_NguoiKyController_Index + ",") || user.Right.Contains("," + CookieRight.DM_LoaiSoController_Index + ","))
+                        {
+                            <li class="@(ControllerName.Equals("DM_VungMien") || ControllerName.Equals("DM_LoaiHinhDangKy") || ControllerName.Equals("DM_LoaiHinhTacPham") ? "active" : "")">
+                                <a href="#quanlydanhmuc" data-toggle="collapse" aria-expanded="true"
+                                   class="dropdown-toggle" title="Danh mục">
+                                    <i class="fa fa-server mr-1"></i> <span>Danh Mục</span>
+                                </a>
+                                <ul class="list-unstyled treeview-menu collapse @(ControllerName.Equals("DM_VungMien") || ControllerName.Equals("DM_LoaiHinhDangKy") || ControllerName.Equals("DM_LoaiHinhTacPham") || ControllerName.Equals("DM_CoQuanCap") || ControllerName.Equals("DM_LoaiSo") || ControllerName.Equals("DM_NguoiKy") ? "show" : "")" id="quanlydanhmuc">
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_VungMienController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_VungMien") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_VungMien")" title="Danh mục vùng miền"><i class="far fa-dot-circle mr-2"></i>Danh mục vùng miền</a>
+                                        </li>
+                                    }
+
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_LoaiHinhDangKyController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_LoaiHinhDangKy") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_LoaiHinhDangKy")" title="Danh mục loại hình đăng ký"><i class="far fa-dot-circle mr-2"></i>Danh mục loại hình đăng ký</a>
+                                        </li>
+                                    }
+
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_LoaiHinhTacPhamController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_LoaiHinhTacPham") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_LoaiHinhTacPham")" title="Danh mục loại hình tác phẩm"><i class="far fa-dot-circle mr-2"></i>Danh mục loại hình tác phẩm</a>
+                                        </li>
+                                    }
+
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_CoQuanCapController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_CoQuanCap") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_CoQuanCap")" title="Danh mục cơ quan cấp"><i class="far fa-dot-circle mr-2"></i>Danh mục cơ quan cấp</a>
+                                        </li>
+                                    }
+
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_LoaiSoController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_LoaiSo") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_LoaiSo")" title="Danh mục loại sổ"><i class="far fa-dot-circle mr-2"></i>Danh mục loại sổ</a>
+                                        </li>
+                                    }
+
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_NguoiKyController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_NguoiKy") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_NguoiKy")" title="Danh mục người ký"><i class="far fa-dot-circle mr-2"></i>Danh mục người ký</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                        @if (admin == true || user.Right.Contains("," + CookieRight.DM_PhanQuyenChucNangController_Index + ",") || user.Right.Contains("," + CookieRight.DM_NhomQuyenController_Index + ",") || user.Right.Contains("," + CookieRight.DM_NguoiDungHeThongController_Index + ",") || user.Right.Contains("," + CookieRight.NhatKyNguoiDungController_Index + ","))
+                        {
+                            <li class="@(ControllerName.Equals("PhanQuyenChucNang")||ControllerName.Equals("DM_NhomQuyen")
+                                        ||ControllerName.Equals("DM_Quyen") ||ControllerName.Equals("DM_QuyenChucNang")
+                                        ||ControllerName.Equals("NguoiDungHeThong")||ControllerName.Equals("NhatKyNguoiDung") ? "active" : "")">
+                                <a href="#quantricapquyen" data-toggle="collapse" aria-expanded="true"
+                                   class="dropdown-toggle" title="Quản lý cấp quyền">
+                                    <i class="fa fa-users-cog mr-1"></i> <span>Quản lý cấp quyền</span>
+                                </a>
+                                <ul class="list-unstyled treeview-menu collapse @(ControllerName.Equals("PhanQuyenChucNang")||ControllerName.Equals("DM_NhomQuyen")
+                                        ||ControllerName.Equals("DM_Quyen") ||ControllerName.Equals("DM_QuyenChucNang")
+                                        ||ControllerName.Equals("NguoiDungHeThong")||ControllerName.Equals("NhatKyNguoiDung") ? "show" : "")" id="quantricapquyen">
+
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_NguoiDungHeThongController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("NguoiDungHeThong") ? "active" : "")">
+                                            <a href="@Url.Action("Index", "NguoiDungHeThong")" title="Người dùng"><i class="far fa-dot-circle mr-2"></i>Người dùng</a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.NhatKyNguoiDungController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("NhatKyNguoiDung") ? "active" : "")">
+                                            <a href="@Url.Action("Index","NhatKyNguoiDung")" title="Nhật ký người">
+                                                <i class="far fa-dot-circle mr-2"></i>Nhật ký người
+                                                dùng
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_NhomQuyenController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_NhomQuyen") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_NhomQuyen")" title="Nhóm quyền"><i class="far fa-dot-circle mr-2"></i>Nhóm quyền</a>
+                                        </li>
+                                    }
+                                    @if (admin == true)
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_Quyen")? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_Quyen")" title="Quyền"><i class="far fa-dot-circle mr-2"></i>Quyền</a>
+                                        </li>
+                                    }
+                                    @if (admin == true)
+                                    {
+                                        <li class="@(ControllerName.Equals("DM_QuyenChucNang") ? "active" : "")">
+                                            <a href="@Url.Action("Index","DM_QuyenChucNang")" title="Danh sách chức năng">
+                                                <i class="far fa-dot-circle mr-2"></i>Danh sách chức năng
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (admin == true || user.Right.Contains("," + CookieRight.DM_PhanQuyenChucNangController_Index + ","))
+                                    {
+                                        <li class="@(ControllerName.Equals("PhanQuyenChucNang") ? "active" : "")">
+                                            <a href="@Url.Action("Index", "PhanQuyenChucNang")" title="Phân quyền">
+                                                <i class="far fa-dot-circle mr-2"></i>Phân quyền
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+                <!-- /horizontal menu content-->
+            </section>
+        </aside>
+        <!-- Page Content  -->
+        <div class="content-wrapper">
+            @if (IsSectionDefined("Breadcrumb"))
+            {
+                @RenderSection("Breadcrumb")
+            }
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <div class="main-content mt-3 w-100">
+                        <div class="container-fluid">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <footer class="footer main-footer pt-3 main-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <strong style="color:rgb(255, 102, 0)">:: BẢN QUYỀN THUỘC CỤC BẢN QUYỀN TÁC GIẢ ::</strong><br />
+                        Địa chỉ: Số 33 Ngõ 294/2 Kim Mã, Quận Ba Đình, TP.Hà Nội.
+                        <div class="">
+                            Điện thoại: 024.38 234 304; Fax: 024.38 432 630;<br><span style="display:inline-block"></span>
+                            Email: cbqtg@hn.vnn.vn
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div id="loadingCommon" class="loadingCommon" style="background-color: rgb(221, 221, 221); height: 100%; width: 100%; position: fixed; z-index: 9; margin-top: 0px; top: 0px; opacity: 0.7; display: none;">
+        <img style="position: absolute; left: 50%; top: 50%; width: 100px; height: 100px; margin-left: -50px; margin-top: -50px" src="/Content/images/load2.gif">
+    </div>
+    @*<div>
+            <div id="loadingCommonText" class="loadingCommonText" style="position: absolute; left: 50%; top: 70%; width: 400px; height: 100px; margin-left: -110px; margin-top: -50px;color:#3c8dbc !important;font-size:25px"></div>
+        </div>*@
+    <div class="modal-popup">
+        @{
+            Html.RenderPartial("Alert");
+        }
+    </div>
+    <script>
+         var urlRemoveCache = '@Url.Action("DisposeCache", "AdminHome")'
+    </script>
+    @if (User != null && User.Identity.IsAuthenticated)
+    {
+        <script type="text/javascript">
+            $(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: "@Url.Action("HoSoChuaTiepNhan", "HoSo")",
+                    data: null,
+                    datatype: "json",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    success: function (result) {
+                        if (result.status == true) {
+                            if (result.data > 0)
+                                $('.number-notifi-count').empty().append(result.data);
+                        }
+                    }
+                });
+                return false;
+            });
+            $(".notifi").click(function () {
+                window.location = '@Url.Action("Index", "HoSo")';
+            })
+        </script>
+    }
+</body>
+</html>

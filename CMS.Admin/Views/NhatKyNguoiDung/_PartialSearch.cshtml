@@ -1,0 +1,55 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.ND_NhatKyNguoiDungParam
+@using (Ajax.BeginForm("ListNhatKy", "NhatKyNguoiDung", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.NhatKyNguoiDung.BeforeSend",
+    OnSuccess = "Common.NhatKyNguoiDung.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+<div class="hidden">
+    @Html.HiddenFor(m => m.PageIndex)
+    @Html.HiddenFor(m => m.PageSize)
+</div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Từ ngày</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.TuNgay, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Nhập từ ngày" })
+                <div class="input-group-prepend">
+                    <label for="CreatedFrom" class="input-group-text cursor datepicker-share_iconTuNgay"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Đến ngày</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.DenNgay, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Nhập đến ngày" })
+                <div class="input-group-prepend">
+                    <label for="CreatedTo" class="input-group-text cursor datepicker-share_iconDenNgay"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Nội dung</label>
+            @Html.TextBoxFor(m => m.TuKhoa, new { @class = "form-control form-control-sm", @placeholder = "Người dùng/địa chỉ IP/nội dung" })
+
+        </div>
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Nhóm nhật ký</label>
+            @Html.DropDownListFor(m => m.LogTypeID, CBODungChung.GetCBOLogType(), "tất cả", new { @class = "form-control form-control-sm select-share" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 text-right">
+            <button type="button" class="btn btn-primary text-white btn-sm btn-block-sm" id="btnFormSearch"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
+            <button type="button" class="btn btn-secondary btn-block-sm btn-sm mt-md-0 mt-sm-2 text-white" id="btnLamMoi">
+                <i class="fas fa-sync-alt"></i> Làm mới
+            </button>
+        </div>
+    </div>
+}

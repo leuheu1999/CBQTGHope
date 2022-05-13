@@ -1,0 +1,78 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+
+}
+@model List<Business.Entities.Domain.TT_TacGiaMap>
+
+<table id="table-tacgia" cellspacing="0" cellpadding="0" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="thead-row bg-info text-white">
+            <th class="text-center cursor" width="30"> <input type="checkbox" class="cursor" id="selectAllCheckBoxTG"></th>
+            <th width="200">Họ và Tên</th>
+            <th width="100">Bút danh/Nghệ danh</th>
+            <th width="100">Quốc tịch</th>
+            <th width="100">CCCD/Hộ chiếu</th>
+            <th width="100">Ngày cấp</th>
+            <th width="300">Địa chỉ</th>
+            <th width="50" class="text-center">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr data-id="@item.TacGiaID" data-name="@item.HoVaTen" data-country="@item.QuocTich" data-cccd="@item.SoCMND" data-address="@item.DiaChi" class="trTacGia cursor">
+                    <td class="text-center"><input type="checkbox" class="cursor" name="chkInputCheckedTG[]"></td>
+                    <td data-label="Họ và Tên">@Html.Raw(item.HoVaTen ?? "&nbsp;")</td>
+                    <td data-label="Bút danh/Nghệ danh">@Html.Raw(item.ButDanh ?? "&nbsp;")</td>
+                    <td data-label="Quốc tịch">@Html.Raw(item.QuocTich ?? "&nbsp;")</td>
+                    <td data-label="CCCD/Hộ chiếu">@Html.Raw(item.SoCMND ?? "&nbsp;")</td>
+                    <td data-label="Ngày cấp">@Html.Raw(item.NgayCap ?? "&nbsp;")</td>
+                    <td data-label="Địa chỉ">@Html.Raw(item.DiaChi ?? "&nbsp;")</td>
+                    <td data-label="Thao tác" class="text-center">
+                        @if (admin == true || user.Right.Contains(CookieRight.TT_TacGia_InsUpd))
+                        {
+                            <button title="Chỉnh sửa" data-id="@item.TacGiaID" class="btn btn-primary btn-sm btn-update-tacgia" type="button"><i class="far fa-edit"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model[0].PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.DVC_QuyenTacGia_SearchTacGia.Paging({0})",
+                    OnChangePageSize = "Common.DVC_QuyenTacGia_SearchTacGia.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}

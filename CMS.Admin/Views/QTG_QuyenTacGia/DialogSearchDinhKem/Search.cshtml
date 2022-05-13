@@ -1,0 +1,44 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model Business.Entities.Domain.TT_DinhKemParam
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@using (Ajax.BeginForm("SearchDinhKem", "QTG_QuyenTacGia", null, new AjaxOptions
+{
+    HttpMethod = "Post",
+    OnBegin = "Common.QTG_QuyenTacGia_SearchDinhKem.BeforeSend",
+    OnSuccess = "Common.QTG_QuyenTacGia_SearchDinhKem.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "idFormSearchDinhKem" }))
+{
+    <div class="hidden">
+        @Html.HiddenFor(m => m.PageIndex)
+        @Html.HiddenFor(m => m.PageSize)
+        <input id="CurrentUser" name="CurrentUser" type="hidden" value="@user.UserFullName">
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Tên </label>
+            @Html.TextBoxFor(m => m.Ten, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Tag </label>
+            @Html.TextBoxFor(m => m.Tag, new { @class = "form-control form-control-sm", @placeholder = "Nhập tag" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Ghi chú</label>
+            @Html.TextAreaFor(model => model.GhiChu, new
+            {
+                @class = "form-control form-control-sm",
+                @placeholder = "Nhập ghi chú",
+                @rows = 3
+            })
+        </div>
+    </div>
+    <div class="text-right mt-2">
+        <button class="btn btn-info btn-sm text-white" type="button" id="btnSearchDinhKem"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+    </div>
+}

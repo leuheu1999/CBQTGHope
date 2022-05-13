@@ -1,0 +1,67 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+
+}
+@model List<Business.Entities.Domain.QTG_GiayChungNhanMap>
+
+<table id="tableSearchGiayChungNhan" cellspacing="0" cellpadding="0" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="thead-row bg-info text-white">
+            <th width="50" class="text-center">STT</th>
+            <th width="200">Số GCN</th>
+            <th width="200">Ngày cấp</th>
+            <th width="300">Tên tác phẩm</th>
+            <th width="300">Người tạo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr data-id="@item.QuyenTacGiaID" data-name="@item.SoGCN" class="trGiayChungNhan cursor">
+                    <td data-label="STT" class="text-center row-number">@Html.Raw(item.STT ?? "&nbsp;")</td>
+                    <td data-label="Số GCN">@Html.Raw(item.SoGCN ?? "&nbsp;")</td>
+                    <td data-label="Ngày cấp">@Html.Raw(item.NgayCap ?? "&nbsp;")</td>
+                    <td data-label="Tên tác phẩm">@Html.Raw(item.TenTacPham ?? "&nbsp;")</td>
+                    <td data-label="Người tạo">@Html.Raw(item.CreatedUser ?? "&nbsp;")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="row-none">
+                <td colspan="6">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model[0].PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.QTG_QuyenTacGia_SearchGiayChungNhan.Paging({0})",
+                    OnChangePageSize = "Common.QTG_QuyenTacGia_SearchGiayChungNhan.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}

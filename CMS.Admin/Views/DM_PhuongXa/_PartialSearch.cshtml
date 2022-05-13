@@ -1,0 +1,26 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.DM_PhuongXaMapParam
+@using (Ajax.BeginForm("ListDMPhuongXa", "DM_PhuongXa", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.DMPhuongXa.BeforeSend",
+    OnSuccess = "Common.DMPhuongXa.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+<div class="hidden">
+    @Html.HiddenFor(m => m.PageIndex)
+    @Html.HiddenFor(m => m.PageSize)
+</div>
+    <div class="input-group">
+        @Html.TextBoxFor(m => m.TuKhoa, new { @class = "form-control form-control-sm w-25", @placeholder = "Nhập thông tin cần tìm" })
+        <div class="divQuanHuyenFormResult">
+            @Html.DropDownListFor(m => m.QuanHuyenID, CBODungChung.GetCBOQuanHuyen(""), "--Chọn quận huyện--", new { @class = "form-control form-control-sm", @id = "QuanHuyenIDS" })
+        </div>
+        @Html.DropDownListFor(m => m.TinhThanhID, CBODungChung.GetCBOTinhThanh(), "--Chọn tỉnh thành--", new { @class = "form-control form-control-sm ", @id = "TinhThanhIDS" })
+        <div class="input-group-prepend">
+            <button class="btn btn-info btn-sm text-white" type="button" id="btnFormSearch"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+        </div>
+    </div>
+}

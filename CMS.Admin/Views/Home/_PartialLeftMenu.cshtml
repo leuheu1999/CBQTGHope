@@ -1,0 +1,523 @@
+﻿@model List<EForm.Entities.Domain.E_GroupControlDesignEformMap>
+@if (Model != null && Model.Count > 0)
+{
+
+    foreach (var item in Model)
+    {
+        string strClass = "sub-menu-left";
+        if (item.Ma == "Form")
+        {
+            strClass = "sub-menu-left-tab-form";
+        }
+        else if (item.Ma == "Specialhtml")
+        {
+            strClass = "sub-menu-left-tab-input-special";
+        }
+        <section class="@strClass scroll-css">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 position-relative p-1" style="background-color: #FFF29D">
+                        <span class="font-weight-bold">@item.Ten</span>
+                        <div class="close-sub-menu-left">
+                            <i class="fas fa-thumbtack mr-1 fixed-sub-container"></i>
+                            <i class="fas fa-times colse-sub-container"></i>
+                        </div>
+                    </div>
+                </div>
+                @{
+                    if (item.Ma == "Layout")
+                    {
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                @if (item.ListControl != null && item.ListControl.Count > 0)
+                                {
+                                    foreach (var controlLayout in item.ListControl)
+                                    {
+                                        @Html.Raw(HttpUtility.HtmlDecode(controlLayout.HTML));
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    }
+                    else if (item.Ma == "Form")
+                    {
+                        <div class="row mt-2">
+                            <div class="col-md-12 fixed-middle-custom-content scroll-css">
+                                <ul class="list-unstyled">
+                                    @if (item.ListControl != null && item.ListControl.Count > 0)
+                                    {
+                                        foreach (var controlLayout in item.ListControl)
+                                        {
+                                            @Html.Raw(HttpUtility.HtmlDecode(controlLayout.HTML));
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                    }
+                    else if (item.Ma == "Specialhtml")
+                    {
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                @if (item.ListControl != null && item.ListControl.Count > 0)
+                                {
+                                    foreach (var controlLayout in item.ListControl)
+                                    {
+                                        @Html.Raw(HttpUtility.HtmlDecode(controlLayout.HTML));
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </section>
+    }
+
+
+}
+@*<section class="sub-menu-left scroll-css">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 position-relative p-1" style="background-color: #FFF29D">
+                <span class="font-weight-bold">Layout</span>
+                <div class="close-sub-menu-left">
+                    <i class="fas fa-thumbtack mr-1 fixed-sub-container"></i>
+                    <i class="fas fa-times colse-sub-container"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="card-box card-box-sidebar-item div-container">
+                    Div Container
+                    <div class="container form-item type-container mainForm" data-type="container" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+                <div class="card-box card-box-sidebar-item div-row">
+                    Div Row Container
+                    <div class="row-fluid form-item type-row" data-type="row" style="border:dashed 1px #333; height: 26px">
+                    </div>
+                </div>
+                <div class="card-box card-box-sidebar-item div-column">
+                    Column Div Container
+                    <div class="row-item type-column" data-type="column" style="border:dashed 1px #333; height: 26px">
+                    </div>
+                </div>
+                <div class="card-box card-box-sidebar-item div-formrow">
+                    Form row Container
+                    <div class="form-row form-item type-formrow" data-type="formrow" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+                <div class="card-box card-box-sidebar-item div-formgroup">
+                    Form Group Container
+                    <div class="form-group form-item type-formgroup" data-type="formgroup" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+                <div class="card-box card-box-sidebar-item form-hidden-element">
+                    Hidden Input
+                    <div class="form-group form-item form-group-hidden type-hiddenfield" data-type="hidden">
+                        <input class="form-control" type="text" value="hidden input" style="border:dotted 1px #333">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sub-menu-left-tab-form scroll-css">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 position-relative fixed-top-custom-title p-1" style="background-color: #FFF29D">
+                <span class="font-weight-bold">Form</span>
+                <div class="close-sub-menu-left">
+                    <i class="fas fa-thumbtack mr-1 fixed-sub-container"></i>
+                    <i class="fas fa-times colse-sub-container"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 fixed-middle-custom-content scroll-css">
+                <ul class="list-unstyled">
+                    <li class="card-box-sidebar-item form-element p-1" data-type="label"><i class="fas fa-tag mr-1"></i> label</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="input"><i class="fas fa-pencil-alt mr-1"></i> Text input</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="textarea"><i class="far fa-edit mr-1"></i> Textarea</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="password"><i class="fas fa-key mr-1"></i> Password</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="select"><i class="fas fa-bars mr-1"></i> Select</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="multipleselect"><i class="fas fa-list mr-1"></i> Multiple select</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="checkbox"><i class="far fa-check-square mr-1"></i> Checkbox</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="radio"><i class="far fa-check-circle mr-1"></i> Radio button</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="datetime"><i class="far fa-calendar-alt mr-1"></i> Date</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="number"><i class="fa fa-number mr-1">123</i> Number</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="sendfile"><i class="fas fa-folder-open mr-1"></i> File upload</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="email"><i class="fas fa-envelope mr-1"></i> Email</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="website"><i class="fas fa-link mr-1"></i> Website</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="name"><i class="fas fa-male mr-1"></i> Name</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="phone"><i class="fas fa-phone-square mr-1"></i> Phone</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="fax"><i class="fas fa-fax mr-1"></i> Fax</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="button"><i class="fab fa-bimobject mr-1"></i> Button</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="autocomplete"><i class="fas fa-list-ol mr-1"></i> Autocomplete</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="sectionbreak"><i class="fas fa-code mr-1"></i> Section break</li>
+                    <li class="card-box-sidebar-item form-element p-1" data-type="address"><i class="fas fa-address-card mr-1"></i> Address</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sub-menu-left-tab-input-special scroll-css">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 position-relative p-1" style="background-color: #FFF29D">
+                <span class="font-weight-bold">Special html</span>
+                <div class="close-sub-menu-left">
+                    <i class="fas fa-thumbtack mr-1 fixed-sub-container"></i>
+                    <i class="fas fa-times colse-sub-container"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <!--locality: control địa bàn-->
+                <div class="card-box card-box-sidebar-item form-element" data-type="multipleadress">
+                    Địa bàn
+                    <div class="" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+                <!--radioimplementationtype: control loại thực hiện khuyến mãi-->
+                <div class="card-box card-box-sidebar-item form-element" data-type="radioimplementationtype">
+                    Loại thực hiện khuyến mại
+                    <div class="" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+                <!--checkcollapse: control nội dung điều chỉnh-->
+                <div class="card-box card-box-sidebar-item form-element" data-type="checkcollapse">
+                    Nội dung điều chỉnh
+                    <div class="" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+                <!--tableprizestructue: table co cau giai thuong-->
+                <div class="card-box card-box-sidebar-item form-element" data-type="tableprizestructue">
+                    Table cơ cấu giải thưởng
+                    <div class="" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+                <!--tableprizestructue: table co cau giai thuong-->
+                <div class="card-box card-box-sidebar-item form-element mt-3" data-type="tabledetailpromotion">
+                    Table chi tiết chương trình khuyến mại
+                    <div class="" style="border:dashed 1px #333; height: 26px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+@*<section class="sub-menu-left-tab-table scroll-css">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 position-relative p-1" style="background-color: #FFF29D">
+                    <span class="font-weight-bold">Table</span>
+                    <div class="close-sub-menu-left">
+                        <i class="fas fa-thumbtack mr-1 fixed-sub-container"></i>
+                        <i class="fas fa-times colse-sub-container"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2 hidden">
+                <div class="col-md-12">
+                    <div class="card-box card-box-sidebar-item table-element" style="border:dashed 1px #333; cursor: move">
+                        Table
+                        <table class="table-item" data-type="label"></table>
+                    </div>
+                    <div class="card-box card-box-sidebar-item table-element" style="border:dashed 1px #333;cursor: move">
+                        Table Header
+                        <table class="table-item" data-type="label"></table>
+                    </div>
+                    <div class="card-box card-box-sidebar-item table-element" style="border:dashed 1px #333;cursor: move">
+                        Table Body
+                        <table class="table-item" data-type="label"></table>
+                    </div>
+                    <div class="card-box card-box-sidebar-item table-element" style="border:dashed 1px #333;cursor: move">
+                        Table Footer
+                        <table class="table-item" data-type="label"></table>
+                    </div>
+                    <div class="card-box card-box-sidebar-item table-element" style="border:dashed 1px #333;cursor: move">
+                        Table Row
+                        <table class="table-item" data-type="label"></table>
+                    </div>
+                    <div class="card-box card-box-sidebar-item table-element" style="border:dashed 1px #333;cursor: move">
+                        Table Cell
+                        <table class="table-item" data-type="label"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div id="hoverTableCont">
+                        <div class="hoverTable">
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="1"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="1"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="2"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="2"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="3"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="3"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="4"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="4"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="5"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="5"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="6"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="6"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="7"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="7"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="8"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="8"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="9"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="9"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="10"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="10"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="11"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="11"><div>x</div></div>
+                            </div>
+                            <div class="tableRow">
+                                <div class="tableCell" data-iksz="1" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="2" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="3" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="4" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="5" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="6" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="7" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="8" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="9" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="10" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="11" data-ipsz="12"><div>x</div></div>
+                                <div class="tableCell" data-iksz="12" data-ipsz="12"><div>x</div></div>
+                            </div>
+                        </div>
+                        <div id="tableDimmensions" style="left: -58px; top: -188px;">1 x 1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2" id="div-demo"></div>
+            <div class="row mt-2">
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        <div class="col-md-4"><label>Border</label></div>
+                        <div class="col-md-8"><input class="form-control form-control-sm" type="text" id="border-property-table" value="1" /></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        <div class="col-md-4"><label>Type border</label></div>
+                        <div class="col-md-8"><select class="form-control form-control-sm" id="typeborder-property-table">
+                            <option value="none">none</option>
+                            <option value="hidden">hidden</option>
+                            <option value="dotted">dotted</option>
+                            <option value="dashed" selected>dashed</option>
+                            <option value="solid">solid</option>
+                            <option value="double">double</option>
+                            <option value="groove">groove</option>
+                            <option value="ridge">ridge</option>
+                            <option value="inset">inset</option>
+                            <option value="outset">outset</option>
+                            <option value="initial">initial</option>
+                            <option value="inherit">inherit</option>
+                        </select></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        <div class="col-md-4"><label>Color border </label></div>
+                        <div class="col-md-8"><input class="form-control form-control-sm" type="text" id="colorborder-property-table" value="#c8c8c8" /></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        <div class="col-md-4"><label>Width</label></div>
+                        <div class="col-md-8"><input class="form-control form-control-sm" type="text" placeholder="px / %" id="width-property-table" /></div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        <div class="col-md-4"><label>Cell Padding</label></div>
+                        <div class="col-md-8"><input class="form-control form-control-sm" type="text" id="cellpadding-property-table" /></div>
+                    </div>
+
+
+                </div>
+                <div class="form-group col-md-12">
+                    <button type="button" class="btn btn-success btn-sm" id="btnApplyFormTable">Apply</button>
+                </div>
+                <div class="form-group col-md-12">
+                    <div id="div-initialize-table" class="card-box card-box-sidebar-item div-table ui-draggable highlight ui-draggable-handle"> <!--div-column-->
+                        Table Container <!-- type-column-->
+                        <div class="row-item type-table table-responsive form-item" data-type="table" style="border:dashed 1px #333; min-height: 26px"><!--data-type="column"-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+@*<section class="sub-menu-left-formSettings scroll-css">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 position-relative p-1" style="background-color: #FFF29D">
+                    <span class="font-weight-bold">Form setting</span>
+                    <div class="close-sub-menu-left">
+                        <i class="fas fa-thumbtack mr-1 fixed-sub-container"></i>
+                        <i class="fas fa-times colse-sub-container"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control form-control-sm" id="inputAddress" value="My form">
+                    </div>
+                    <div class="form-group">
+                        <label>Font size</label>
+                        <select class="form-control form-control-sm">
+                            <option selected>14px</option>
+                            <option>13px</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Font face</label>
+                        <input type="text" class="form-control form-control-sm" value="Helvetica Neue, Helvetica, Arial, sans-serif">
+                    </div>
+                    <div class="form-group">
+                        <label>Notification email</label>
+                        <input type="text" class="form-control form-control-sm" value="thanhnguyen.nguyen89@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-sm" id="btnApplyForm">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@

@@ -1,0 +1,28 @@
+﻿13:10:00,226 [9] ERROR Host.WcfService.MainModule - Sequence contains no elements
+Extra Info: (null)
+16:02:03,858 [18] ERROR Host.WcfService.MainModule - Object reference not set to an instance of an object.
+Extra Info: (null)
+16:02:19,977 [18] ERROR Host.WcfService.MainModule - Object reference not set to an instance of an object.
+Extra Info: (null)
+16:02:39,421 [18] ERROR Host.WcfService.MainModule - Object reference not set to an instance of an object.
+Extra Info: (null)
+16:02:45,516 [18] ERROR Host.WcfService.MainModule - Object reference not set to an instance of an object.
+Extra Info: (null)
+16:07:08,727 [18] ERROR Host.WcfService.MainModule - Invalid JSON primitive: ata":"3oxf1XOOybQNpM43hH6elKFofbeX2o2I7a7B/llYryF8g5YG469aJdlHqjLKwvVXZTIoAtAAOS9aTTWcUfU2ND076CK4nwZf9QYFzZb11tFDE8lTGOmS55tbSxM6cVrBLL/fk4LU2B/S/fER1mv6O2VcdeMUPlImn8vrswdhdO y7 3NDTNC7vd4tQqVMnmrauEETbXBex4QDRFgkpLNdbowufbyFvgrHN4uLzwcg04sfU3RKn5 lbvxIqTYSjqhBmQBPF0iV HrL8srcqvirbLDp5KuUlvfpPWp0NXMc LzvDWhtzVmcelJdU/ZdUTlRQCgMwCYooM8rq/uY3lwGQ==","signature":"sgaS/XsgRL9MiabWfnDF9g/sd2I98flnd6IVCMEFHiZ5bY7c0MKyrc3dAdPDHs2wLu5fr5igB9RF1OFZFn04kboK4Iec/dTNR50dSXx08DRAwBevLRY2/cakZyDeuqJ2gH7KitIz6HB5CuORBHg/aYdgyWE7yyIV3k46hHcMc00="}".
+Extra Info: (null)
+16:07:16,964 [18] ERROR Host.WcfService.MainModule - Invalid JSON primitive: ata":"3oxf1XOOybQNpM43hH6elKFofbeX2o2I7a7B/llYryF8g5YG469aJdlHqjLKwvVXZTIoAtAAOS9aTTWcUfU2ND076CK4nwZf9QYFzZb11tFDE8lTGOmS55tbSxM6cVrBLL/fk4LU2B/S/fER1mv6O2VcdeMUPlImn8vrswdhdO y7 3NDTNC7vd4tQqVMnmrauEETbXBex4QDRFgkpLNdbowufbyFvgrHN4uLzwcg04sfU3RKn5 lbvxIqTYSjqhBmQBPF0iV HrL8srcqvirbLDp5KuUlvfpPWp0NXMc LzvDWhtzVmcelJdU/ZdUTlRQCgMwCYooM8rq/uY3lwGQ==","signature":"sgaS/XsgRL9MiabWfnDF9g/sd2I98flnd6IVCMEFHiZ5bY7c0MKyrc3dAdPDHs2wLu5fr5igB9RF1OFZFn04kboK4Iec/dTNR50dSXx08DRAwBevLRY2/cakZyDeuqJ2gH7KitIz6HB5CuORBHg/aYdgyWE7yyIV3k46hHcMc00="}".
+Extra Info: (null)
+17:27:28,793 [37] ERROR Host.WcfService.MainModule - String was not recognized as a valid DateTime.
+Extra Info: (null)
+17:28:21,696 [37] ERROR Host.WcfService.MainModule - Value was either too large or too small for an Int32.
+Extra Info: (null)
+17:56:47,939 [37] ERROR Host.WcfService.MainModule - Value was either too large or too small for an Int32.
+Extra Info: (null)
+17:57:07,199 [73] ERROR Host.WcfService.MainModule - Value was either too large or too small for an Int32.
+Extra Info: (null)
+17:58:04,573 [73] ERROR Host.WcfService.MainModule - Value was either too large or too small for an Int32.
+Extra Info: (null)
+18:12:23,077 [92] ERROR Host.WcfService.MainModule - Sequence contains no elements
+Extra Info: (null)
+18:13:53,776 [92] ERROR Host.WcfService.MainModule - Sequence contains no elements
+Extra Info: (null)

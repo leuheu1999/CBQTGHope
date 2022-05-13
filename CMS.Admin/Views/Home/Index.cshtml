@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Quản lý danh sách Eform";
+    Layout = "~/Views/Shared/_LayoutEform.cshtml";
+}
+@using Newtonsoft.Json;
+@model EForm.Entities.Domain.EFormMapAdd
+<input type="hidden" id="inp-EFormID" value="@Model.EFormID" />
+<section class="content-main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-fixed-left-3">
+                @Html.Action("PartialLeftMenu", "Home")
+            </div>
+            <div class="col-md-12 col-fixed-9">
+                <div class="col-content bg-white scroll-css">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#form-designer" role="tab" aria-controls="home" aria-selected="true">Designer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="btn-preview-form" data-toggle="tab" href="#form-preview" role="tab" aria-controls="profile" aria-selected="false">Preview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="btn-cod-javacript" data-toggle="tab" href="#code-javascript" role="tab" aria-controls="profile" aria-selected="false">Code javacript</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent" style="padding:0 20px;">
+                        <div class="tab-pane fade show active" id="form-designer" role="tabpanel" aria-labelledby="home-tab">
+                            <form id="card-box-form-container" class="card-box-form-container" role="form">
+                                <div class="card-box-formgroup-container" style="padding: 3px 3px 200px 3px; margin-top:10px;height:100%; min-height:700px;">
+                                    @Html.Raw(HttpUtility.HtmlDecode(Model.HTMLEdit))
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="form-preview" role="tabpanel" aria-labelledby="btn-preview-form">...</div>
+                        <div class="tab-pane fade" id="code-javascript" role="tabpanel" aria-labelledby="btn-cod-javacript"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-fixed-right-3">
+                @Html.Partial("_PartialRightMenu")
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/eform.js"></script>
+<script>
+        $(document).ready(function () {
+            if (Common.Empty(Common.EForm)) {
+                Common.EForm = new EForm({
+                    URL: {
+                        CBOUseList: '@Url.Action("CBOUsePresetList", "Home")'
+                    }
+                });
+            }
+            else {
+                Common.EForm.RegisterEvent();
+            }
+          var tempGenHtml = '@Html.Raw(ViewBag.GenHtml != null ? JsonConvert.SerializeObject(ViewBag.GenHtml) : "")';
+            if (tempGenHtml) {
+                Common.EForm.GenHtml = JSON.parse(unescape(tempGenHtml).replace(/\\/gi, '/').replace(/\s+/g, ' '));
+            }
+     });
+</script>

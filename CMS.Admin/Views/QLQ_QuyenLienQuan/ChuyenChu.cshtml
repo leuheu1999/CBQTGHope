@@ -1,0 +1,794 @@
+﻿@using CMS.Admin.Common
+@using Module.Framework.Common;
+@model CMS.Admin.Models.QLQ_ChuyenChuViewModel
+@{
+
+    ViewBag.Title = "Chuyển chủ sở hữu quyền liên quan";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<script src="~/Scripts/QLQ_QuyenLienQuan/QLQ_ChuyenChu_ThemMoi.js"></script>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">@ViewBag.TieuDe</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tab-info">Thông tin tác phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab-thaydoi">Thông tin thay đổi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab-dinhkem">Tệp đính kèm</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="form-update">
+                <div class="tab-pane fade active show default" id="tab-info">
+                    <div class="form-row mt-3" id="form-update-tt-tacpham">
+                        <div class="hidden">
+                            @*@Html.HiddenFor(model => model.QuyenLienQuan.QuyenLienQuanID)*@
+                            @Html.HiddenFor(model => model.QuyenLienQuan.SoLanDoiChu)
+                            @Html.HiddenFor(model => model.QuyenLienQuan.HoSoID)
+                            @Html.HiddenFor(model => model.QuyenLienQuan.StaticID)
+                            <input id="QuyenLienQuanID" name="QuyenLienQuanID" type="hidden" value="@Model.QuyenLienQuan.QuyenLienQuanID">
+                            <input id="KeyPage" name="KeyPage" type="hidden" value="ChuyenChu">
+                        </div>
+                        <div class="form-group col-md-9">
+                            @if (Model.QuyenLienQuan.IsDauKy == false)
+                            {
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Số TT<span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.ChuyenChu.STT, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số thứ tự",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số thứ tự!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số thứ tự không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số thứ tự không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số thứ tự không quá 50 ký tự!!!",
+                                            @disabled = "disabled"
+                                        })
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Số GCN <span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.ChuyenChu.SoGCN, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số giấy chứng nhận",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số giấy chứng nhận!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số giấy chứng nhận không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số giấy chứng nhận không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số giấy chứng nhận không quá 50 ký tự!!!",
+                                            disabled = "disabled"
+                                        })
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Ngày cấp<span class="text-danger">(*)</span></label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.ChuyenChu.NgayCapGCN, new
+                                            {
+                                                @class = "form-control form-control-sm w-50 datepicker-share",
+                                                @placeholder = "Nhập ngày cấp",
+                                                @data_rule_required = "true",
+                                                @data_msg_required = "Vui lòng nhập ngày cấp!!!",
+                                            })
+                                            <div class="input-group-prepend">
+                                                <label for="ChuyenChu_NgayCapGCN" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Số TT<span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.QuyenLienQuan.STT, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số thứ tự",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số thứ tự!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số thứ tự không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số thứ tự không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số thứ tự không quá 50 ký tự!!!",
+                                            @disabled = "disabled"
+                                        })
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="font-weight-bold">Số GCN <span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.QuyenLienQuan.SoGCN, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số giấy chứng nhận",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số giấy chứng nhận!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số giấy chứng nhận không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số giấy chứng nhận không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số giấy chứng nhận không quá 50 ký tự!!!",
+                                            disabled = "disabled"
+                                        })
+                                    </div>
+                                    <div class="form-group col-md-1 text-right" style="margin-top: 28px">
+                                        <button type="button" class="btn btn-primary btn-block-sm btn-sm btnTimKiemGiayChungNhan">
+                                            <i class="fas fa-search mr-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Số TT<span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.ChuyenChu.STT, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số thứ tự",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số thứ tự!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số thứ tự không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số thứ tự không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số thứ tự không quá 50 ký tự!!!",
+                                        })
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Số GCN <span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.ChuyenChu.SoGCN, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số giấy chứng nhận",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số giấy chứng nhận!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số giấy chứng nhận không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số giấy chứng nhận không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số giấy chứng nhận không quá 50 ký tự!!!",
+                                        })
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Ngày cấp<span class="text-danger">(*)</span></label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.ChuyenChu.NgayCapGCN, new
+                                            {
+                                                @class = "form-control form-control-sm w-50 datepicker-share",
+                                                @placeholder = "Nhập ngày cấp",
+                                                @data_rule_required = "true",
+                                                @data_msg_required = "Vui lòng nhập ngày cấp!!!",
+                                            })
+                                            <div class="input-group-prepend">
+                                                <label for="ChuyenChu_NgayCapGCN" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Số TT<span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.QuyenLienQuan.STT, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số thứ tự",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số thứ tự!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số thứ tự không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số thứ tự không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số thứ tự không quá 50 ký tự!!!",
+                                            @disabled = "disabled"
+                                        })
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-bold">Số GCN <span class="text-danger">(*)</span></label>
+                                        @Html.TextBoxFor(model => model.QuyenLienQuan.SoGCN, new
+                                        {
+                                            @class = "form-control form-control-sm",
+                                            @placeholder = "Nhập số giấy chứng nhận",
+                                            @data_rule_required = "true",
+                                            @data_msg_required = "Vui lòng nhập số giấy chứng nhận!!!",
+                                            @data_rule_javascript = true,
+                                            @data_msg_javascript = "Số giấy chứng nhận không có đoạn Javascript không hợp lệ !!!",
+                                            @data_rule_maHtml = true,
+                                            @data_msg_maHtml = "Số giấy chứng nhận không được chứa mã HTML!!!",
+                                            @data_rule_maxlength = true,
+                                            @data_value_maxlength = 50,
+                                            @data_msg_maxlength = "Số giấy chứng nhận không quá 50 ký tự!!!",
+                                            disabled = "disabled"
+                                        })
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label class="font-weight-bold">Vùng miền <span class="text-danger">(*)</span></label>
+                                    @Html.DropDownListFor(model => model.QuyenLienQuan.VungMienID, CBODungChung.GetAllCBOTableDM("DM_VungMien"), "---Chọn---", new
+                                    {
+                                        @class = "form-control form-control-sm select2-single",
+                                        @data_rule_required = "true",
+                                        @data_msg_required = "Vui lòng chọn vùng miền!!!",
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="custom-control custom-checkbox" style="margin-top: 30px">
+                                        <input disabled="disabled" type="checkbox" class="custom-control-input" id="CoNguoiDaiDien" name="CoNguoiDaiDien" value="@(Model.QuyenLienQuan.CoNguoiDaiDien == true ? "True" : "False")" @(Model.QuyenLienQuan.CoNguoiDaiDien == true ? "checked='checked'" : "")>
+                                        <label class="custom-control-label font-weight-bold" for="CoNguoiDaiDien">Đại diện</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Ngày cấp</label>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.QuyenLienQuan.NgayCap, new
+                                              {
+                                                  @class = "form-control form-control-sm w-50 datepicker-share",
+                                                  @placeholder = "Nhập ngày cấp",
+                                                  @disabled = "disabled"
+                                              })
+                                        <div class="input-group-prepend">
+                                            <label for="NgayCap" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row sh-info-ndd @(Model.QuyenLienQuan.CoNguoiDaiDien ? "" : "hidden")">
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Họ tên<span class="text-danger">(*)</span></label>
+                                    @Html.TextBoxFor(model => model.QuyenLienQuan.NDDHoVaTen, new
+                                    {
+                                        @class = "form-control form-control-sm",
+                                        @placeholder = "Nhập họ tên",
+                                        @data_rule_required = "true",
+                                        @data_msg_required = "Vui lòng nhập họ tên!!!",
+                                        @data_rule_javascript = true,
+                                        @data_msg_javascript = "Họ tên không có đoạn Javascript không hợp lệ !!!",
+                                        @data_rule_maHtml = true,
+                                        @data_msg_maHtml = "Họ tên không được chứa mã HTML!!!",
+                                        @data_rule_maxlength = true,
+                                        @data_value_maxlength = 50,
+                                        @data_msg_maxlength = "Họ tên không quá 50 ký tự!!!",
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Số CCCD/Hộ chiếu <span class="text-danger">(*)</span></label>
+                                    @Html.TextBoxFor(model => model.QuyenLienQuan.NDDSoCMND, new
+                                    {
+                                        @class = "form-control form-control-sm",
+                                        @placeholder = "Nhập số CCCD/hộ chiếu",
+                                        @data_rule_required = "true",
+                                        @data_msg_required = "Vui lòng nhập số CCCD/hộ chiếu!!!",
+                                        @data_rule_javascript = true,
+                                        @data_msg_javascript = "Số CCCD/Hộ chiếu không có đoạn Javascript không hợp lệ !!!",
+                                        @data_rule_maHtml = true,
+                                        @data_msg_maHtml = "Số CCCD/Hộ chiếu không được chứa mã HTML!!!",
+                                        @data_rule_maxlength = true,
+                                        @data_value_maxlength = 50,
+                                        @data_msg_maxlength = "Số CCCD/Hộ chiếu không quá 50 ký tự!!!",
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                            </div>
+                            <div class="form-row sh-info-ndd @(Model.QuyenLienQuan.CoNguoiDaiDien ? "" : "hidden")">
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Địa chỉ<span class="text-danger">(*)</span></label>
+                                    @Html.TextBoxFor(model => model.QuyenLienQuan.NDDDiaChi, new
+                                    {
+                                        @class = "form-control form-control-sm",
+                                        @placeholder = "Nhập địa chỉ",
+                                        @data_rule_required = "true",
+                                        @data_msg_required = "Vui lòng nhập địa chỉ!!!",
+                                        @data_rule_javascript = true,
+                                        @data_msg_javascript = "Địa chỉ không có đoạn Javascript không hợp lệ !!!",
+                                        @data_rule_maHtml = true,
+                                        @data_msg_maHtml = "Địa chỉ không được chứa mã HTML!!!",
+                                        @data_rule_maxlength = true,
+                                        @data_value_maxlength = 200,
+                                        @data_msg_maxlength = "Địa chỉ không quá 200 ký tự!!!",
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="font-weight-bold">Số điện thoại <span class="text-danger">(*)</span></label>
+                                    @Html.TextBoxFor(model => model.QuyenLienQuan.NDDSoDienThoai, new
+                                    {
+                                        @class = "form-control form-control-sm",
+                                        @placeholder = "Nhập số điện thoại",
+                                        @data_rule_required = "true",
+                                        @data_msg_required = "Vui lòng nhập số điện thoại!!!",
+                                        @data_rule_javascript = true,
+                                        @data_msg_javascript = "Số điện thoại không có đoạn Javascript không hợp lệ !!!",
+                                        @data_rule_maHtml = true,
+                                        @data_msg_maHtml = "Số điện thoại không được chứa mã HTML!!!",
+                                        @data_rule_maxlength = true,
+                                        @data_value_maxlength = 20,
+                                        @data_msg_maxlength = "Số điện thoại không quá 20 ký tự!!!",
+                                        @data_rule_phone="true",
+                                        @data_value_regex="[^0-9+]",
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="custom-control custom-checkbox" style="margin-top: 30px">
+                                        <input disabled="disabled" type="checkbox" class="custom-control-input" id="IsToChuc" name="IsToChuc" value="@(Model.QuyenLienQuan.IsToChuc == true ? "True" : "False")" @(Model.QuyenLienQuan.IsToChuc == true ? "checked='checked'" : "")>
+                                        <label class="custom-control-label font-weight-bold" for="IsToChuc">Tổ chức</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Loại ĐK <span class="text-danger">(*)</span></label>
+                                    @Html.DropDownListFor(model => model.QuyenLienQuan.LoaiDangKyID, CBODungChung.GetAllCBOTableDM("DM_LoaiHinhDangKy"), "---Chọn---", new
+                                    {
+                                        @class = "form-control form-control-sm select2-single",
+                                        @data_rule_required = "true",
+                                        @data_msg_required = "Vui lòng chọn loại đk!!!",
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Ngày HT</label>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.QuyenLienQuan.NgayHT, new
+                                        {
+                                            @class = "form-control form-control-sm w-50 datepicker-share",
+                                            @placeholder = "Nhập ngày hoàn thành",
+                                            @disabled = "disabled"
+                                        })
+                                        <div class="input-group-prepend">
+                                            <label for="NgayHT" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Tên tác phẩm</label>
+                                    @Html.TextAreaFor(model => model.QuyenLienQuan.TenTacPham, new
+                                    {
+                                        @class = "form-control form-control-sm",
+                                        @placeholder = "Nhập tên tác phẩm",
+                                        @data_rule_javascript = true,
+                                        @data_msg_javascript = "Tên tác phẩm không có đoạn Javascript không hợp lệ !!!",
+                                        @data_rule_maHtml = true,
+                                        @data_msg_maHtml = "Tên tác phẩm không được chứa mã HTML!!!",
+                                        @data_rule_maxlength = true,
+                                        @data_value_maxlength = 100,
+                                        @data_msg_maxlength = "Tên tác phẩm không quá 100 ký tự!!!",
+                                        @rows = 5,
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-8">
+                                            <label class="font-weight-bold">Phim</label>
+                                            @Html.TextBoxFor(model => model.QuyenLienQuan.TenPhim, new
+                                            {
+                                                @class = "form-control form-control-sm",
+                                                @placeholder = "Tên phim",
+                                                @data_rule_javascript = true,
+                                                @data_msg_javascript = "Tên phim không có đoạn Javascript không hợp lệ !!!",
+                                                @data_rule_maHtml = true,
+                                                @data_msg_maHtml = "Tên phim không được chứa mã HTML!!!",
+                                                @data_rule_maxlength = true,
+                                                @data_value_maxlength = 100,
+                                                @data_msg_maxlength = "Tên phim không quá 100 ký tự!!!",
+                                                @disabled = "disabled"
+                                            })
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">Công bố </label>
+                                            @Html.DropDownListFor(model => model.QuyenLienQuan.TrangThaiCongBoID, CBODungChung.GetAllCBOTableDM("DM_TrangThaiCongBo"), "---Chọn---", new { @class = "form-control form-control-sm select2-single", @disabled = "disabled" })
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">Ngày</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.QuyenLienQuan.NgayCongBo, new
+                                                      {
+                                                          @class = "form-control form-control-sm w-50 datepicker-share",
+                                                          @placeholder = "Nhập ngày công bố",
+                                                          @disabled = "disabled"
+                                                      })
+                                                <div class="input-group-prepend">
+                                                    <label for="NgayCongBo" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Loại hình </label>
+                                    @Html.DropDownListFor(model => model.QuyenLienQuan.LoaiHinhID, CBODungChung.GetCBOLoaiHinhTacPham("2"), "---Chọn---", new { @class = "form-control form-control-sm select2-single", @disabled = "disabled" })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="font-weight-bold">Nơi công bố</label>
+                                    @Html.TextBoxFor(model => model.QuyenLienQuan.NoiCongBo, new
+                                    {
+                                        @class = "form-control form-control-sm",
+                                        @placeholder = "Nhập nơi công bố",
+                                        @data_rule_javascript = true,
+                                        @data_msg_javascript = "Nơi công bố không có đoạn Javascript không hợp lệ !!!",
+                                        @data_rule_maHtml = true,
+                                        @data_msg_maHtml = "Nơi công bố không được chứa mã HTML!!!",
+                                        @data_rule_maxlength = true,
+                                        @data_value_maxlength = 200,
+                                        @data_msg_maxlength = "Nơi công bố không quá 200 ký tự!!!",
+                                        @disabled = "disabled"
+                                    })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="font-weight-bold">Hình ảnh</label>
+                            <div data="image-box" style="margin-top:10px;">
+                                @if (!string.IsNullOrEmpty(Model.QuyenLienQuan.HinhDaiDienUrl))
+                                {
+                                    <img id="HinhDaiDienUrl" name="HinhDaiDienUrl" src="@Model.QuyenLienQuan.HinhDaiDienUrl" style="object-fit: contain; width: 100%" />
+                                }
+                                else
+                                {
+                                    <img id="HinhDaiDienUrl" name="HinhDaiDienUrl" src="~/Content/images/default-image_800.png" style="object-fit: contain; width: 100%" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-success btn-sm btn-block-sm mt-md-0 mt-sm-2 btnThemNguoiBieuDienChuSoHuuMap"><i class="fas fa-plus"></i> Thêm mới người biểu diễn, chủ sở hữu</button>
+                    </div>
+                    <div class="mt-3">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Thông tin người biểu diễn</label>
+                            <table id="tableNguoiBieuDien" class="table table-hover mb-0 table-striped table-mobile table-bordered mt-1">
+                                <thead>
+                                    <tr class="bg-info text-white">
+                                        <th width="250">Họ tên </th>
+                                        <th width="150">Quốc tịch</th>
+                                        <th width="150">CCCD/Hộ chiếu</th>
+                                        <th width="300">Địa chỉ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.QuyenLienQuan.ListNguoiBieuDien != null && Model.QuyenLienQuan.ListNguoiBieuDien.Count > 0)
+                                    {
+                                        foreach (var item in Model.QuyenLienQuan.ListNguoiBieuDien)
+                                        {
+                                            <tr>
+                                                <td data-label="Họ tên" onclick="Common.QLQ_QuyenLienQuan_SearchCongDan.DetailCongDan(@item.NguoiBieuDienID)">@Html.Raw(item.HoVaTen ?? "&nbsp;")</td>
+                                                <td data-label="Quốc tịch">@Html.Raw(item.QuocTich ?? "&nbsp;")</td>
+                                                <td data-label="CCCD/Hộ chiếu">@Html.Raw(item.SoCMND ?? "&nbsp;")</td>
+                                                <td data-label="Địa chỉ">@Html.Raw(item.DiaChi ?? "&nbsp;")</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="alert alert-info mt-3" role="alert">
+                                                    Không có dữ liệu
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Thông tin chủ sở hữu</label>
+                            @*<button type="button" class="btn btn-success btn-sm btn-block-sm mt-md-0 mt-sm-2 btnThemChuSoHuuMap" style="float: right"><i class="fas fa-plus"></i>Thêm mới</button>*@
+                            <table id="tableChuSoHuu" class="table table-hover mb-0 table-striped table-mobile table-bordered mt-1">
+                                <thead>
+                                    <tr class="bg-info text-white">
+                                        <th width="250">Họ tên </th>
+                                        <th width="150">Quốc tịch</th>
+                                        <th width="150">CCCD/Hộ chiếu</th>
+                                        <th width="150">ĐKKD</th>
+                                        <th width="300">Địa chỉ</th>
+                                        <th width="50">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.QuyenLienQuan.ListChuSoHuu != null && Model.QuyenLienQuan.ListChuSoHuu.Count > 0)
+                                    {
+                                        foreach (var item in Model.QuyenLienQuan.ListChuSoHuu)
+                                        {
+                                            <tr data-id="@item.ChuSoHuuID" data-name="@item.HoVaTen" data-country="@item.QuocTich" data-cccd="@item.SoCMND" data-address="@item.DiaChi" data-dkkd="@item.SoDKKD" class="trChuSoHuu cursor">
+                                                <td data-label="Họ tên" onclick="Common.QLQ_QuyenLienQuan_SearchCongDan.DetailCongDan(@item.ChuSoHuuID)">@Html.Raw(item.HoVaTen ?? "&nbsp;")</td>
+                                                <td data-label="Quốc tịch">@Html.Raw(item.QuocTich ?? "&nbsp;")</td>
+                                                <td data-label="CCCD/Hộ chiếu">@Html.Raw(item.SoCMND ?? "&nbsp;")</td>
+                                                <td data-label="Số ĐKKD">@Html.Raw(item.SoDKKD ?? "&nbsp;")</td>
+                                                <td data-label="Địa chỉ">@Html.Raw(item.DiaChi ?? "&nbsp;")</td>
+                                                <td data-label="Thao tác" class="text-center">
+                                                    <button title="Xóa chủ sở hữu" data-id="@item.ChuSoHuuID" class="btn btn-danger btn-sm" type="button" onclick="Common.QLQ_QuyenLienQuan_SearchCongDan.RemovedChuSoHuu(@item.ChuSoHuuID)"><i class="far fa-trash-alt"></i></button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="6">
+                                                <div class="alert alert-info mt-3" role="alert">
+                                                    Không có dữ liệu
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-row mt-5" id="form-update-tt-chuyenchu">
+                        <div class="hidden">
+                            @Html.HiddenFor(model => model.ChuyenChu.ChuyenChuSoHuuID)
+                            @Html.HiddenFor(model => model.ChuyenChu.QuyenLienQuanID)
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="font-weight-bold">Thông tin chuyển chủ sở hữu</label>
+                            @Html.TextAreaFor(model => model.ChuyenChu.ThongTinChuyenChuSoHuu, new
+                            {
+                                @class = "form-control form-control-sm",
+                                @placeholder = "Nhập thông tin chuyển chủ sở hữu",
+                                @data_rule_javascript = true,
+                                @data_msg_javascript = "Thông tin chuyển chủ sở hữu không có đoạn Javascript không hợp lệ !!!",
+                                @data_rule_maHtml = true,
+                                @data_msg_maHtml = "Thông tin chuyển chủ sở hữu không được chứa mã HTML!!!",
+                                @data_rule_maxlength = true,
+                                @data_value_maxlength = 200,
+                                @data_msg_maxlength = "Thông tin chuyển chủ sở hữu không quá 200 ký tự!!!",
+                                @rows = 5
+                            })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="font-weight-bold">Lý do chuyển chủ sở hữu</label>
+                            @Html.TextAreaFor(model => model.ChuyenChu.LyDoChuyenChuSoHuu, new
+                            {
+                                @class = "form-control form-control-sm",
+                                @placeholder = "Nhập lý do chuyển chủ sở hữu",
+                                @data_rule_javascript = true,
+                                @data_msg_javascript = "Lý do chuyển chủ sở hữu không có đoạn Javascript không hợp lệ !!!",
+                                @data_rule_maHtml = true,
+                                @data_msg_maHtml = "Lý do chuyển chủ sở hữu không được chứa mã HTML!!!",
+                                @data_rule_maxlength = true,
+                                @data_value_maxlength = 200,
+                                @data_msg_maxlength = "Lý do chuyển chủ sở hữu không quá 200 ký tự!!!",
+                                @rows = 5
+                            })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-group">
+                                <label class="font-weight-bold">Người ký </label>
+                                @Html.DropDownListFor(model => model.ChuyenChu.NguoiKyID, CBODungChung.GetAllCBOTableDM("DM_NguoiKy"), "---Chọn---", new
+                                {
+                                    @class = "form-control form-control-sm select2-single"
+                                })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Ngày ký</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.ChuyenChu.NgayKy, new
+                                          {
+                                              @class = "form-control form-control-sm w-50 datepicker-share",
+                                              @placeholder = "Nhập ngày ký"
+                                          })
+                                    <div class="input-group-prepend">
+                                        <label for="CapLai_NgayKy" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12 text-right">
+                            @*@if (Model.ChuyenChu.ChuyenChuSoHuuID > 0)
+                                {
+                                    <button type="button" class="btn btn-success btn-sm btn-block-sm mt-md-0 mt-sm-2 btnSubmitDuyet"><i class="fa fa-check-circle mr-1"></i> Duyệt</button>
+                                    <button type="button" class="btn btn-danger btn-sm btn-block-sm mt-md-0 mt-sm-2 btnSubmitKhongDuyet"><i class="fa fa-ban mr-1"></i> Không duyệt</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-success btn-sm btn-block-sm mt-md-0 mt-sm-2 btnSubmitNewCapNhat"><i class="far fa-save mr-1"></i> Lưu</button>
+                                }*@
+                            <button type="button" class="btn btn-success btn-sm btn-block-sm mt-md-0 mt-sm-2 btnSubmitNewCapNhat"><i class="far fa-save mr-1"></i> Lưu</button>
+                            <button type="button" class="btn btn-primary text-white btn-sm btn-block-sm" id="btn-exportWord">In file</button>
+                            <button type="button" class="btn btn-secondary btn-block-sm btn-sm mt-md-0 mt-sm-2 text-white btnClose"> Trở về</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab-thaydoi">
+                    <div class="mt-3">
+                        <div class="form-group">
+                            <label class="font-weight-bold">Quá trình cấp/Thu hồi giấy chứng nhận</label>
+                            <div class="form-group">
+                                <table id="tableLichSuThayDoi" class="table table-hover mb-0 table-striped table-mobile table-bordered mt-1">
+                                    <thead>
+                                        <tr class="bg-info text-white">
+                                            <th width="50">STT</th>
+                                            <th width="100">Số GCN </th>
+                                            <th width="100">Loại</th>
+                                            <th width="350">Lý do</th>
+                                            <th width="100">Người ký</th>
+                                            <th width="100">Ngày ký</th>
+                                            <th width="100">Người nhập</th>
+                                            <th width="100">Ngày nhập</th>
+                                            <th width="100">Người chỉnh sửa cuối</th>
+                                            <th width="100">Ngày chỉnh sửa cuối</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model != null && Model.QuyenLienQuan.ListLichSu != null && Model.QuyenLienQuan.ListLichSu.Count > 0)
+                                        {
+                                            foreach (var item in Model.QuyenLienQuan.ListLichSu)
+                                            {
+                                                <tr>
+                                                    <td data-label="STT">@Html.Raw(item.STT ?? "&nbsp;")</td>
+                                                    <td data-label="Số GCN">@Html.Raw(item.SoGCN ?? "&nbsp;")</td>
+                                                    <td data-label="Loại">@Html.Raw(item.TenLoai ?? "&nbsp;")</td>
+                                                    <td data-label="Lý do">@Html.Raw(item.LyDo ?? "&nbsp;")</td>
+                                                    <td data-label="Người ký">@Html.Raw(item.NguoiKy ?? "&nbsp;")</td>
+                                                    <td data-label="Ngày ký">@Html.Raw(item.NgayKy ?? "&nbsp;")</td>
+                                                    <td data-label="Người nhập">@Html.Raw(item.NguoiNhap ?? "&nbsp;")</td>
+                                                    <td data-label="Ngày nhập">@Html.Raw(item.NgayNhap ?? "&nbsp;")</td>
+                                                    <td data-label="Người chỉnh sửa cuối">@Html.Raw(item.NguoiChinhSuaCuoi ?? "&nbsp;")</td>
+                                                    <td data-label="Ngày chỉnh sửa cuối">@Html.Raw(item.NgayChinhSuaCuoi ?? "&nbsp;")</td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="10">
+                                                    <div class="alert alert-info mt-3" role="alert">
+                                                        Không có dữ liệu
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab-dinhkem">
+                    <div class="mt-3">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <table id="tableTepDinhKem" class="table table-hover mb-0 table-striped table-mobile table-bordered mt-1">
+                                    <thead>
+                                        <tr class="bg-info text-white">
+                                            <th width="50" class="text-center">STT</th>
+                                            <th width="250">Tên tập tin </th>
+                                            <th width="100">Người đính kèm</th>
+                                            <th width="100">Tag</th>
+                                            <th width="300">Ghi chú</th>
+                                            <th width="200">Tập tin</th>
+                                            <th width="100">Ngày đính kèm</th>
+                                            <th width="80" class="text-center">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.ChuyenChu.ListDinhKem != null && Model.ChuyenChu.ListDinhKem.Count > 0)
+                                        {
+                                            var stt = 0;
+                                            foreach (var item in Model.ChuyenChu.ListDinhKem)
+                                            {
+                                                stt += 1;
+                                                <tr data-id="@item.DinhKemID" data-stt="@stt" data-name="@item.Ten" data-user="@item.CreatedUser" data-tag="@item.Tag" data-note="@item.GhiChu" data-tenfile="@item.TenFile" data-url="@item.DuongDan" data-date="@item.CreatedDate" data-motcua="@item.IsMotCua" class="trDinhKem cursor">
+                                                    <td data-label="STT" class="tab-dinhkem-number text-center">@Html.Raw(stt.ToString() ?? "&nbsp;")</td>
+                                                    <td data-label="Tên tập tin">@Html.Raw(item.Ten ?? "&nbsp;")</td>
+                                                    <td data-label="Người đính kèm">@Html.Raw(item.CreatedUser ?? "&nbsp;")</td>
+                                                    <td data-label="Tag">@Html.Raw(item.Tag ?? "&nbsp;")</td>
+                                                    <td data-label="Ghi chú">@Html.Raw(item.GhiChu ?? "&nbsp;")</td>
+                                                    @*<td data-label="Tập tin"><a href="@item.DuongDan" target="_blank" download="@item.Ten">@Html.Raw(item.TenFile ?? "&nbsp;")</a></td>*@
+                                                    <td data-label="Tập tin"><a href="javascript:void(0);" class="btn-view-file" data-url="@item.DuongDan" data-motcua="@item.IsMotCua" download="@item.Ten">@Html.Raw(item.TenFile ?? "&nbsp;")</a></td>
+                                                    <td data-label="Ngày đính kèm">@Html.Raw(item.CreatedDate ?? "&nbsp;")</td>
+                                                    <td class="text-center" data-label="Thao tác">
+                                                        @if (!item.IsMotCua)
+                                                        {
+                                                            <button title="Xóa" class="btn btn-danger btn-sm btn-xoa-tepdinhkem"><i class="far fa-trash-alt"></i></button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <button title="Xóa" class="btn btn-danger btn-sm disabled"><i class="far fa-trash-alt"></i></button>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr class="tab-dinhkem-none">
+                                                <td colspan="8">
+                                                    <div class="alert alert-info mt-3" role="alert">
+                                                        Không có dữ liệu
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 mt-2 text-right">
+                                    <button type="button" class="btn btn-success btn-block-sm btn-sm mt-md-0 mt-sm-2 btnThemDinhKemMap">
+                                        <i class="fas fa-plus mr-1"></i> Thêm đính kèm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.QLQ_ChuyenChu_ThemMoi)) {
+            Common.QLQ_ChuyenChu_ThemMoi = new QLQ_ChuyenChu_ThemMoi({
+                Url: {
+                    Index: '@Url.Action("Index", "QLQ_QuyenLienQuan")',
+                    IndexHoSo: '@Url.Action("Index", "HoSo")',
+                    IndexCapSo: '@Url.Action("Index", "HS_CapSo")',
+                    SaveChuyenChu: '@Url.Action("SaveChuyenChu", "QLQ_QuyenLienQuan")',
+                    CapSo: '@Url.Action("CapSo", "QLQ_QuyenLienQuan")',
+                    Duyet: '@Url.Action("Duyet", "Print")',
+                    ExportWordPdf: '@Url.Action("ExportFileWord", "Print")',
+                    ViewFile: '@Url.Action("ViewPDF", "QLQ_QuyenLienQuan")',
+                },
+            });
+        }
+        else {
+            Common.QLQ_ChuyenChu_ThemMoi.RegisterEvent();
+        }
+        $('#idFormSearchCongDan').find("input[name='Key']").val('ChuyenChu');
+    });
+</script>
+@{Html.RenderPartial("DialogSearchGiayChungNhan/Index");}
+@*@{Html.RenderPartial("DialogSearchChuSoHuu/Index");}*@
+@{Html.RenderPartial("DialogSearchCongDan/Index");}
+@{Html.RenderPartial("DialogSearchDinhKem/Index");}
+

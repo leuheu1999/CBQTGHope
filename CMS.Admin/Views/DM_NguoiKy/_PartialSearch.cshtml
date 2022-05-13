@@ -1,0 +1,30 @@
+﻿@model Business.Entities.Domain.DM_NguoiKyMapParam
+
+@using (Ajax.BeginForm("TimKiem", "DM_NguoiKy", null, new AjaxOptions
+{
+    UpdateTargetId = "dm-NguoiKy-result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.DM_NguoiKy.BeforeSend",
+    OnSuccess = "Common.DM_NguoiKy.Success",
+    OnFailure = "Common.DM_NguoiKy.Error"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+
+{
+<div class="hidden">
+    @Html.HiddenFor(m => m.PageIndex)
+    @Html.HiddenFor(m => m.PageSize)
+</div>
+    <div class="input-group">
+        @Html.TextBoxFor(m => m.TuKhoa, new { @class = "form-control form-control-sm w-50", @placeholder = "Nhập từ khóa cần tìm" })
+    </div>
+    <div class="d-flex mt-2 justify-content-end">
+        @*<div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check-is-active-search">
+                <label class="form-check-label" for="check-is-active-search">Hoạt động</label>
+            </div>*@
+        <div class="d-flex">
+            <button class="btn btn-secondary btn-sm text-white" id="btnFormSearch"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+            <button class="btn btn-success btn-sm text-white ml-2" id="btnAddForm"><i class="fas fa-plus mr-1"></i> Thêm mới</button>
+        </div>
+    </div>
+}

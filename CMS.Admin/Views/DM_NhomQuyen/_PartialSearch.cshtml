@@ -1,0 +1,22 @@
+﻿@model Business.Entities.Domain.DM_NhomQuyenParam
+@using (Ajax.BeginForm("ListDMNhomQuyen", "DM_NhomQuyen", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.DMNhomQuyen.BeforeSend",
+    OnSuccess = "Common.DMNhomQuyen.Success",
+    OnFailure = "Common.DMNhomQuyen.Error"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+
+    <div class="hidden">
+        @Html.HiddenFor(m => m.PageIndex)
+        @Html.HiddenFor(m => m.PageSize)
+    </div>
+    <div class="input-group">
+        @Html.TextBoxFor(m => m.TuKhoa, new { @class = "form-control form-control-sm w-50", @placeholder = "Nhập thông tin cần tìm" })
+        <div class="input-group-prepend">
+            <button class="btn btn-info btn-sm text-white" type="submit" id="btnFormSearch"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+        </div>
+    </div>
+}

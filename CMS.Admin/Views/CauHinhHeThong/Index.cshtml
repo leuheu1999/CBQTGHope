@@ -1,0 +1,266 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Cấu hình hệ thống";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model Business.Entities.Domain.CauHinhHeThongAll
+<script src="~/Scripts/CauHinhHeThong.js"></script>
+@section Breadcrumb
+{
+    <section class="content-header mb-3">
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="active">Cấu hình hệ thống</li>
+        </ol>
+    </section>
+}
+@if (Model != null)
+{
+    <form role="form" id="form-update" class="w-100">
+        @Html.HiddenFor(model => model.cauhinhhethong.ID)
+        <div class="card bg-white w-100">
+            <div class="card-header">
+                <h4 class="card-title">CẤU HÌNH CHUNG</h4>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                        @*<li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>*@
+                        <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Số hàng hiển thị khi load danh sách tìm kiếm</label>
+                            @Html.TextBoxFor(model => model.cauhinhhethong.SoHangHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập số hàng hiển thị", @onkeypress = "Common.ValidateDecimal(event, this);" })
+                            <div class="field-validation-error errorsohanghienthi invalid-feedback"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Tiêu đề trang mặc định</label>
+                            @Html.TextBoxFor(model => model.cauhinhhethong.TieuDeTrang, new { @class = "form-control form-control-sm", @placeholder = "Nhập tiêu đề trang" })
+                            <div class="field-validation-error errortieude invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Từ khóa mô tả mặc định</label>
+                            @Html.TextBoxFor(model => model.cauhinhhethong.TuKhoa, new { @class = "form-control form-control-sm", @placeholder = "Nhập từ khóa" })
+                            <div class="field-validation-error errortukhoa invalid-feedback"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Mô tả từ khóa mặc định</label>
+                            @Html.TextBoxFor(model => model.cauhinhhethong.MoTaTuKhoa, new { @class = "form-control form-control-sm", @placeholder = "Nhập mô tả từ khóa" })
+                            <div class="field-validation-error errormotatukhoa invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Số lần được đăng nhập sai</label>
+                            @Html.TextBoxFor(model => model.cauhinhhethong.SoLanDuocDangNhapSai, new { @class = "form-control form-control-sm", @placeholder = "Nhập số lần được phép đăng nhập sai", @onkeypress = "Common.ValidateDecimal(event, this);" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-white w-100">
+            <div class="card-header">
+                <h4 class="card-title">CẤU HÌNH Mail</h4>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                        @*<li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>*@
+                        <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Địa chỉ email</label>
+                            @Html.TextBoxFor(model => model.cauhinhmail.Email, new { @class = "form-control form-control-sm", @placeholder = "Nhập địa chỉ mail" })
+                            <div class="field-validation-error erroremail invalid-feedback"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Tên hiển thị email</label>
+                            @Html.TextBoxFor(model => model.cauhinhmail.TenHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên hiển thị" })
+                            <div class="field-validation-error errortenhienthi invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Host</label>
+                            @Html.TextBoxFor(model => model.cauhinhmail.Host, new { @class = "form-control form-control-sm", @placeholder = "Nhập host" })
+                            <div class="field-validation-error errorhost invalid-feedback"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Cổng</label>
+                            @Html.TextBoxFor(model => model.cauhinhmail.Port, new { @class = "form-control form-control-sm", @placeholder = "Nhập cổng" })
+                            <div class="field-validation-error errorport invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Người dùng</label>
+                            @Html.TextBoxFor(model => model.cauhinhmail.NguoiDung, new { @class = "form-control form-control-sm", @placeholder = "Nhập người dùng" })
+                            <div class="field-validation-error errornguoidung invalid-feedback"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Mật khẩu</label>
+                            <div class="input-group input-group-sm">
+                                @Html.TextBoxFor(model => model.cauhinhmail.MatKhau, new { @class = "form-control form-control-sm", @placeholder = "Nhập mật khẩu", @type = "password" })
+                                <div class="field-validation-error errormatkhau invalid-feedback"></div>
+                                <div class="input-group-append" id="button-addon5e">
+                                    <button type="button" class="btn btn-success doimatkhau">
+                                        Đổi mật khẩu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-white w-100">
+            <div class="card-header">
+                <h4 class="card-title">Thông tin đơn vị</h4>
+                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                        <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                        <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="texth_fullname" class="col-md-2 col-form-label font-weight-bold">Tên đơn vị:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.TenDonVi, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên đơn vị" })
+                            <div class="field-validation-error errortendonvi invalid-feedback"></div>
+                        </div>
+                        <label for="texth_shortname" class="col-md-2 col-form-label font-weight-bold">Tên viết tắt:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.TenVietTat, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên viết tắt" })
+                            <div class="field-validation-error errortenviettat invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="texth_add" class="col-md-2 col-form-label font-weight-bold">Địa chỉ:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.DiaChi, new { @class = "form-control form-control-sm", @placeholder = "Nhập địa chỉ" })
+                            <div class="field-validation-error errordiachi invalid-feedback"></div>
+                        </div>
+                        <label for="texth_tel" class="col-md-2 col-form-label font-weight-bold">Điện thoại:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.DienThoai, new { @class = "form-control form-control-sm", @placeholder = "Nhập điện thoại", @maxlength = "100", @onkeypress = "Common.ValidateDecimal(event, this);" })
+                            <div class="field-validation-error errordienthoai invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label font-weight-bold">Fax:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.Fax, new { @class = "form-control form-control-sm", @placeholder = "Nhập fax", @onkeypress = "Common.ValidateDecimal(event, this);" })
+                            <div class="field-validation-error errorfax invalid-feedback"></div>
+                        </div>
+                        <label for="txtEmail" class="col-md-2 col-form-label font-weight-bold">Email:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.Email, new { @class = "form-control form-control-sm", @placeholder = "Nhập email" })
+                            <div class="field-validation-error erroremaildonvi invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="texth_website" class="col-md-2 col-form-label font-weight-bold">Website:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.Website, new { @class = "form-control form-control-sm", @placeholder = "Nhập website" })
+                            <div class="field-validation-error errorwebsite invalid-feedback"></div>
+                        </div>
+                        <label class="col-md-2 col-form-label font-weight-bold">Copyright:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.Copyright, new { @class = "form-control form-control-sm", @placeholder = "Nhập copyright" })
+                            <div class="field-validation-error errorcoppy invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="texth_website" class="col-md-2 col-form-label font-weight-bold">FaceBook:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.FaceBook, new { @class = "form-control form-control-sm", @placeholder = "Nhập FaceBook" })
+                            <div class="field-validation-error errorwebsite invalid-feedback"></div>
+                        </div>
+                        <label class="col-md-2 col-form-label font-weight-bold">Zalo:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.Zalo, new { @class = "form-control form-control-sm", @placeholder = "Nhập Zalo" })
+                            <div class="field-validation-error errorcoppy invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="texth_website" class="col-md-2 col-form-label font-weight-bold">Twitter:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.Twitter, new { @class = "form-control form-control-sm", @placeholder = "Nhập twitter" })
+                            <div class="field-validation-error errorwebsite invalid-feedback"></div>
+                        </div>
+                        <label class="col-md-2 col-form-label font-weight-bold">Youtube:</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.donvi.Youtube, new { @class = "form-control form-control-sm", @placeholder = "Nhập youtube" })
+                            <div class="field-validation-error errorcoppy invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Nội dung website</label>
+                        @Html.TextAreaFor(model => model.donvi.MoTaWebsite, new { @class = "form-control form-control-sm", @id = "editor", @placeholder = "Nhập nội dung website" })
+                    </div>
+                    @*<div class="form-row">
+                            <div class="form-group col-md-12 text-right">
+                                <button type="button" id="btnLuu" class="btn btn-success text-white btn-sm btn-block-sm"><i class="far fa-save mr-1"></i>Lưu</button>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+        @if (admin == true || user.Right.Contains(CookieRight.CauHinhHeThongController_Save))
+        {
+            <div class="card bg-white w-100">
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-md-12 text-right">
+                                <button type="button" id="btnLuu" class="btn btn-success text-white btn-sm btn-block-sm"><i class="far fa-save mr-1"></i>Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </form>
+}
+
+<script>
+            $(document).ready(function () {
+            if (Common.Empty(Common.CauHinhHeThong)) {
+                Common.CauHinhHeThong = new CauHinhHeThong({
+                    Url: {
+                        Update: '@Url.Action("Save", "CauHinhHeThong")',
+                        DoiMatKhau: '@Url.Action("DoiMatKhau", "CauHinhHeThong")'
+                    },
+                    Message: {
+                        batbuocnhap: 'Nhập thông tin!!!',
+                        MaHtml: 'không được chứa mã HTML!!!',
+                        MaJavaCript: 'không có đoạn Javascript không hợp lệ !!!',
+                        Length: 'Nhập số ký tự không quá ',
+                    },
+                });
+            }
+            else {
+                Common.CauHinhHeThong.RegisterEvent();
+            }
+        });
+</script>

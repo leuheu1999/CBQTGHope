@@ -1,0 +1,105 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@using CMS.Admin.Common
+@model Business.Entities.Domain.NguoiDungHeThong_NhomQuyenMap
+<div class="modal fade custom-margin-form-group" id="DialogPhanQuyen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg-md" role="document">
+        @using (Html.BeginForm("PhanQuyen", "NguoiDungHeThong", FormMethod.Post, new { id = "form-phanquyen" }))
+        {
+            <div class="modal-content">
+                <div class="modal-header h-25">
+                    <h5 class="modal-title">Phân quyền cho người dùng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Họ và tên</label>
+                        <div class="col-md-9 mt-2">
+                            <label class="font-weight-bold">@Model.TenHienThi </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Tên tài khoản</label>
+                        <div class="col-md-9 mt-2">
+                            <label class="font-weight-bold">@Model.TenTaiKhoan</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Nhóm:<span class="text-danger">(*)</span></label>
+                        <div class="col-md-9">
+                            @Html.DropDownList("NhomQuyenadd", CBODungChung.GetCBONhomQuyen(), "tất cả", new { @class = "form-control form-control-sm select-share" })
+                            <div class="field-validation-error thongbaomatkhau invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12 text-right">
+                            <button type="button" id="addquyen" class="btn btn-success btn-block-sm btn-sm mt-md-0 mt-sm-2">
+                                <i class="fas fa-plus mr-1"></i> Thêm
+                            </button>
+                        </div>
+                    </div>
+                    <div id="list-permission-user">
+                        <table class="table table-hover mb-0 table-striped table-mobile table-bordered" id="table-change-permission-user">
+                            <thead>
+                                <tr class="bg-info text-white">
+                                    <th class="text-center" width="50">STT</th>
+                                    <th class="text-center">Nhóm quyền</th>
+                                    <th class="text-center" width="100">#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.danhsachquyen != null && Model.danhsachquyen.Any())
+                                {
+                                    int dem = 1;
+                                    foreach (var item in Model.danhsachquyen)
+                                    {
+                                        <tr data-id="@item.Id" data-name="@item.Ten">
+                                            <td class="text-center hidden-xs">@dem</td>
+                                            <td data-label="Nhóm quyền">@item.Ten </td>
+                                            <td class="text-center" data-label="Thao tác" data-id="@item.Id">
+                                                <button data-id="@item.Id" title="Xóa" type="button" class="btn btn-danger btn-sm btnxoaquyen" href=""><i class="far fa-trash-alt"></i></button>
+                                            </td>
+                                        </tr>
+                                        dem++;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_PhanQuyen))
+                    {
+                        <button type="button" class="btn btn-success btn-sm luuphanquyen"><i class="far fa-save mr-1"></i> Lưu</button>
+                    }
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Đóng</button>
+
+                    </div>
+            </div>
+            <div class="hidden">
+                @Html.HiddenFor(model => model.NguoiDungPQId, new { @class = "clssphanquyen" })
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var dsquyen = [];
+        $('#table-change-permission-user tr').each(function () {
+            dsquyen.push($(this).data('id'));
+        })
+        for (j = 0; j < dsquyen.length; j++) {
+
+            $('#NhomQuyen option[value=' + dsquyen[j] + ']').remove();
+
+        }
+    });
+
+</script>

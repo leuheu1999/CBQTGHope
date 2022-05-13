@@ -1,0 +1,97 @@
+﻿@using Core.Common.Common;
+@using PagedList;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model IPagedList<Business.Entities.Domain.DM_PhuongXaMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            @*<th class="text-center" width="50">STT</th>*@
+            <th class="text-center cursor" width="150">Mã phường xã</th>
+            <th class="text-center cursor" width="150">Mã phường xã liên thông</th>
+            <th width="200">Tên phường xã</th>
+            <th width="200">Quận huyện</th>
+            <th width="200">Tỉnh thành</th>
+            <th>Mô tả</th>
+            <th class="text-center" width="150">Thứ tự hiển thị</th>
+            <th class="text-center" width="100">Công khai</th>
+            @if (admin == true || user.Right.Contains(CookieRight.DM_PhuongXaController_ThemMoiDMPhuongXa) || user.Right.Contains(CookieRight.DM_PhuongXaController_Delete))
+            {
+                <th class="text-center" width="100">Thao tác</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+        <tr>
+            @*<td class="text-center hidden-xs">@item.STT</td>*@
+            <td class="text-center" data-label="Mã phường xã">@Html.Raw(item.Ma ?? "&nbsp;")</td>
+            <td class="text-center" data-label="Mã phường xã liên thông">@Html.Raw(item.MaLienThong ?? "&nbsp;")</td>
+            <td data-label="Tên phường xã">@Html.Raw(item.Ten ?? "&nbsp;")</td>
+            <td data-label="Quận huyện">@Html.Raw(item.TenQuanHuyen ?? "&nbsp;")</td>
+            <td data-label="Tỉnh thành">@Html.Raw(item.TenTinhThanh ?? "&nbsp;")</td>
+            <td data-label="Mô tả">@Html.Raw(item.MoTa ?? "&nbsp;")</td>
+            <td data-label="Thứ tự hiển thị" class="text-center">@item.ThuTuHienThi</td>
+            <td data-label="Công khai" class="text-center text-success font-weight-bold">
+                @if (item.CongKhai == true)
+                {
+                    <i class="fas fa-check"></i>
+                }
+                else
+                {
+                    <span> &nbsp;</span>
+                }
+            </td>
+            @if (admin == true || user.Right.Contains(CookieRight.DM_PhuongXaController_ThemMoiDMPhuongXa) || user.Right.Contains(CookieRight.DM_PhuongXaController_Delete))
+            {
+                <td class="text-center" data-label="Thao tác" data-id="@item.ID">
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_PhuongXaController_ThemMoiDMPhuongXa))
+                    {
+                        <button title="Chỉnh sửa" data-id="@item.ID" class="btn btn-primary btn-sm update" type="button"><i class="far fa-edit"></i></button>
+                    }
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_PhuongXaController_Delete))
+                    {
+                        <button title="xóa" data-id="@item.ID" class="btn btn-danger btn-sm btnDelRow" type="button" href=""><i class="far fa-trash-alt"></i></button>
+                    }
+                </td>
+            }
+        </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.PageSize,
+                    TotalItemCount = Model[0].TotalItems,
+                    CurrentPage = Model[0].CurrentPage,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.DMPhuongXa.Paging({0})"
+                }))
+    </div>
+    <!--- End Pagination -->
+}

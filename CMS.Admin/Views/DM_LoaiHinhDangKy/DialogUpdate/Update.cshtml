@@ -1,0 +1,26 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.DM_LoaiHinhDangKyMapAdd
+<div class="hidden">
+    @Html.HiddenFor(model => model.LoaiHinhId)
+</div>
+<div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mã <span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.TextBoxFor(model => model.Ma, new { @class = "form-control form-control-sm", @placeholder = "Mã" })
+        <div class="field-validation-error thongbaomaloaihinhdangky invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Tên danh mục <span class="text-danger font-weight-bold">(*)</span></label>
+        @Html.TextBoxFor(model => model.TenLoaiHinh, new { @class = "form-control form-control-sm", @placeholder = "Tên danh mục" })
+        <div class="field-validation-error thongbaotenloaihinhdangky invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mô tả</label>
+        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control form-control-sm", @placeholder = "Nhập mô tả" })
+        <div class="field-validation-error thongbaomotaloaihinhdangky invalid-feedback"></div>
+    </div>
+    <div class="form-group form-check mt-3">
+        <input type="checkbox" class="form-check-input" name="IsActive" id="check-is-active" value="@(Model.IsActive == true ? "True" : "False")" @(Model.IsActive == true ? "checked='checked'" : "")>
+        <label class="form-check-label font-weight-bold" for="check-is-active">Hoạt động</label>
+    </div>
+</div>

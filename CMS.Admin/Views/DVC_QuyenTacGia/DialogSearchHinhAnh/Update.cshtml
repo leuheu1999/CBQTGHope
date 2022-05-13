@@ -1,0 +1,94 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+
+}
+@model List<Business.Entities.Domain.TT_HinhAnhMap>
+
+<table id="tableUpdateHinhAnh" cellspacing="0" cellpadding="0" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="thead-row bg-info text-white">
+            <th width="50" class="text-center"></th>
+            <th width="50" class="text-center">STT</th>
+            <th width="200">Tên tệp tin</th>
+            <th width="200">Người đính</th>
+            <th width="100">Tag</th>
+            <th width="400">Ghi chú</th>
+            <th width="100">Tệp tin</th>
+            <th width="150">Ngày đính kèm</th>
+            <th width="100" class="text-center">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count() > 0)
+        {
+            var id = 0;
+            foreach (var item in Model)
+            {               
+                <tr data-id="@id" data-name="@item.Ten" data-user="@item.CreatedUser" data-tag="@item.Tag" data-note="@item.GhiChu" data-date="@item.CreatedDate" data-tenfile="@item.TenTepTin" data-tengoc="@item.TenGoc" data-url="@item.DuongDan" class="trHinhAnh cursor">
+                    <td class="text-center"><input type="checkbox" class="cursor" name="chkInputCheckedHinh[]" data-src="@item.DuongDan" @(item.Checked == id ? "checked='checked'" : "")></td>
+                    <td data-label="STT" class="text-center row-number">@Html.Raw(item.Stt.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Tên tệp tin">@Html.Raw(item.Ten ?? "&nbsp;")</td>
+                    <td data-label="Người đính">@Html.Raw(item.CreatedUser ?? "&nbsp;")</td>
+                    <td data-label="Tag">@Html.Raw(item.Tag ?? "&nbsp;")</td>
+                    <td data-label="Ghi chú">@Html.Raw(item.GhiChu ?? "&nbsp;")</td>
+                    <td data-label="Tập tin"><a href="@item.DuongDan" target="_blank" download="@item.TenGoc">@Html.Raw(item.TenGoc ?? "&nbsp;")</a></td>
+                    <td data-label="Ngày đính kèm">@Html.Raw(item.CreatedDate ?? "&nbsp;")</td>
+                    <td data-label="Thao tác" class="text-center">
+                        @if (admin == true || user.Right.Contains(CookieRight.TT_HinhAnh_InsUpd))
+                        {
+                            <button title="Chỉnh sửa" data-id="@id" class="btn btn-primary btn-sm btn-update-hinhanh" type="button"><i class="far fa-edit"></i></button>
+                        }
+                        @if (admin == true || user.Right.Contains(CookieRight.TT_HinhAnh_Del))
+                        {
+                            <button title="Xóa hình ảnh" data-id="@id" class="btn btn-danger btn-sm btn-xoa-hinhanh"><i class="far fa-trash-alt"></i></button>
+                        }
+                        @*<button title="Chọn" type="button" data-id="@id" data-src="@item.DuongDan" class="btn btn-success btn-sm btn-chon-hinhanh"><i class="fas fa-check"></i></button>*@
+                    </td>
+                </tr>  
+                id += 1;
+            }
+        }
+        else
+        {
+            <tr class="row-none">
+                <td colspan="9">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="form-row mr-0 mt-0">
+    <div class="col-md-12 col-sm-12 mt-2 mb-2 text-right">
+        <button type="button" class="btn btn-success btn-block-sm btn-sm mt-md-0 mt-sm-2" id="btnAddNewRowHA">
+            <i class="fas fa-plus mr-1"></i> Thêm mới
+        </button>
+    </div>
+</div>
+
+@*@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model[0].PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.QTG_QuyenTacGia_SearchHinhAnh.Paging({0})",
+                    OnChangePageSize = "Common.QTG_QuyenTacGia_SearchHinhAnh.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}*@

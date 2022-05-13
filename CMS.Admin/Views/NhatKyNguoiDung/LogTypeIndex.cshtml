@@ -1,0 +1,57 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Danh sách nhóm nhật ký";
+}
+@model CMS.Admin.Models.LogTypeNDViewModel
+<script src="~/Scripts/LogTypeND.js"></script>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách nhóm nhật ký</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 mb-3">
+                    <button class="btn btn-warning text-white btn-block-sm btn-sm mt-md-0 mt-sm-2 btnnhatkynguoidung" data-url="@Url.Action("Index","NhatKyNguoiDung")">
+                        <i class="fas fa-list mr-1"></i> Nhật ký người dùng
+                    </button>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-3 text-right">
+                    <button type="button" class="btn btn-success btn-sm btn-block-sm btnLuu"><i class="far fa-save mr-1"></i> Lưu</button>
+                </div>
+            </div>
+            <div class="hidden" style="display:none">
+                @Html.Partial("_LogTypePartialSearch", Model.Search)
+            </div>
+            <div class="table-responsive mt-3" id="result-searchlist">
+                @if (Model != null && Model.Items != null && Model.Items.Count > 0)
+                {
+                    @Html.Partial("_LogTypePartialList", Model.Items)
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.LogTypeND)) {
+            Common.LogTypeND = new LogTypeND({
+                 Url: {
+                    Luu: '@Url.Action("LuuLogType", "NhatkyNguoiDung")'
+                },
+            });
+        }
+        else {
+            Common.LogTypeND.RegisterEvent();
+        }
+    });
+</script>

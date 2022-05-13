@@ -1,0 +1,53 @@
+﻿@using Module.Framework.Common;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var modelParam = new Business.Entities.Domain.TT_PhimParam();
+    var modelList = new List<Business.Entities.Domain.TT_PhimMap>();
+}
+<script src="~/Scripts/DVC_QuyenTacGia/DVC_QuyenTacGia_SearchPhim.js"></script>
+<div class="modal fade custom-margin-form-group" id="dialogSearchPhim" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header h-25">
+                <h5 class="modal-title">Thông tin phim </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.Partial("DialogSearchPhim/Search", modelParam)
+                </div>
+                <div class="table-responsive mt-3 sh-list-phim" id="result-searchphim">
+                    @Html.Partial("DialogSearchPhim/List", modelList)
+                </div>
+                <div class="table-responsive mt-3 sh-update-phim" id="result-updatephim">
+                    @Html.Partial("DialogSearchPhim/Update", modelList)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i> Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DVC_QuyenTacGia_SearchPhim)) {
+            Common.DVC_QuyenTacGia_SearchPhim = new DVC_QuyenTacGia_SearchPhim({
+                Url: {
+                    SearchPhim: '@Url.Action("SearchPhim", "DVC_QuyenTacGia")',
+                    SavePhim: '@Url.Action("SavePhim", "DVC_QuyenTacGia")',
+                    UpdatePhim: '@Url.Action("UpdatePhim", "DVC_QuyenTacGia")',
+                    DeletePhim: '@Url.Action("DeletePhim", "DVC_QuyenTacGia")',
+                    UploadVideo: '@Url.Action("UploadVideo", "DVC_QuyenTacGia")',
+                },
+                ListPhim: [],
+            });
+        }
+        else {
+            Common.DVC_QuyenTacGia_SearchPhim.RegisterEvent();
+        }
+    });
+</script>

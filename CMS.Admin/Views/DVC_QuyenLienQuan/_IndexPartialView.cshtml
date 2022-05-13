@@ -1,0 +1,102 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.DVC_QuyenLienQuanViewModel
+
+<table id="tableNews" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            <th class="text-center" width="30">STT</th>
+            <th width="160">Giấy chứng nhận</th>
+            <th>Tác phẩm</th>
+            <th>Người biểu diễn</th>
+            <th>Chủ sở hữu</th>
+            <th class="text-center">Ảnh</th>
+            <th width="90">Trạng thái</th>
+            <th width="140">Người nhập</th>
+            <th class="text-center" width="120">Xử lý</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.List != null && Model.List.Any())
+        {
+            foreach (var item in Model.List)
+            {
+                <tr data-id="@item.QuyenLienQuanID">
+                    <td class="text-center">@item.STT</td>
+                    <td data-label="Giấy chứng nhận" class="font-weight-bold">
+                        Số: <a href="@Url.Action("ChiTiet", "DVC_QuyenLienQuan",new { id=item.QuyenLienQuanID})">@item.SoGCN</a><br />
+                        Ngày cấp: @item.NgayCap
+                    </td>
+                    <td data-label="Tác phẩm"><a href="@Url.Action("ChiTiet", "DVC_QuyenLienQuan",new { id=item.QuyenLienQuanID})">@item.TenTacPham</a></td>
+                    <td data-label="Người biểu diễn">
+                        @foreach (var nguoiBieuDien in item.ListNguoiBieuDien)
+                        {
+                            <span class="font-weight-bold">@nguoiBieuDien.HoVaTen</span><br />
+                        }
+                    </td>
+                    <td data-label="Chủ sở hữu">
+                        @foreach (var chuSoHuu in item.ListChuSoHuu)
+                        {
+                            <span class="font-weight-bold">@chuSoHuu.HoVaTen</span><br />
+                        }
+                    </td>
+                    <td data-label="Ảnh" class="text-center">
+                        <img width="70" height="70" src="@item.HinhDaiDienUrl" />
+                    </td>
+                    <td data-label="Trạng thái">@item.TenTrangThai</td>
+                    <td data-label="Người nhập">
+                        @item.CreatedUser<br />
+                        Miền: @item.TenVungMien
+                    </td>
+                    <td data-label="Xử lý" class="text-center">
+                        @if (admin == true || user.Right.Contains(CookieRight.DVC_QuyenLienQuan_InsUpd))
+                        {
+                            <button title="Chỉnh sửa" class="btn btn-primary btn-sm" type="button" onclick="window.location.href='@Url.Action("Insert", "DVC_QuyenLienQuan", new { id = item.QuyenLienQuanID })'"><i class="far fa-edit"></i></button>
+                        }
+                        @if ((admin == true || user.Right.Contains(CookieRight.DVC_QuyenLienQuan_Del)))
+                        {
+                            <button title="Xóa" class="btn btn-danger btn-sm btnXoa" type="button" data-id="@item.QuyenLienQuanID"><i class="fa fa-trash"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="12">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model != null && Model.List != null && Model.List.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.List.PageSize,
+                    TotalItemCount = Model.List[0].TotalCount,
+                    CurrentPage = Model.List[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.DVC_QuyenLienQuan.Paging({0})",
+                    OnChangePageSize = "Common.DVC_QuyenLienQuan.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}
+

@@ -1,0 +1,122 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Người dùng hệ thống";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.NguoiDungHeThongViewModel
+<script src="~/Scripts/NguoiDungHeThong.js"></script>
+<script src="~/Scripts/Them_NguoiDungHeThong.js"></script>
+@section Breadcrumb
+{
+    <section class="content-header mb-3">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="active">Người dùng</li>
+        </ol>
+    </section>
+}
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Thông tin tìm kiếm</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @Html.Partial("_PartialSearch", Model.Search)
+        </div>
+    </div>
+</div>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách người dùng hệ thống</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @*@if (admin == true || user.Right.Contains(CookieRight.DM_NguoiDungHeThongController_ThemMoiNguoiDung))
+            {
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <button type="button" class="btn btn-success btn-block-sm btn-sm mt-md-0 mt-sm-2 text-white" data-url="@Url.Action("Update", "NguoiDungHeThong")" id="btnAddForm">
+                            <i class="fas fa-plus mr-1"></i> Thêm mới
+                        </button>
+                    </div>
+
+                </div>
+            }*@
+            <div class="table-responsive mt-3" id="result-searchlist">
+                @if (Model != null && Model.Items != null && Model.Items.Count > 0)
+                {
+                    @Html.Partial("_PartialList", Model.Items)
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="show-content-dialogAdd">
+
+</div>
+<div class="show-content-phanquyen">
+
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.NguoiDungHeThong)) {
+            Common.NguoiDungHeThong = new NguoiDungHeThong({
+                Url: {
+                    Delete: '@Url.Action("Delete", "NguoiDungHeThong")',
+                    CapNhatNguoiDungHeThong: '@Url.Action("CapNhatNguoiDung", "NguoiDungHeThong")',
+                    Update: '@Url.Action("ThemMoiNguoiDung", "NguoiDungHeThong")',
+                    DoiMatKhau: '@Url.Action("DoiMatKhau", "NguoiDungHeThong")',
+                    PhanQuyen: '@Url.Action("PhanQuyen", "NguoiDungHeThong")',
+                    KhoaTaiKhoan:'@Url.Action("Khoa_MoKhoaTaiKhoa", "NguoiDungHeThong")',
+                },
+            });
+        }
+        else {
+            Common.NguoiDungHeThong.RegisterEvent();
+        }
+        if (Common.Empty(Common.ThemNguoiDungHeThong)) {
+            Common.ThemNguoiDungHeThong = new ThemNguoiDungHeThong({
+                Url: {
+                    Delete: '@Url.Action("Delete", "NguoiDungHeThong")',
+                    Index: '@Url.Action("Index", "NguoiDungHeThong")',
+                    ThemMoi: '@Url.Action("ThemMoiNguoiDung", "NguoiDungHeThong")',
+                    CapNhatNguoiDungHeThong: '@Url.Action("CapNhatNguoiDung", "NguoiDungHeThong")',
+                    Update: '@Url.Action("ThemMoiNguoiDung", "NguoiDungHeThong")',
+                    DoiMatKhau: '@Url.Action("DoiMatKhau", "NguoiDungHeThong")',
+                    PhanQuyen: '@Url.Action("PhanQuyen", "NguoiDungHeThong")',
+                    UploadFile: '@Url.Action("UploadFile", "NguoiDungHeThong")',
+                    KhoaTaiKhoan: '@Url.Action("Khoa_MoKhoaTaiKhoa", "NguoiDungHeThong")',
+                },
+                Message: {
+                    Nhap: 'Nhập thông tin',
+                    MaHtml: 'không được chứa mã HTML!!!',
+                    MaJavaCript: 'không có đoạn Javascript không hợp lệ !!!',
+                    Length: 'Nhập',
+                    GioiTinh: 'Chọn giới tính!!!',
+                    CheckTen: 'Tên không được nhập số hoặc ký tự đặc biệt!!!',
+                    CheckEmail:'Email không đúng định dạng!!!'
+                },
+            });
+        }
+        else {
+            Common.ThemNguoiDungHeThong.RegisterEvent();
+        };
+    });
+</script>

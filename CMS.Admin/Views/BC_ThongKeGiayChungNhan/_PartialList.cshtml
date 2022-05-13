@@ -1,0 +1,73 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model List<Business.Entities.Domain.BC_ThongKeGiayChungNhanMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var json = "";
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            <th width="50" class="text-center">STT</th>
+            
+            <th class="columnName">Tháng</th>
+            <th>Cấp mới</th>
+            <th>Cấp lại</th>
+            <th>Cấp đổi</th>
+            <th>Chuyển chủ sở hũu</th>
+            <th>Thu hồi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null  && Model.Any())
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr data-id="@item.STT" class="@(string.IsNullOrEmpty(item.STT)?"font-weight-bold":"")" >
+                    <td data-label="STT">@Html.Raw(item.STT ?? "&nbsp;")</td>
+                    <td data-label="Tên" >@Html.Raw(item.Ten ?? "&nbsp;")</td>
+                    <td data-label="Cấp mới">@Html.Raw(item.CapMoi.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Cấp lại">@Html.Raw(item.CapLai.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Cấp đổi">@Html.Raw(item.CapDoi.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Chuyển chủ sở hũu">@Html.Raw(item.ChuyenChuSoHuu.ToString() ?? "&nbsp;")</td>
+                    <td data-label="Thu hồi">@Html.Raw(item.ThuHoi.ToString() ?? "&nbsp;")</td>
+                </tr>
+                i++;
+            }
+        }
+        else
+        {
+            
+            <tr>
+                <td colspan="7">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(() => {
+        const val = $("#KyBaoCao option:selected").val();
+        switch (val) {
+            case "1": //Năm
+                $(".columnName").text('Tháng');
+                break;
+            case "2": //Quy
+                $(".columnName").text('Quý');
+                break;
+            case "3": //Thang
+                $(".columnName").text('Tháng');
+                break;
+            case "4": //Ngay
+                $(".columnName").text('Từ ngày - Đến ngày');
+                break;
+        }
+    });
+  
+</script>

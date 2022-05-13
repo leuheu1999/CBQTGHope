@@ -1,0 +1,6 @@
+﻿22:48:54,852 [8] ERROR Host.WcfService.MainModule - Could not find stored procedure 'THONGKEMOTCUA_HoSoLinhVuc_ListBasic'.
+Extra Info: (null)
+22:50:07,187 [17] ERROR Host.WcfService.MainModule - Sequence contains more than one element
+Extra Info: (null)
+22:56:35,848 [17] ERROR Host.WcfService.MainModule - Sequence contains more than one element
+Extra Info: (null)

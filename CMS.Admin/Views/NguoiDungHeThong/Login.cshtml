@@ -1,0 +1,143 @@
+﻿@using Module.Framework.Common;
+@{
+    /**/
+
+    ViewBag.Title = "Người dùng hệ thống";
+    Layout = null;
+    var thongtindonvi = ViewBag.thongtindonvi as Business.Entities.Domain.DonViMap;
+    var times = LoginManager.GetTime(Request.Cookies);
+}
+@model  Business.Entities.Domain.LoginParam
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CỤC BẢN QUYỀN TÁC GIẢ</title>
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    @Styles.Render("~/Library/bootstrap/css/styles")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Library/bootstrap/js/javascripts")
+    <link href="~/Content/admin.css" rel="stylesheet" />
+
+</head>
+<body class="bg-full-screen-image">
+    <main role="main" class="main-content">
+        <section class="sec-content-login">
+            <div class="container d-flex align-items-center justify-content-center">
+                <div class="shadow-sm-customer p-3 panel panel-dark panel-flat w-100">
+                    <div class="panel-heading">
+                        <div class="col-xs-12 col-sm-12 text-center">
+                            <div class="d-flex justify-content-center bd-highlight">
+                                <div class="float-left mr-2">
+                                    <img src="~/Content/images/logo.jfif" width="50" class="img-responsive ng-scope">
+                                </div>
+                                <div class="float-left mt-2">
+                                    <h4>
+                                        CỤC BẢN QUYỀN TÁC GIẢ
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100 d-flex align-items-center justify-content-center">
+                        <div class="frlogin w-50 w-sm-75 mt-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true)
+                                        <div class="form-group">
+                                            <label for="" class="font-weight-bold">Tên đăng nhập</label>
+                                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Tên Đăng nhập", @name = "loginname", @type = "text", @autofocus = "" })
+                                            <small class="form-text text-muted"><span class="field-validation-valid required" data-valmsg-for="UserName" data-valmsg-replace="true"></span></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="font-weight-bold">Mật khẩu truy cập</label>
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu", @name = "password", @type = "password", @value = "" })
+                                            <small id="" class="form-text text-muted"><span class="field-validation-valid required" data-valmsg-for="Password" data-valmsg-replace="true"></span></small>
+                                            <small id="" class="form-text text-muted">(Vui lòng tắt các phần mềm hỗ trợ gõ tiếng việt như Vietkey, Unikey...)</small>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-sm btn-block-sm btn-primary main-menu-bg">Đăng nhập</button>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                            <div style="margin-top: 20px; text-align: center;">
+                                <strong style="color:rgb(255, 102, 0)">:: BẢN QUYỀN THUỘC CỤC BẢN QUYỀN TÁC GIẢ ::</strong><br />
+                                Địa chỉ: Số 33 Ngõ 294/2 Kim Mã, Quận Ba Đình, TP.Hà Nội.
+                                <div class="">
+                                    Điện thoại: 024.38 234 304; Fax: 024.38 432 630;<br><span style="display:inline-block"></span>
+                                    Email: cbqtg@hn.vnn.vn
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+<script>
+        $(document).ready(function () {
+            var result = false;
+            if ($(".validation-summary-errors").length == 0) {
+                $("fieldset > form > div:first-child").after("<div class=\"validation-summary-errors\"><ul></ul></div>");
+            }
+            @if (times.HasValue)
+            {
+                <text>
+
+                    $(".validation-summary-errors > ul").html("<li id='theTarget'>Vui lòng đăng nhập lại sau: <span>" +@times.Value.Minutes +"</span>:<span>" +@times.Value.Seconds +"</span></li>");
+                    result = true;
+                    $('input[type="submit"]').attr('disabled', 'disabled');
+                    </text>
+
+            }
+            var doUpdate = function () {
+                var count = parseInt($('#theTarget').find('span:last-child').html());
+                if (count != 0)
+                {
+                    var countdown =  count - 1;
+                    if (countdown < 10)
+                    {
+                        $('#theTarget').find('span:last-child').html("0" + countdown);
+                    }
+                    else
+                    {
+                        $('#theTarget').find('span:last-child').html(countdown);
+                    }
+                }
+                else {
+                    var Minute = $('#theTarget').find('span:first-child').html();
+                    var countMinute = parseInt(Minute);
+                    if (countMinute != 0) {
+                        var countMinutedown = countMinute - 1;
+                        if (countMinutedown < 10)
+                            $('#theTarget').find('span:first-child').html("0" + countMinutedown);
+                        else
+                            $('#theTarget').find('span:first-child').html(countMinutedown);
+                        $('#theTarget').find('span:last-child').html("59");
+                    }
+                    else if (countMinute == 0 && count == 0) {
+                        window.clearInterval(interval);
+                        $(".validation-summary-errors").remove();
+                        $('input[type="submit"]').removeAttr('disabled');
+                    }
+                }
+            };
+            if(result)
+                var interval = setInterval(doUpdate, 1000);
+
+    });
+</script>

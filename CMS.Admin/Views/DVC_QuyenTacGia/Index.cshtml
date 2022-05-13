@@ -1,0 +1,73 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Danh sách quyền tác giả";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.DVC_QuyenTacGiaViewModel
+<script src="~/Scripts/DVC_QuyenTacGia/DVC_QuyenTacGia.js"></script>
+@section Breadcrumb
+{
+    <section class="content-header mb-3">
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fas fa-tachometer-alt"></i> Danh sách quyền tác giả</a></li>
+        </ol>
+    </section>
+}
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Thông tin tìm kiếm</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @Html.Partial("_PartialSearch", Model.Search)
+        </div>
+    </div>
+</div>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách quyền tác giả</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    @if (admin == true || user.Right.Contains(CookieRight.DVC_QuyenTacGia_InsUpd))
+                    {
+                        <button type="button" class="btn btn-success btn-block-sm btn-sm" onclick="window.location.href='@Url.Action("Insert", "DVC_QuyenTacGia")'">
+                            <i class="fas fa-plus"></i> Thêm mới
+                        </button>
+                    }
+                    <button type="button" class="btn btn-secondary btn-sm" id="btn-exportExcel">
+                        <i class="fas fa-download mr-1"></i> Xuất file
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="searchlist">
+                @{ Html.RenderPartial("_IndexPartialView", Model); }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DVC_QuyenTacGia)) {
+            Common.DVC_QuyenTacGia = new DVC_QuyenTacGia({
+                Url: {
+                    Index: '@Url.Action("Index", "DVC_QuyenTacGia")',
+                    Update: '@Url.Action("Update", "DVC_QuyenTacGia")',
+                    DeleteQuyenTacGia: '@Url.Action("DeleteQuyenTacGia", "DVC_QuyenTacGia")',
+                    ExportExcel: '@Url.Action("ExportFileExcel", "Print")',
+                }
+            });
+        }
+        else {
+            Common.DVC_QuyenTacGia.RegisterEvent();
+        }
+    });
+</script>
+
+

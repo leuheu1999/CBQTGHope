@@ -1,0 +1,92 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    ViewBag.Title = "Người dùng hệ thống";
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@model CMS.Admin.Models.NhatKyNguoiDungViewModel
+<script src="~/Scripts/NhatKyNguoiDung.js"></script>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Thông tin tìm kiếm</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            @Html.Partial("_PartialSearch", Model.Search)
+        </div>
+    </div>
+</div>
+<div class="card bg-white w-100">
+    <div class="card-header">
+        <h4 class="card-title">Danh sách nhật ký người dùng</h4>
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li class="cursor"><a data-action="collapse"><i class="fas fa-minus"></i></a></li>
+                <li class="cursor"><a data-action="reload"><i class="fas fa-sync-alt"></i></a></li>
+                <li class="cursor"><a data-action="expand"><i class="fas fa-expand"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mb-3">
+                    @if (admin == true || user.Right.Contains(CookieRight.NhatKyNguoiDungController_Delete))
+                    {
+                        <button type="button" class="btn btn-danger btn-block-sm btn-sm btnDeleteAll">
+                            <i class="far fa-trash-alt mr-1"></i> Xóa đã chọn
+                        </button>
+                    }
+                    <div class="btn-group hidden-xs">
+                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-download mr-1"></i> Xuất file
+                        </button>
+                        <div class="dropdown-menu">
+                            <ul class="list-unstyled clkActionCusRoom cursor">
+                                <li class="dropdown-item" href="#" data-action="1" id="btn-exportWord"><i class="far fa-file-word text-primary"></i> Word</li>
+                                <li class="dropdown-item" href="#" data-action="2" id="btn-exportExcel"><i class="far fa-file-excel text-success"></i> Excel</li>
+                                <li class="dropdown-item" href="#" data-action="3" id="btn-exportPdf"><i class="far fa-file-pdf text-danger"></i> Pdf</li>
+                            </ul>
+                        </div>
+                    </div>
+                    @*<button class="btn btn-warning text-white btn-block-sm btn-sm mt-md-0 mt-sm-2 btnloainhatky" data-url="@Url.Action("LogTypeIndex","NhatKyNguoiDung")">
+                            <i class="fas fa-list mr-1"></i> Nhóm nhật ký
+                        </button>*@
+                </div>
+            </div>
+            <div class="table-responsive mt-3" id="result-searchlist">
+                @if (Model != null && Model.Items != null && Model.Items.Count > 0)
+                {
+                    @Html.Partial("_PartialList", Model.Items)
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.NhatKyNguoiDung)) {
+            Common.NhatKyNguoiDung = new NhatKyNguoiDung({
+                Url: {
+                    Luu:'@Url.Action("LuuLogType", "NhatKyNguoiDung")',
+                    Delete: '@Url.Action("Delete", "NhatKyNguoiDung")',
+                    DeleteLst: '@Url.Action("DeleteLst", "NhatKyNguoiDung")',
+                   ExportExcel: '@Url.Action("ExportFileExcel", "Print")',
+                    ExportWordPdf: '@Url.Action("ExportFileWord", "Print")'
+                },
+            });
+        }
+        else {
+            Common.NhatKyNguoiDung.RegisterEvent();
+        }
+    });
+</script>

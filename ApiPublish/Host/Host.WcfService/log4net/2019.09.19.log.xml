@@ -1,0 +1,9 @@
+﻿16:48:18,016 [16] ERROR Host.WcfService.MainModule - Cannot open database "MapInfo" requested by the login. The login failed.
+Login failed for user 'sa'.
+Extra Info: (null)
+16:48:50,357 [16] ERROR Host.WcfService.MainModule - Cannot open database "MapInfo" requested by the login. The login failed.
+Login failed for user 'sa'.
+Extra Info: (null)
+16:49:34,463 [16] ERROR Host.WcfService.MainModule - Cannot open database "MapInfo" requested by the login. The login failed.
+Login failed for user 'sa'.
+Extra Info: (null)

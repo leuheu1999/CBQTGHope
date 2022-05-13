@@ -1,0 +1,48 @@
+﻿@model Business.Entities.Domain.LogAdd
+
+
+<div class="modal-body " id="form-detail">
+    <div class="hidden">
+        @Html.HiddenFor(model => model.Id)
+    </div>
+    <table class="properties w-100">
+        <tbody>
+            <tr>
+                <th scope="row">Nhóm</th>
+                <td>@Model.LogLevelName</td>
+            </tr>
+            <tr>
+                <th scope="row">Nội dung ngắn gọn</th>
+                <td>@Model.ShortMessage</td>
+            </tr>
+            <tr>
+                <th scope="row">Nội dung chi tiết</th>
+                <td>
+                    @Model.FullMessage
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Địa chỉ IP</th>
+                <td>@Model.IpAddress</td>
+            </tr>
+            <tr>
+                <th scope="row">Khách hàng</th>
+                <td>@Model.CustomerName</td>
+            </tr>
+            <tr>
+                <th scope="row">Địa chỉ URL trang</th>
+                <td>@Model.PageUrl</td>
+            </tr>
+            <tr>
+                <th scope="row">Địa chỉ URL tham chiếu</th>
+                <td>@Model.ReferrerUrl</td>
+            </tr>
+            <tr>
+                <th scope="row">Ngày tạo</th>
+                <td>@Model.CreatedDate</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

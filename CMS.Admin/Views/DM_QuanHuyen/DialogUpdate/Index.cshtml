@@ -1,0 +1,55 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<div class="modal fade custom-margin-form-group" id="dialogAddDanhMuc" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header h-25">
+                <h5 class="modal-title">Tạo mới/Cập nhật danh mục quận huyện</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="form-update" class="form-horizontal label-right">
+                    @Html.Partial("DialogUpdate/Update", new Business.Entities.Domain.DM_QuanHuyenMapAdd())
+                </form>
+            </div>
+            <div class="modal-footer">
+                @if (admin == true || user.Right.Contains(CookieRight.Dm_QuanHuyenController_ThemMoi))
+                {
+                    <button type="submit" class="btn btn-success btn-sm" id="btnLuuDV"><i class="far fa-save mr-1"></i> Lưu</button>
+                }
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ThemDM_QuanHuyen.js")"></script>
+}
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.ThemDM_QuanHuyen)) {
+            Common.ThemDM_QuanHuyen = new ThemDM_QuanHuyen({
+                Message: {
+                    Ma: 'Nhập mã quận huyện!!!',
+                    Ten: 'Nhập tên quận huyện!!!',
+                    TinhThanh: 'Vui lòng chọn tỉnh thành!!!',
+                    MaHtml: 'không được chứa mã HTML!!!',
+                    MaJavaCript: 'không có đoạn Javascript không hợp lệ !!!',
+                    LengthTen: 'Nhập tên loại không quá 400 ký tự!!!',
+                    LengthMa: 'Nhập mã loại không quá 50 ký tự!!!',
+                    LengthMota: 'Nhập mô tả không quá 4001 ký tự!!!'
+                },
+            });
+        }
+        else {
+            Common.ThemDM_QuanHuyen.RegisterEvent();
+        }
+    });
+</script>

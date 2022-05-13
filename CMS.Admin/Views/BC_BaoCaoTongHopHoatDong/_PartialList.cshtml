@@ -1,0 +1,86 @@
+﻿@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model List<Business.Entities.Domain.BC_BaoCaoTongHopHoatDongMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var json = "";
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            <th rowspan="2" width="50" class="text-center">TT</th>
+            <th rowspan="2" width="250">Loại giấy chứng nhận</th>
+            <th class="text-center" rowspan="2" width="100">Số giấy chứng nhận đã cấp</th>
+            <th class="text-center" rowspan="2" width="50">Nộp trực tiếp</th>
+            <th class="text-center" rowspan="2" width="50">Nộp trực tuyến</th>
+            <th class="text-center" rowspan="2" width="50">Nộp qua bưu điện</th>
+            <th class="text-center" rowspan="2" width="100">Số hồ sơ cấp giấy chứng nhận do tác giả, chủ sở hữu nộp</th>
+            <th class="text-center" colspan="2" width="100">Số hồ sơ cấp giấy chứng nhận do bên đcược ủy quyền nộp</th>
+            <th class="text-center" rowspan="2" width="100">Số giấy chứng nhận cấp cho chủ thể nước ngoài</th>
+            <th class="text-center" rowspan="2" width="100">Số giấy chứng nhận cấp cho chủ thể trong nước</th>
+            <th class="text-center" rowspan="2" width="100">Số giấy chứng nhận cấp cho chủ thể đồng sở hữu</th>
+        </tr>
+        <tr class="bg-info text-white">
+            <th width="50">Tổ chức tư vấn dịch vụ</th>
+            <th width="50">Tổ chức, cá nhân</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr data-id="@item.STT" class="@(string.IsNullOrEmpty(item.STT)?"font-weight-bold":"")">
+                    <td class="text-center" data-label="STT">@Html.Raw(item.STT ?? "&nbsp;")</td>
+                    <td data-label="Loại giấy chứng nhận">@Html.Raw(item.LoaiGiayChungNhan ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Số giấy chứng nhận đã cấp">@Html.Raw(item.SoGCNDaCap.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Nộp trực tiếp">@Html.Raw(item.NopTrucTiep.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Nộp trực tuyến">@Html.Raw(item.NopTrucTuyen.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Nộp qua bưu điện">@Html.Raw(item.NopQuaBuuDien.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Số hồ sơ cấp giấy chứng nhận do tác giả, chủ sở hữu nộp">@Html.Raw(item.HoSoDoTGCSHNop.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Số hồ sơ cấp giấy chứng nhận do bên đcược ủy quyền nộp">@Html.Raw(item.ToChucTuVanDichVu.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Số hồ sơ cấp giấy chứng nhận do bên đcược ủy quyền nộp">@Html.Raw(item.ToChuCaNhan.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Số giấy chứng nhận cấp cho chủ thể nước ngoài">@Html.Raw(item.CapChoChuTheNuocNgoai.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Số giấy chứng nhận cấp cho chủ thể trong nước">@Html.Raw(item.CapChoChuTheTrongNuoc.ToString() ?? "&nbsp;")</td>
+                    <td class="text-center" data-label="Số giấy chứng nhận cấp cho chủ thể trong nước">@Html.Raw(item.CapChoDongSoHuu.ToString() ?? "&nbsp;")</td>
+                </tr>
+                i++;
+            }
+        }
+        else
+        {
+
+            <tr>
+                <td colspan="11">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model[0].PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.BC_BaoCaoTongHopHoatDong.Paging({0})",
+                    OnChangePageSize = "Common.BC_BaoCaoTongHopHoatDong.ChangePageSize(this)",
+
+                }))
+    </div>
+    <!--- End Pagination -->
+}

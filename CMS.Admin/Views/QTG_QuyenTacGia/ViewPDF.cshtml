@@ -1,0 +1,26 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model CMS.Admin.Models.QTG_FileViewModel
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ViewPDF</title>
+</head>
+<body>
+    <input id="txtUrl" name="url" type="hidden" value="@Model.Url">
+    <script src="~/Library/PDFObject.js"></script>
+    <script type="text/javascript">
+        var strUrl = document.getElementById('txtUrl').value;
+        if (strUrl.indexOf('.pdf') > 0 || strUrl.indexOf('.PDF') > 0) {
+            PDFObject.embed(strUrl);
+        } else {
+            window.open(strUrl);
+        }
+    </script>
+</body>
+</html>

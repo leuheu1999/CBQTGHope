@@ -1,0 +1,89 @@
+﻿@using PagedList;
+@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model IPagedList<Business.Entities.Domain.DM_QuanHuyenMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            @*<th class="text-center cursor" width="50">STT</th>*@
+            <th class="text-center cursor" width="150">Mã quận huyện</th>
+            <th class="text-center cursor" width="150">Mã quận huyện liên thông</th>
+            <th width="300">Tên quận huyện</th>
+            <th width="300">Tên tỉnh thành</th>
+            <th>Mô tả</th>
+            <th class="text-center" width="150">Thứ tự hiển thị</th>
+            <th class="text-center" width="120">Công khai</th>
+            @if (admin == true || user.Right.Contains(CookieRight.Dm_QuanHuyenController_ThemMoi) || user.Right.Contains(CookieRight.DM_QuanHuyenController_Xoa))
+            {
+                <th class="text-center" width="100">Thao tác</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+        <tr data-id="@item.Id">
+            @*<td class="text-center hidden-xs">@i</td>*@
+            <td class="text-center" data-label="Mã quận huyện">@Html.Raw(item.Ma ?? "&nbsp;")</td>
+            <td class="text-center" data-label="Mã quận huyện liên thông">@Html.Raw(item.MaLienThong ?? "&nbsp;")</td>
+            <td data-label="Tên quận huyện">@Html.Raw(item.Ten ?? "&nbsp;")</td>
+            <td data-label="Tên tỉnh thành">@Html.Raw(item.TenTinhThanh ?? "&nbsp;")</td>
+            <td data-label="Mô tả">@Html.Raw(item.MoTa ?? "&nbsp;")</td>
+            <td data-label="Thứ tự hiển thị" class="text-center">@item.ThuTuHienThi</td>
+            <td class="text-center text-success" data-label="Công khai">@Html.Raw(item.CongKhai ? "<i class='fas fa-check'></i>" : "&nbsp;")</td>
+            @if (admin == true || user.Right.Contains(CookieRight.Dm_QuanHuyenController_ThemMoi) || user.Right.Contains(CookieRight.DM_QuanHuyenController_Xoa))
+            {
+                <td class="text-center" data-label="Thao tác">
+                    @if (admin == true || user.Right.Contains(CookieRight.Dm_QuanHuyenController_ThemMoi))
+                    {
+                        <button title="Chỉnh sửa" class="btn btn-primary btn-sm btnUpdate" type="button"><i class="far fa-edit"></i></button>
+                    }
+                    @if (admin == true || user.Right.Contains(CookieRight.DM_QuanHuyenController_Xoa))
+                    {
+                        <button title="Xóa" class="btn btn-danger btn-sm btnDelete" type="button"><i class="far fa-trash-alt"></i></button>
+                    }
+                </td>
+            }
+        </tr>
+                i++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.DMQuanHuyen.Paging({0})",
+                    OnChangePageSize = "Common.DMQuanHuyen.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}

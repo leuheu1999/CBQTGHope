@@ -1,0 +1,60 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model Business.Entities.Domain.TT_TacGiaParam
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+@using (Ajax.BeginForm("SearchTacGia", "QTG_QuyenTacGia", null, new AjaxOptions
+{
+    HttpMethod = "Post",
+    OnBegin = "Common.QTG_QuyenTacGia_SearchTacGia.BeforeSend",
+    OnSuccess = "Common.QTG_QuyenTacGia_SearchTacGia.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "idFormSearchTacGia" }))
+{
+    <div class="hidden">
+        @Html.HiddenFor(m => m.PageIndex)
+        @Html.HiddenFor(m => m.PageSize)
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Họ và tên</label>
+            @Html.TextBoxFor(m => m.HoVaTen, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên tác giả", @onchange = "Common.QTG_QuyenTacGia_SearchTacGia.SubmitForm()", @onkeyup = "Common.QTG_QuyenTacGia_SearchTacGia.SubmitForm()" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Số CMNN/Hộ chiếu</label>
+            @Html.TextBoxFor(m => m.SoCMND, new { @class = "form-control form-control-sm", @placeholder = "Nhập số CMNN/hộ chiếu", @onchange = "Common.QTG_QuyenTacGia_SearchTacGia.SubmitForm()", @onkeyup = "Common.QTG_QuyenTacGia_SearchTacGia.SubmitForm()" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Ngày cấp</label>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NgayCap, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Ngày cấp" })
+                <div class="input-group-prepend">
+                    <label for="" class="input-group-text cursor"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Địa chỉ</label>
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control form-control-sm", @placeholder = "Nhập địa chỉ" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Bút danh/Nghệ danh</label>
+            @Html.TextBoxFor(m => m.ButDanh, new { @class = "form-control form-control-sm", @placeholder = "Nhập bút danh/nghệ danh", @onchange = "Common.QTG_QuyenTacGia_SearchTacGia.SubmitForm()", @onkeyup = "Common.QTG_QuyenTacGia_SearchTacGia.SubmitForm()" })
+        </div>
+    </div>
+
+    <div class="text-right mt-2">
+        <button class="btn btn-info btn-sm text-white" type="button" id="btnSearchTacGia"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+        @if (admin == true || user.Right.Contains(CookieRight.TT_TacGia_InsUpd))
+        {
+            <button type="button" class="btn btn-success btn-block-sm btn-sm" id="btnInsertTacGia">
+                <i class="fas fa-plus"></i> Thêm mới
+            </button>
+        }
+    </div>
+}

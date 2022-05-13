@@ -1,0 +1,28 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.LogTypeNDParam
+@using (Ajax.BeginForm("ListLogType", "NhatKyNguoiDung", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.LogTypeND.BeforeSend",
+    OnSuccess = "Common.LogTypeND.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+<div class="hidden">
+    @Html.HiddenFor(m => m.PageIndex)
+    @Html.HiddenFor(m => m.PageSize)
+</div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="font-weight-bold">Nội dung</label>
+            @Html.TextBoxFor(m => m.TuKhoa, new { @class = "form-control form-control-sm", @placeholder = "Người dùng/địa chỉ IP/nội dung" })
+
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 text-right">
+            <button type="button" class="btn btn-primary text-white btn-sm btn-block-sm" id="btnFormSearch"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
+        </div>
+    </div>
+}

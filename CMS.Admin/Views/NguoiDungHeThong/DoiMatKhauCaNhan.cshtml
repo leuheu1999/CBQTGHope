@@ -1,0 +1,66 @@
+﻿@model Business.Entities.Domain.NguoiDungHeThongMapAdd
+<div class="modal fade custom-margin-form-group" id="DialogThayDoiMatKhau" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg-md" role="document">
+        @using (Html.BeginForm("DoiMatKhauCaNhan", "NguoiDungHeThong", FormMethod.Post, new { id = "form-update-doimatkhau" }))
+        {
+            <div class="modal-content">
+                <div class="modal-header h-25">
+                    <h5 class="modal-title">Thay đổi mật khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Họ và tên</label>
+                        <div class="col-md-9 mt-2">
+                            <label class="font-weight-bold">@Model.HoVaTen </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Tên tài khoản</label>
+                        <div class="col-md-9 mt-2">
+                            <label class="font-weight-bold">@Model.TenTaiKhoan</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Mật khẩu cũ:<span class="text-danger">(*)</span></label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.MatKhauCu, new { @class = "form-control form-control-sm", @placeholder = "Nhập mật khẩu cũ", @type = "password" })
+                            <div class="field-validation-error thongbaomatkhau invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Mật khẩu mới:<span class="text-danger">(*)</span></label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.MatKhau, new { @class = "form-control form-control-sm", @placeholder = "Nhập mật khẩu", @type = "password", @oninput = "Common.SuaThongTinNguoiDung.OnInputCheckPassword_ChangePass(this);" })
+                            <div class="field-validation-error thongbaomatkhau invalid-feedback"></div>
+                            <div class="field-validation-error thongbaomatkhaukytu invalid-feedback">Mật khẩu phải có ít nhất 6 ký tự!</div>
+                            <div class="field-validation-error thongbaomatkhauhoa invalid-feedback">Mật khẩu phải có ít nhất 1 ký tự viết hoa!</div>
+                            <div class="field-validation-error thongbaomatkhauthuong invalid-feedback">Mật khẩu phải có ít nhất 1 ký tự viết thường!</div>
+                            <div class="field-validation-error thongbaomatkhauso invalid-feedback">Mật khẩu phải có ít nhất 1 ký tự số!</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Nhập lại mật khẩu:<span class="text-danger">(*)</span></label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control form-control-sm" name="NhapLaimatKhau" id="NhapLaimatKhau" value="@Model.MatKhau" oninput="Common.SuaThongTinNguoiDung.OnInputCheckRePassword_ChangePass(this);" placeholder="Nhập lại mật khẩu">
+                            <div class="field-validation-error thongbaonhaplai invalid-feedback"></div>
+                            <div class="field-validation-error thongbaomatkhauxacnhan invalid-feedback">Mật khẩu xác nhận chưa khớp!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-success btn-sm btnchangepass"><i class="far fa-save mr-1"></i> Lưu</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Đóng</button>
+
+                </div>
+            </div>
+            <div class="hidden">
+                @Html.HiddenFor(model => model.TaiKhoanGuid, new { @class = "clssdoimatkhau"})
+                @Html.HiddenFor(model => model.ID)
+            </div>
+        }
+    </div>
+</div>

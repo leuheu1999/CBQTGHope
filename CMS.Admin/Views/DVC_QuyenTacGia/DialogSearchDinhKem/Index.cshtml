@@ -1,0 +1,67 @@
+﻿@using Module.Framework.Common;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var modelParam = new Business.Entities.Domain.TT_DinhKemParam();
+    var modelList = new List<Business.Entities.Domain.TT_DinhKemMap>();
+}
+<script src="~/Scripts/DVC_QuyenTacGia/DVC_QuyenTacGia_SearchDinhKem.js"></script>
+<div class="modal fade custom-margin-form-group" id="dialogSearchDinhKem" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header h-25">
+                <h5 class="modal-title">Thông tin đính kèm </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.Partial("DialogSearchDinhKem/Search", modelParam)
+                </div>
+                <div class="table-responsive mt-3" id="result-searchdinhkem">
+                    @Html.Partial("DialogSearchDinhKem/List", modelList)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-sm" id="btnAddDinhKem"><i class="far fa-save mr-1"></i> Chọn</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i> Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DVC_QuyenTacGia_SearchDinhKem)) {
+            Common.DVC_QuyenTacGia_SearchDinhKem = new DVC_QuyenTacGia_SearchDinhKem({
+                Url: {
+                    SearchDinhKem: '@Url.Action("SearchDinhKem", "DVC_QuyenTacGia")',
+                    SaveDinhKem: '@Url.Action("SaveDinhKem", "DVC_QuyenTacGia")',
+                    UpdateDinhKem: '@Url.Action("UpdateDinhKem", "DVC_QuyenTacGia")',
+                    DeleteDinhKem: '@Url.Action("DeleteDinhKem", "DVC_QuyenTacGia")',
+                    UploadFile: '@Url.Action("UploadFile", "DVC_QuyenTacGia")',
+                },
+                ListDinhKem: [],
+            });
+            $("#tableTepDinhKem tbody tr").each(function () {
+                if ($(this).closest("tr").data("id") > 0) {
+                    Common.DVC_QuyenTacGia_SearchDinhKem.ListDinhKem.push({
+                        DinhKemID: $(this).closest("tr").data("id"),
+                        Stt: $(this).closest("tr").data("stt"),
+                        Ten: $(this).closest("tr").data("name"),
+                        CreatedUser: $(this).closest("tr").data("user"),
+                        Tag: $(this).closest("tr").data("tag"),
+                        GhiChu: $(this).closest("tr").data("note"),
+                        TenFile: $(this).closest("tr").data("tenfile"),
+                        DuongDan: $(this).closest("tr").data("url"),
+                        CreatedDate: $(this).closest("tr").data("date"),
+                        IsMotCua: $(this).closest("tr").data("motcua"),
+                    });
+                }
+            });
+        }
+        else {
+            Common.DVC_QuyenTacGia_SearchDinhKem.RegisterEvent();
+        }
+    });
+</script>

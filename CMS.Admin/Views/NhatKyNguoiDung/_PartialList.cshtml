@@ -1,0 +1,90 @@
+﻿@using Core.Common.Common;
+@using PagedList;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model IPagedList<Business.Entities.Domain.ND_NhatKyNguoiDungMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            @if (admin == true || user.Right.Contains(CookieRight.NhatKyNguoiDungController_Delete))
+            {
+                <th class="text-center cursor"><input type="checkbox" class="cursor" id="selectAll"></th>
+            }
+            <th>Nhóm nhật ký</th>
+            <th>Người dùng</th>
+            @*<th>Địa chỉ IP</th>*@
+            <th>Nội dung</th>
+            <th>Ngày tạo</th>
+            @if (admin == true || user.Right.Contains(CookieRight.NhatKyNguoiDungController_Delete))
+            {
+                <th class="text-center">Thao tác</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    @if (admin == true || user.Right.Contains("RCK58"))
+                    {
+                        <td class="text-center"><input type="checkbox" data-id="@item.ID" class="cursor" name="chkCustbl[]" onchange="Common.NhatKyNguoiDung.f_CheckedItemNhatKy(this)"></td>
+                    }
+                    <td data-label="Nhóm nhật ký">@Html.Raw(item.LogTypeName ?? "&nbsp;")</td>
+                    <td data-label="Người dùng">@Html.Raw(item.TenTaiKhoan ?? "&nbsp;")</td>
+                    @*<td data-label="Địa chỉ IP">@Html.Raw(item.DiaChiIP ?? "&nbsp;")</td>*@
+                    <td data-label="Nội dung">@Html.Raw(item.NoiDung ?? "&nbsp;")</td>
+                    <td data-label="Ngày tạo">@Html.Raw(item.NgayTao ?? "&nbsp;")</td>
+                    @if (admin == true || user.Right.Contains(CookieRight.NhatKyNguoiDungController_Delete))
+                    {
+                        <td class="text-center" data-label="Thao tác" data-id="@item.ID">
+                            <button data-id="@item.ID" title="Xóa" class="btn btn-danger btn-sm btnDelRow" href=""><i class="far fa-trash-alt"></i></button>
+                        </td>
+                    }
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.NhatKyNguoiDung.Paging({0})",
+                    OnChangePageSize = "Common.NhatKyNguoiDung.ChangePageSize(this)",
+
+                }))
+    </div>
+    <!--- End Pagination -->
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (lstid.length > 0) {
+            Common.NhatKyNguoiDung.f_CheckedItemInArray();
+        }
+    });
+</script>

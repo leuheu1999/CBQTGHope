@@ -1,0 +1,53 @@
+﻿@using Module.Framework.Common;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var modelParam = new Business.Entities.Domain.TT_HinhAnhParam();
+    var modelList = new List<Business.Entities.Domain.TT_HinhAnhMap>();
+}
+<script src="~/Scripts/DVC_QuyenLienQuan/DVC_QuyenLienQuan_SearchHinhAnh.js"></script>
+<div class="modal fade custom-margin-form-group" id="dialogSearchHinhAnh" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header h-25">
+                <h5 class="modal-title">Thông tin hình ảnh </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.Partial("DialogSearchHinhAnh/Search", modelParam)
+                </div>
+                <div class="table-responsive mt-3 sh-list-hinhanh" id="result-searchhinhanh">
+                    @Html.Partial("DialogSearchHinhAnh/List", modelList)
+                </div>
+                <div class="table-responsive mt-3 sh-update-hinhanh" id="result-updatehinhanh">
+                    @Html.Partial("DialogSearchHinhAnh/Update", modelList)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i> Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DVC_QuyenLienQuan_SearchHinhAnh)) {
+            Common.DVC_QuyenLienQuan_SearchHinhAnh = new DVC_QuyenLienQuan_SearchHinhAnh({
+                Url: {
+                    SearchHinhAnh: '@Url.Action("SearchHinhAnh", "DVC_QuyenLienQuan")',
+                    SaveHinhAnh: '@Url.Action("SaveHinhAnh", "DVC_QuyenLienQuan")',
+                    UpdateHinhAnh: '@Url.Action("UpdateHinhAnh", "DVC_QuyenLienQuan")',
+                    DeleteHinhAnh: '@Url.Action("DeleteHinhAnh", "DVC_QuyenLienQuan")',
+                    UploadPicture: '@Url.Action("UploadPicture", "DVC_QuyenLienQuan")',
+                },
+                ListHinhAnh: [],
+            });
+        }
+        else {
+            Common.DVC_QuyenLienQuan_SearchHinhAnh.RegisterEvent();
+        }
+    });
+</script>

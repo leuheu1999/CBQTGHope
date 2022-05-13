@@ -1,0 +1,23 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.DM_TinhThanhMapParam
+@using (Ajax.BeginForm("ListDMTinhThanh", "DM_TinhThanh", null, new AjaxOptions
+{
+    UpdateTargetId = "result-searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.DMTinhThanh.BeforeSend",
+    OnSuccess = "Common.DMTinhThanh.Success",
+    OnFailure = "Common.ErrorMessage"
+}, new { @class = "", @role = "form", @id = "IdformSearch" }))
+{
+<div class="hidden">
+    @Html.HiddenFor(m => m.PageIndex)
+    @Html.HiddenFor(m => m.PageSize)
+</div>
+    <div class="input-group">
+        @Html.TextBoxFor(m => m.TuKhoa, new { @class = "form-control form-control-sm w-50", @placeholder = "Nhập thông tin cần tìm" })
+        @Html.DropDownListFor(m => m.QuocGiaID, CBODungChung.GetCBOQuocGia(), "--Chọn quốc gia--", new { @class = "form-control form-control-sm select-share w-25" })
+        <div class="input-group-prepend">
+            <button class="btn btn-info btn-sm text-white" type="button" id="btnFormSearch"><i class="fas fa-search mr-1"></i> Tìm kiếm</button>
+        </div>
+    </div>
+}

@@ -1,0 +1,29 @@
+﻿@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var model = new Business.Entities.Domain.LogAdd();
+}
+<div class="modal fade" id="thongtinlog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header h-25">
+                <h5 class="modal-title">Chi tiết nhật ký hệ thống</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            @Html.Partial("Dialog/Detail", model)
+            <div class="modal-footer">
+                @if (admin == true || user.Right.Contains(CookieRight.LogSystemController_Delete))
+                {
+                    <button type="button" class="btn btn-danger btn-block-sm btn-sm btnDelDetail">
+                        <i class="far fa-trash-alt mr-1"></i> Xóa
+                    </button>
+                }
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i>Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

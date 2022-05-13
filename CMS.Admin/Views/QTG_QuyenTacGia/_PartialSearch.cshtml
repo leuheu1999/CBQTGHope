@@ -1,0 +1,75 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.QTG_QuyenTacGiaParam
+@using (Ajax.BeginForm("Index", "QTG_QuyenTacGia", null, new AjaxOptions
+{
+    UpdateTargetId = "searchlist",
+    HttpMethod = "Post",
+    OnBegin = "Common.QTG_QuyenTacGia.BeforeSend",
+    OnSuccess = "Common.QTG_QuyenTacGia.Success",
+    OnFailure = "Common.QTG_QuyenTacGia.Error"
+}, new { @class = "", @role = "form", @id = "search-form" }))
+{
+    <div class="hidden">
+        @Html.HiddenFor(model => model.PageIndex)
+        @Html.HiddenFor(model => model.PageSize)
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Tác phẩm</label>
+        @Html.TextBoxFor(m => m.TuKhoa, new { @class = "form-control form-control-sm", @placeholder = "Nhập nội dung tìm kiếm" })
+    </div>
+    <div class="form-row searhnc hidden">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Giấy chứng nhận</label>
+            @Html.TextBoxFor(m => m.SoGCN, new { @class = "form-control form-control-sm", @placeholder = "Giấy chứng nhận" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Ngày cấp từ</label>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NgayCapTu, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Từ ngày" })
+                <div class="input-group-prepend">
+                    <label for="NgayCapTu" class="input-group-text cursor datepicker-share_iconTuNgay"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Ngày cấp đến</label>
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.NgayCapDen, new { @class = "form-control form-control-sm w-50 datepicker-share", @placeholder = "Đến ngày" })
+                <div class="input-group-prepend">
+                    <label for="NgayCapDen" class="input-group-text cursor datepicker-share_iconDenNgay"><i class="far fa-calendar-alt "></i></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row searhnc hidden">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Tác giả</label>
+            @Html.TextBoxFor(m => m.TenTacGia, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên tác giả" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Chủ sở hữu</label>
+            @Html.TextBoxFor(m => m.TenChuSoHuu, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên chủ sở hữu" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Người nhập</label>
+            @Html.TextBoxFor(m => m.CreatedUser, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên người nhập" })
+        </div>
+    </div>
+    <div class="form-row searhnc hidden">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Vùng miền</label>
+            @Html.DropDownListFor(model => model.VungMienID, CBODungChung.GetAllCBOTableDM("DM_VungMien"), "Tất cả", new { @class = "form-control form-control-sm select2-single" })
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Tình trạng</label>
+            @Html.DropDownListFor(model => model.TrangThaiID, CBODungChung.GetAllCBOTableDM("E_TrangThaiGiayChungNhan"), "Tất cả", new { @class = "form-control form-control-sm select2-single" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 text-right">
+            <button type="button" class="btn btn-warning text-white btn-sm btn-block-sm" id="typeseach"><i class="fas fa-search mr-1"></i>Tìm kiếm nâng cao</button>
+            <button type="button" class="btn btn-primary text-white btn-sm btn-block-sm" id="btnFormSearchCoSo"><i class="fas fa-search mr-1"></i>Tìm kiếm</button>
+            <button type="button" class="btn btn-secondary btn-block-sm btn-sm mt-md-0 mt-sm-2 text-white" id="btnLamMoi"><i class="fas fa-sync-alt"></i> Làm mới</button>
+        </div>
+    </div>
+}

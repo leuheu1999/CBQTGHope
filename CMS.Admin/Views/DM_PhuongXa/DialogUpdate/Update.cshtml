@@ -1,0 +1,45 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.DM_PhuongXaMapAdd
+<div class="hidden">
+    @Html.HiddenFor(model => model.ID)
+</div>
+<div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mã phường xã <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.Ma, new { @class = "form-control form-control-sm", @placeholder = "Nhập mã phường xã" })
+        <div class="field-validation-error thongbaoma invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mã phường xã liên thông</label>
+        @Html.TextBoxFor(model => model.MaLienThong, new { @class = "form-control form-control-sm", @placeholder = "Nhập mã phường xã liên thông" })
+        <div class="field-validation-error thongbaomalienthong invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Tên phường xã <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.Ten, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên phường xã" })
+        <div class="field-validation-error thongbaoTen invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Tỉnh thành <span class="text-danger">(*)</span></label>
+        @Html.DropDownListFor(m => m.TinhThanhID, CBODungChung.GetCBOTinhThanh(), "-- Chọn tỉnh thành--", new { @class = "form-control form-control-sm select-share-update" })
+        <div class="field-validation-error thongbaoTinhThanh invalid-feedback"></div>
+    </div>
+    <div class="form-group divQuanHuyenResult">
+        <label class="font-weight-bold">Quận huyện <span class="text-danger">(*)</span></label>
+        @Html.DropDownListFor(m => m.QuanHuyenID, CBODungChung.GetCBOQuanHuyen(""), "-- Chọn quận huyện --", new { @class = "form-control form-control-sm select-share-update" })
+        <div class="field-validation-error thongbaoQuanHuyen invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mô tả</label>
+        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control form-control-sm", @placeholder = "Nhập mô tả" })
+        <div class="field-validation-error thongbaoMota invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Thứ tự hiển thị</label>
+        @Html.TextBoxFor(model => model.ThuTuHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập thứ tự hiển thị" })
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="CongKhai" name="CongKhai" value="@(Model.CongKhai == true ? "True" : "False")" @(Model.CongKhai == true ? "checked='checked'" : "")>
+        <label class="form-check-label" for="CongKhai">Công khai</label>
+    </div>
+</div>

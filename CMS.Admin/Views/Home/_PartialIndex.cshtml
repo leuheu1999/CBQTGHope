@@ -1,0 +1,398 @@
+﻿ <!--Test-->
+<div class="page_title position-relative">
+    <h3 class="title_page_h1">Thông tin doanh nghiệp</h3>
+</div>
+<div class="form-group">
+    <label data-type="label" for="" data-value-regex="[^0-9+]" id="IDLabel" class="label">Tên thương nhân<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+    <input type="text" class="form-control form-control-sm" id="DNTenThuongNhan" name="DNTenThuongNhan" data-rule-required="true"
+           data-msg-required="Vui lòng nhập tên thương nhân"
+           data-rule-minlength="true"
+           data-value-minlength="1"
+           data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+           data-rule-maxlength="true"
+           data-value-maxlength="200"
+           data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+</div>
+<div class="col-md-12 font-weight-bold text-primary padding-row mb-2">
+    Địa chỉ trụ sở chính
+</div>
+<div class="DiaChi" name="DiaChiTruSo" id="DiaChiTruSo">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label data-type="label" for="DNTinhThanhID" data-type="label1" id="IDLabel2" class="label">Tỉnh/TP<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+            <select class="form-control form-control-sm" data-value-select="DM_TinhThanh" id="DNTinhThanhID" name="DNTinhThanhID"
+                    data-rule-required="true"
+                    data-msg-required="Vui lòng chọn tỉnh thành">
+                <option value="">-- Chọn --</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label data-type="label" id="IDLabe3" for="DNQuanHuyenID" data-type="label" class="label">Quận/Huyện<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+            <select class="form-control form-control-sm" data-value-select="DM_QuanHuyen" id="DNQuanHuyenID" name="DNQuanHuyenID" data-parent="DNTinhThanhID"
+                    data-rule-required="true"
+                    data-msg-required="Vui lòng chọn quận huyện">
+                <option value="">-- Chọn --</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label data-type="label" id="IDLabe4" for="DNPhuongXaID" data-type="label" class="label">Phường/Xã<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+            <select class="form-control form-control-sm" data-value-select="DM_PhuongXa" id="DNPhuongXaID" name="DNPhuongXaID" data-parent="DNQuanHuyenID"
+                    data-rule-required="true"
+                    data-msg-required="Vui lòng chọn phường xã">
+                <option value="">-- Chọn --</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label data-type="label" id="IDLabe5" for="DNSoNha" data-type="label" class="label">Số nhà, đường</label>
+            <input type="text" data-type="input" class="form-control form-control-sm" id="DNSoNha" name="DNSoNha">
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe6" for="DNSoDienThoai" data-type="label" id="IDLabel3" class="label">Số điện thoại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="DNSoDienThoai" name="DNSoDienThoai" data-rule-phone="true"
+               data-value-regex="[^0-9+]"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập số điện thoại"
+               data-rule-minlength="true"
+               data-value-minlength="10"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="20"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe7" for="DNFax" class="label">Fax</label>
+        <input type="text" class="form-control form-control-sm" id="DNFax" name="DNFax">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe8" for="DNEmail" class="label">Email<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="DNEmail" name="DNEmail"
+               data-rule-email="true"
+               data-type="email"
+               data-value-regex="^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập email"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe9" for="DNMaSoThue">Mã số thuế<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="DNMaSoThue" name="DNMaSoThue"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập mã số thuế"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe10" for="DNNguoiDaiDien">Đại diện thương nhân<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="DNNguoiDaiDien" name="DNNguoiDaiDien"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập đại diện thương nhân"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe11" for="DNSoDienThoaiNguoiDaiDien">Số điện thoại người đại diện<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="DNSoDienThoaiNguoiDaiDien" name="DNSoDienThoaiNguoiDaiDien"
+               data-rule-phone="true"
+               data-value-regex="[^0-9+]"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập số điện thoại"
+               data-rule-minlength="true"
+               data-value-minlength="10"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="20"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+</div>
+<div class="page_title position-relative mt-2">
+    <h3 class="title_page_h1">Thông tin đăng ký thực hiện khuyến mãi</h3>
+</div>
+<div class="form-group">
+    <label data-type="label" id="IDLabe12" for="CTKMTenChuongTrinh" class="label">1. Tên chương trình khuyến mại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+    <input type="text" class="form-control form-control-sm" id="CTKMTenChuongTrinh" name="CTKMTenChuongTrinh"
+           data-rule-required="true"
+           data-msg-required="Vui lòng nhập tên chương trình khuyến mại"
+           data-rule-minlength="true"
+           data-value-minlength="1"
+           data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+           data-rule-maxlength="true"
+           data-value-maxlength="200"
+           data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe13" for="CTKMTuNgay">2. Thời gian khuyến mại từ ngày <span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control datepicker-share" id="CTKMTuNgay" name="CTKMTuNgay"
+                   data-datepicker-format="dd/mm/yyyy"
+                   data-datepicker-startdate="+3d"
+                   data-rule-required="true"
+                   data-msg-required="Vui lòng chọn thời gian khuyến mại từ ngày">
+            <div class="input-group-prepend">
+                <label data-type="label" class="input-group-text cursor" for="CTKMTuNgay"><i class="far fa-calendar-alt"></i></label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe14" for="CTKMDenNgay">Đến ngày <span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control datepicker-share" id="CTKMDenNgay" name="CTKMDenNgay"
+                   data-datepicker-format="dd/mm/yyyy"
+                   data-datepicker-startdate="+3d"
+                   data-rule-required="true"
+                   data-msg-required="Vui lòng chọn thời gian khuyến mại đến ngày">
+            <div class="input-group-prepend">
+                <label data-type="label" class="input-group-text cursor" for="CTKMDenNgay"><i class="far fa-calendar-alt"></i></label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label data-type="label" id="IDLabe15" for="CTKMTenSanPhamDuocKhuyenMai" class="label">3. Hàng hóa, dịch vụ được khuyến mại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+    <input type="text" class="form-control form-control-sm" id="CTKMTenSanPhamDuocKhuyenMai" name="CTKMTenSanPhamDuocKhuyenMai"
+           data-rule-required="true"
+           data-msg-required="Vui lòng nhập hàng hóa, dịch vụ được khuyến mại"
+           data-rule-minlength="true"
+           data-value-minlength="1"
+           data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+           data-rule-maxlength="true"
+           data-value-maxlength="200"
+           data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" id="IDLabe16" for="CTKMNhomSanPhamID" class="label">Nhóm sản phẩm khuyến mại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <select class="form-control form-control-sm" data-value-select="DM_LoaiSanPham" id="CTKMNhomSanPhamID" name="CTKMNhomSanPhamID"
+                data-rule-required="true"
+                data-msg-required="Vui lòng chọn nhóm sản phẩm khuyến mại">
+            <option value="">-- Chọn --</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" for="CTKMNhanHieuID" class="label">Nhãn hiệu khuyến mại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <select class="form-control form-control-sm" id="CTKMNhanHieuID" name="CTKMNhanHieuID"
+                data-value-select="DM_NhanHieu"
+                data-rule-required="true"
+                data-msg-required="Vui lòng chọn nhãn hiệu khuyến mại">
+            <option value="">-- Chọn --</option>
+        </select>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" for="CTKMSoLuong" class="label">Số lượng, hàng hóa, dịch vụ (nếu có)</label>
+        <input type="text" class="form-control form-control-sm form-item calx-highlight" data-type="number" id="CTKMSoLuong" name="CTKMSoLuong"
+               data-rule-number="true"
+               data-rule-min-number="true"
+               data-msg-min-number="Số lượng phải lớn hơn {0}"
+               data-value-min-number="100">
+    </div>
+</div>
+<div class="form-group">
+    <label data-type="label" for="CTKMTenSanPhamDungDeKhuyenMai" class="label">4. Hàng hóa, dịch vụ dùng để khuyến mại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+    <input type="text" class="form-control form-control-sm" id="CTKMTenSanPhamDungDeKhuyenMai" name="CTKMTenSanPhamDungDeKhuyenMai"
+           data-rule-required="true"
+           data-msg-required="Vui lòng nhập hàng hóa, dịch vụ dùng để khuyến mại"
+           data-rule-minlength="true"
+           data-value-minlength="1"
+           data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+           data-rule-maxlength="true"
+           data-value-maxlength="500"
+           data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+</div>
+<div class="col-md-12 font-weight-bold padding-row mb-2">
+    5. Địa bàn, phạm vi hoạt động
+</div>
+<div class="form-row" id="DiaBan" name="DiaBan" data-tab="1" data-children="1">
+    <div class="form-group col-md-12 jaddress-item form-item">
+        <div class="input-group input-group-sm">
+            <input type="text" id="DiaBan_1_DiaChi" name="DiaBan_1_DiaChi" class="form-control w-25">
+            <select id="DiaBan_1_QuanHuyenID" name="DiaBan_1_QuanHuyenID" data-value-select="DM_QuanHuyen" data-parent-value="49" class="form-control"></select>
+            <div class="input-group-append" id="button-addon4" data-children="1">
+                <button type="button" class="btn btn-danger jbtn-remove" onclick="Common.DelAddressMultiple(this)">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+                <button type="button" class="btn btn-success jbtn-clone" onclick="Common.NewAddressMultiple(this)">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" for="CTKMHinhThucKhuyenMaiID" class="label">6. Hình thức khuyến mại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <select class="form-control form-control-sm" data-value-select="DM_HinhThucKhuyenMai" id="CTKMHinhThucKhuyenMaiID" name="CTKMHinhThucKhuyenMaiID"
+                data-rule-required="true"
+                data-msg-required="Vui lòng chọn hình thức khuyến mại">
+            <option value="">-- Chọn --</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" for="CTKMCoCauGiaiThuong" class="label">7. Cơ cấu giải thưởng<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="CTKMCoCauGiaiThuong" name="CTKMCoCauGiaiThuong"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập cơ cấu giải thưởng"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" for="CTKMKhachHangKhuyenMai" class="label">8. Khách hàng của chương trình khuyến mại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="CTKMKhachHangKhuyenMai" name="CTKMKhachHangKhuyenMai"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập khách hàng của chương trình khuyến mại"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" for="CTKMTongGiaTriGiaiThuong" class="label">9. Tổng giá trị giải thưởng<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="CTKMTongGiaTriGiaiThuong" name="CTKMTongGiaTriGiaiThuong"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập tổng giá trị giải thường"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+</div>
+<div class="form-group">
+    <label data-type="label" for="CTKMTenDoanhNghiepCungThucHien" class="label">10. Tên thương nhân cùng thực hiện<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+    <textarea class="form-control" rows="3" id="CTKMTenDoanhNghiepCungThucHien" name="CTKMTenDoanhNghiepCungThucHien"
+              data-rule-required="true"
+              data-msg-required="Vui lòng nhập tên thương nhân cùng thực hiện"
+              data-rule-minlength="true"
+              data-value-minlength="1"
+              data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+              data-rule-maxlength="true"
+              data-value-maxlength="200"
+              data-msg-maxlength="Vui lòng nhập không quá {0} ký tự."></textarea>
+</div>
+<div class="page_title position-relative mt-3">
+    <h3 class="title_page_h1">Thông tin người yêu cầu</h3>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" for="NYCHoTen" class="label">Họ và tên<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="NYCHoTen" name="NYCHoTen"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập họ và tên"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" for="NYCSoDienThoai" class="label">Số điện thoại<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="NYCSoDienThoai" name="NYCSoDienThoai"
+               data-rule-phone="true"
+               data-value-regex="[^0-9+]"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập số điện thoại"
+               data-rule-minlength="true"
+               data-value-minlength="10"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="20"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+</div>
+<div class="form-group">
+    <label data-type="label" for="NYCEmail" class="label">Email<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+    <input type="text" class="form-control form-control-sm" id="NYCEmail" name="NYCEmail" data-rule-email="true"
+           data-type="email"
+           data-value-regex="^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+           data-rule-required="true"
+           data-msg-required="Vui lòng nhập email"
+           data-rule-minlength="true"
+           data-value-minlength="1"
+           data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+           data-rule-maxlength="true"
+           data-value-maxlength="200"
+           data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+</div>
+<div class="col-md-12 font-weight-bold text-primary padding-row mb-2">
+    Giấy tờ
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" for="NYCLoaiGiayToID" class="label">Loại giấy tờ<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <select class="form-control form-control-sm" data-value-select="E_LoaiGiayTo" id="NYCLoaiGiayToID" name="NYCLoaiGiayToID"
+                data-rule-required="true"
+                data-msg-required="Vui lòng chọn loại giấy tờ">
+            <option value="">-- Chọn --</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" for="NYCSoGiayTo" class="label">Số giấy tờ<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <input type="text" class="form-control form-control-sm" id="NYCSoGiayTo" name="NYCSoGiayTo"
+               data-rule-required="true"
+               data-msg-required="Vui lòng nhập số giấy tờ"
+               data-rule-minlength="true"
+               data-value-minlength="1"
+               data-msg-minlength="Vui lòng nhập ít nhất {0} ký tự."
+               data-rule-maxlength="true"
+               data-value-maxlength="200"
+               data-msg-maxlength="Vui lòng nhập không quá {0} ký tự.">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label data-type="label" for="NYCNgayCap">Ngày cấp<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control datepicker-share" id="NYCNgayCap" name="NYCNgayCap" data-provide="datepicker"
+                   data-datepicker-format="dd/mm/yyyy"
+                   data-datepicker-enddate="+0d"
+                   data-rule-required="true"
+                   data-msg-required="Vui lòng chọn ngày cấp">
+            <div class="input-group-prepend">
+                <label data-type="label" class="input-group-text cursor" for="NgayCapGiayTo"><i class="far fa-calendar-alt"></i></label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label data-type="label" for="NYCNoiCap" class="label">Nơi cấp<span class="ml-2 font-weight-bold text-danger">(*)</span></label>
+        <select class="form-control form-control-sm" data-value-select="DM_TinhThanh" id="NYCNoiCapID" name="NYCNoiCapID"
+                data-rule-required="true"
+                data-msg-required="Vui lòng chọn nơi cấp">
+            <option value="">-- Chọn --</option>
+        </select>
+    </div>
+</div>
+<!--End:test-->

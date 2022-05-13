@@ -1,0 +1,9 @@
+﻿@model Business.Entities.Domain.BC_BaoCaoTongHopSoLieuParam
+@using CMS.Admin.Common
+
+<div class="form-row" id="IdformSearch">
+    <div class="form-group col-md-3 div-nam">
+        <label for="Nam" class="font-weight-bold">Năm</label>
+        @Html.DropDownListFor(m => m.Nam, CBODungChung.GetCBONam(), new { @class = "form-control form-control-sm  select2-share" })
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@using PagedList;
+@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model IPagedList<Business.Entities.Domain.TT_CapQuyenMap> 
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            <th class="text-center cursor" width="50">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="NhanAll">
+                    <label class="form-check-label" for="NhanAll">C</label>
+                </div>
+            </th>
+            <th width="50" class="text-center">STT</th>
+            <th>Số biên nhận</th>
+            <th>Ngày nhận</th>
+            <th>Ngày hẹn trả</th>
+            <th>Người đứng tên</th>
+            <th>Tên phường</th>
+            <th>Thủ tục hành chính</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr data-id="@item.CapQuyenID" data-sobiennhan="@item.SoBienNhan" data-hosoid="@item.HoSoID" data-thutucid="@item.ThuTucID">
+                    <td class="text-center cursor" width="50">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Nhan@(item.CapQuyenID)" name="Nhan" value="@(item.CapQuyenID)">
+                            <label class="form-check-label" for="Nhan@(item.CapQuyenID)"></label>
+                        </div>
+                    </td>
+                    <td data-label="STT">@Html.Raw(((item.PageIndex -1)*item.PageSize + i).ToString() ?? "&nbsp;")</td>
+                    <td data-label="Số biên nhận" class="cursor sobiennhan">@Html.Raw(item.SoBienNhan ?? "&nbsp;")</td>
+                    <td data-label="Ngày nhận">@Html.Raw(item.NgayNhan ?? "&nbsp;")</td>
+                    <td data-label="Ngày hẹn trả">@Html.Raw(item.NgayHenTra ?? "&nbsp;")</td>
+                    <td data-label="Người đứng tên">@Html.Raw(item.HoVaTen ?? "&nbsp;")</td>
+                    <td data-label="Tên phường">@Html.Raw(item.TenPhuongXa ?? "&nbsp;")</td>
+                    <td data-label="Thủ tục hành chính">@Html.Raw(item.TenThuTuc ?? "&nbsp;")</td>
+                </tr>
+                i++;
+            }
+        }
+        else
+        {
+            
+            <tr>
+                <td colspan="8">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model != null  && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model[0].PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.HS_CapSo.Paging({0})",
+                    OnChangePageSize = "Common.HS_CapSo.ChangePageSize(this)",
+
+                }))
+    </div>
+    <!--- End Pagination -->
+}

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ESET>
+  <LOG>
+    <RECORD>
+      <COLUMN NAME="Log">Scan Log</COLUMN>
+    </RECORD>
+    <RECORD>
+      <COLUMN NAME="Log">Version of detection engine: 24342 (20211123)</COLUMN>
+    </RECORD>
+    <RECORD>
+      <COLUMN NAME="Log">Date: 11/24/2021  Time: 11:49:19 AM</COLUMN>
+    </RECORD>
+    <RECORD>
+      <COLUMN NAME="Log">Scanned disks, folders and files: E:\CBQTG_BQTG_2021_PM\Program\CBQTG_BQTG_2021_PM_ SRC_NGIEMTHU</COLUMN>
+    </RECORD>
+    <RECORD>
+      <COLUMN NAME="Log">Number of scanned objects: 16395</COLUMN>
+    </RECORD>
+    <RECORD>
+      <COLUMN NAME="Log">Number of detections: 0</COLUMN>
+    </RECORD>
+    <RECORD>
+      <COLUMN NAME="Log">Time of completion: 11:49:56 AM  Total scanning time: 37 sec (00:00:37)</COLUMN>
+    </RECORD>
+ </LOG>
+</ESET>

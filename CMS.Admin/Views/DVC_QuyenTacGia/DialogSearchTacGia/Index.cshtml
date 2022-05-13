@@ -1,0 +1,66 @@
+﻿@using Module.Framework.Common;
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+    var modelParam = new Business.Entities.Domain.TT_TacGiaParam();
+    var modelList = new List<Business.Entities.Domain.TT_TacGiaMap>();
+    var modelAdd = new Business.Entities.Domain.TT_TacGiaAdd();
+}
+<script src="~/Scripts/DVC_QuyenTacGia/DVC_QuyenTacGia_SearchTacGia.js"></script>
+<div class="modal fade custom-margin-form-group" id="dialogSearchTacGia" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header h-25">
+                <h5 class="modal-title">Thông tin tác giả </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group sh-search-tacgia">
+                    @Html.Partial("DialogSearchTacGia/Search", modelParam)
+                </div>
+                <div class="form-group sh-info-tacgia hidden">
+                    <form role="form" id="form-update-tacgia" class="form-horizontal label-right">
+                        @Html.Partial("DialogSearchTacGia/Update", modelAdd)
+                    </form>
+                </div>
+                <div class="table-responsive mt-3" id="result-searchtacgia">
+                    @Html.Partial("DialogSearchTacGia/List", modelList)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success btn-sm" id="btnAddTacGia"><i class="far fa-save mr-1"></i> Chọn</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fas fa-times mr-2"></i> Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DVC_QuyenTacGia_SearchTacGia)) {
+            Common.DVC_QuyenTacGia_SearchTacGia = new DVC_QuyenTacGia_SearchTacGia({
+                Url: {
+                    SearchTacGia: '@Url.Action("SearchTacGia", "DVC_QuyenTacGia")',
+                    SaveTacGia: '@Url.Action("SaveTacGia", "DVC_QuyenTacGia")',
+                    UpdateTacGia: '@Url.Action("UpdateTacGia", "DVC_QuyenTacGia")',
+                },
+                ListTacGia: [],
+            });
+            $("#tableTacGia tbody tr").each(function () {
+                if ($(this).closest("tr").data("id") > 0) {
+                    Common.DVC_QuyenTacGia_SearchTacGia.ListTacGia.push({
+                        TacGiaID: $(this).closest("tr").data("id"),
+                        HoVaTen: $(this).closest("tr").data("name"),
+                        QuocTich: $(this).closest("tr").data("country"),
+                        SoCMND: $(this).closest("tr").data("cccd"),
+                        DiaChi: $(this).closest("tr").data("address")
+                    });
+                }
+            });
+        }
+        else {
+            Common.DVC_QuyenTacGia_SearchTacGia.RegisterEvent();
+        }
+    });
+</script>

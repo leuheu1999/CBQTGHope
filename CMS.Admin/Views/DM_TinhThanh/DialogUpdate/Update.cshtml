@@ -1,0 +1,39 @@
+﻿@using CMS.Admin.Common
+@model Business.Entities.Domain.DM_TinhThanhMapAdd
+<div class="hidden">
+    @Html.HiddenFor(model => model.ID)
+</div>
+<div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mã tỉnh thành <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.Ma, new { @class = "form-control form-control-sm", @placeholder = "Nhập mã tỉnh thành" })
+        <div class="field-validation-error thongbaoma invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mã tỉnh thành liên thông</label>
+        @Html.TextBoxFor(model => model.MaLienThong, new { @class = "form-control form-control-sm", @placeholder = "Nhập mã tỉnh thành liên thông" })
+        <div class="field-validation-error thongbaomalienthong invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Tên tỉnh thành <span class="text-danger">(*)</span></label>
+        @Html.TextBoxFor(model => model.Ten, new { @class = "form-control form-control-sm", @placeholder = "Nhập tên tỉnh thành" })
+        <div class="field-validation-error thongbaoTen invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Quốc gia <span class="text-danger">(*)</span></label>
+        @Html.DropDownListFor(m => m.QuocGiaID, CBODungChung.GetCBOQuocGia(), "--Chọn quốc gia--", new { @class = "form-control form-control-sm select-share-update" })
+        <div class="field-validation-error thongbaoQuocGia invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Mô tả</label>
+        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control form-control-sm", @placeholder = "Nhập mô tả" })
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Thứ tự hiển thị</label>
+        @Html.TextBoxFor(model => model.ThuTuHienThi, new { @class = "form-control form-control-sm", @placeholder = "Nhập thứ tự hiển thị" })
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="CongKhai" name="CongKhai" value="@(Model.CongKhai == true ? "True" : "False")" @(Model.CongKhai == true ? "checked='checked'" : "")>
+        <label class="form-check-label" for="CongKhai">Công khai</label>
+    </div>
+</div>

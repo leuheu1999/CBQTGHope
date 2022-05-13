@@ -1,0 +1,107 @@
+﻿@using PagedList;
+@using Core.Common.Common;
+@using Module.Framework.Common;
+@using CMS.Admin.Constaints;
+@model IPagedList<Business.Entities.Domain.DM_QuyenChucNangMap>
+@{
+    var user = LoginManager.GetCurrentUser();
+    var admin = LoginManager.CheckAdmin();
+}
+<table id="recent-orders" class="table table-hover mb-0 table-striped table-mobile table-bordered">
+    <thead>
+        <tr class="bg-info text-white">
+            @*<th class="text-center cursor" width="50">STT</th>*@
+            <th width="150">CodeCookie</th>
+            <th>Mã</th>
+            <th>Tên</th>
+            <th>Quyền</th>
+            <th>Mô tả</th>
+            <th class="text-center" width="150">Thứ tự hiển thị</th>
+            <th class="text-center" width="100">Công khai</th>
+            @if (admin == true || user.Right.Contains(CookieRight.DM_QuyenChucNangController_ThemMoi) || user.Right.Contains(CookieRight.DM_QuyenChucNangController_Xoa))
+            {
+                <th class="text-center" width="100">Thao tác</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+
+            long idTemp = 0;
+            var listTemp = Model.GroupBy(m => m.QuyenID).ToList();
+            for (int i = 0; i < listTemp.Count; i++)
+            {
+                idTemp = listTemp[i].Key;
+                <tr class="table-warning" data-type="Category" data-status="minus" data-id="@listTemp[i].FirstOrDefault().QuyenID">
+                    <td colspan="8" class="font-weight-bold text-secondary">
+                        <div class="icon" style="cursor: pointer; color: #F39C12;float:left;margin-right:10px;"><i class="fa fa-minus-square" aria-hidden="true"></i></div>
+                        <b>@listTemp[i].FirstOrDefault().TenQuyen</b>
+                        @*@listTemp[i].FirstOrDefault().TenQuyen*@
+                    </td>
+                </tr>
+                int j = 1;
+                foreach (var item in Model.Where(m => m.QuyenID == idTemp))
+                {
+                    if (item.QuyenID == idTemp)
+                    {
+                        <tr data-id="@item.Id" data-type="Right" data-category="@listTemp[i].FirstOrDefault().QuyenID">
+                            @*<td data-label="STT" class="text-center">@j</td>*@
+                            <td data-label="CodeCookie">@Html.Raw(item.CodeCookie ?? "&nbsp;")</td>
+                            <td data-label="Mã">@Html.Raw(item.Ma ?? "&nbsp;")</td>
+                            <td data-label="Tên">@Html.Raw(item.TenHienThi ?? "&nbsp;")</td>
+                            <td data-label="Quyền">@Html.Raw(item.TenQuyen ?? "&nbsp;")</td>
+                            <td data-label="Mô tả">@Html.Raw(item.MoTa ?? "&nbsp;")</td>
+                            <td data-label="Thứ tự hiển thị" class="text-center">@item.ThuTuHienThi</td>
+                            <td data-label="Công khai" class="text-center text-success">@Html.Raw(item.CongKhai ? "<i class='fas fa-check'></i>" : "&nbsp;")</td>
+                            @if (admin == true || user.Right.Contains(CookieRight.DM_QuyenChucNangController_ThemMoi) || user.Right.Contains(CookieRight.DM_QuyenChucNangController_Xoa))
+                            {
+                                <td class="text-center" data-label="Thao tác">
+                                    @if (admin == true || user.Right.Contains(CookieRight.DM_QuyenChucNangController_ThemMoi))
+                                    {
+                                        <button title="Chỉnh sửa" class="btn btn-primary btn-sm btnUpdate" type="button"><i class="far fa-edit"></i></button>
+                                    }
+                                    @if (admin == true || user.Right.Contains(CookieRight.DM_QuyenChucNangController_Xoa))
+                                    {
+                                        <button title="Xóa" class="btn btn-danger btn-sm btnDelete" type="button"><i class="far fa-trash-alt"></i></button>
+                                    }
+                                </td>
+                            }
+                        </tr>
+                        j++;
+                    }
+                }
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">
+                    <div class="alert alert-info mt-3" role="alert">
+                        Không có dữ liệu
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model != null && Model.Any())
+{
+    <!--- Pagination -->
+    <div class="paging-bottom">
+        @Html.Raw(Ajax.Pager(
+                new Options
+                {
+                    PageSize = Model.PageSize,
+                    TotalItemCount = Model[0].TotalCount,
+                    CurrentPage = Model[0].PageIndex,
+                    IsShowControls = true,
+                    IsShowFirstLast = true,
+                    LimitPage = 5,
+                    Link = "javascript:void(0);",
+                    OnClick = "Common.DMQuyenChucNang.Paging({0})",
+                    OnChangePageSize = "Common.DMQuyenChucNang.ChangePageSize(this)",
+                }))
+    </div>
+    <!--- End Pagination -->
+}
